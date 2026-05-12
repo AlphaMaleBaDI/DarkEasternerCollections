@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-luxury-gold: #D4AF37;
+  --color-deep-black: #000000;
+  --color-soft-white: #FFFFFF;
+  
+  /* Accent Colors */
+  --color-emerald: #046307;
+  --color-royal-blue: #002366;
+  --color-wine: #722F37;
+  --color-blush: #DE5D83;
+
+  /* Typography */
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-inter);
+}
+
+:root {
+  --background: #000000;
+  --foreground: #FFFFFF;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), serif;
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .cinematic-overlay {
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+  }
+  
+  .gold-glow {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+  }
+}
