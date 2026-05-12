@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { theme } from '@/styles/theme';
 import { createWhatsAppInquiry } from '@/lib/whatsapp';
+import { Logo } from './Logo';
 
 /**
  * Navbar Component - "Couture Navigation"
@@ -15,8 +16,8 @@ import { createWhatsAppInquiry } from '@/lib/whatsapp';
 
 const navLinks = [
   { name: 'Showroom', href: '/collections' },
-  { name: 'The House', href: '/#about' }, // Fixed: Using absolute path for anchor
-  { name: 'Private Inquiry', href: createWhatsAppInquiry({ customMessage: 'Hello Dark Easterner, I would like to book a private consultation.' }) },
+  { name: 'The House', href: '/#about' },
+  { name: 'Private Inquiry', href: createWhatsAppInquiry({ type: 'general' }) },
 ];
 
 export const Navbar: React.FC = () => {
@@ -41,10 +42,11 @@ export const Navbar: React.FC = () => {
           isScrolled ? 'py-4 bg-deep-black/80 backdrop-blur-xl border-b border-soft-white/5' : 'py-8 bg-transparent'
         }`}
       >
-        <div className="container mx-auto px-6 flex items-center justify-between">
+        <div className="container flex items-center justify-between">
           
           {/* Brand Identity */}
-          <Link href="/" className="relative z-[110]">
+          <Link href="/" className="relative z-[110] flex items-center gap-3">
+            <Logo size={22} className="opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
             <motion.span 
               className="text-soft-white font-heading text-xl md:text-2xl tracking-tighter"
               whileHover={{ color: theme.colors.luxuryGold }}
@@ -57,12 +59,20 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center gap-12">
             {navLinks.map((link) => {
               const isExternal = link.href.includes('wa.me');
+              const isAbout = link.name === 'The House';
+
               return (
                 <Link 
                   key={link.name} 
                   href={link.href}
                   target={isExternal ? '_blank' : undefined}
                   rel={isExternal ? 'noopener noreferrer' : undefined}
+                  onClick={(e) => {
+                    if (isAbout && window.location.pathname === '/') {
+                      e.preventDefault();
+                      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                   className="group relative text-soft-white/60 hover:text-soft-white uppercase tracking-[0.3em] text-[10px] font-medium transition-colors duration-500"
                 >
                   {link.name}

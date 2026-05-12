@@ -36,6 +36,22 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Custom Utilities */
 @layer utilities {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    max-width: 1400px;
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* px-8 */
+      padding-right: 2rem; /* px-8 */
+    }
+  }
+
   .cinematic-overlay {
     background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
   }

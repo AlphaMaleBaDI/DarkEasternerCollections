@@ -15,11 +15,11 @@ import { theme } from '@/styles/theme';
 export const PrivateStyling: React.FC = () => {
   return (
     <section className="py-24 md:py-32 lg:py-48 bg-deep-black border-y border-soft-white/5">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+      <div className="container">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-16 lg:gap-24 items-center">
           
           {/* Service Narrative */}
-          <div className="lg:col-span-6 flex flex-col space-y-12 order-2 lg:order-1">
+          <div className="xl:col-span-6 flex flex-col space-y-12 order-2 xl:order-1">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -76,7 +76,7 @@ export const PrivateStyling: React.FC = () => {
           </div>
 
           {/* Atmospheric Visual */}
-          <div className="lg:col-span-6 order-1 lg:order-2">
+          <div className="xl:col-span-6 order-1 xl:order-2">
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}

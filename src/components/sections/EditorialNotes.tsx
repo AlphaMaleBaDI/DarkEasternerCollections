@@ -14,7 +14,7 @@ import { editorialNotes } from '@/data/editorial';
 export const EditorialNotes: React.FC = () => {
   return (
     <section className="py-32 lg:py-48 bg-deep-black border-y border-soft-white/5">
-      <div className="container mx-auto px-6">
+      <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-32">
           {editorialNotes.map((note, index) => (
             <motion.div

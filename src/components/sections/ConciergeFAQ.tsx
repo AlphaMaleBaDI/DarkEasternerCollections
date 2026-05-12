@@ -16,8 +16,8 @@ export const ConciergeFAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 md:py-32 lg:py-48 bg-deep-black">
-      <div className="container mx-auto px-6 max-w-4xl">
+    <section id="faq" className="py-24 md:py-32 lg:py-48 bg-deep-black">
+      <div className="container max-w-4xl">
         
         {/* Section Header */}
         <div className="mb-20 text-center lg:text-left">

@@ -15,7 +15,7 @@ import { theme } from '@/styles/theme';
 export default function CollectionsPage() {
   return (
     <main className="min-h-screen bg-deep-black pt-32 pb-24">
-      <div className="container mx-auto px-6">
+      <div className="container">
         
         {/* Editorial Header */}
         <header className="mb-24 lg:mb-32">
@@ -47,7 +47,7 @@ export default function CollectionsPage() {
             return (
               <section 
                 key={product.id} 
-                className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center`}
+                className={`grid grid-cols-1 xl:grid-cols-12 gap-12 lg:gap-24 items-center`}
               >
                 {/* Visual Content */}
                 <motion.div
@@ -55,7 +55,7 @@ export default function CollectionsPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: theme.motion.duration.cinematic, ease: theme.motion.ease.cinematic }}
-                  className={`lg:col-span-7 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}
+                  className={`xl:col-span-7 ${isEven ? 'xl:order-1' : 'xl:order-2'}`}
                 >
                   <EditorialFrame
                     src={product.images[0]}
@@ -73,7 +73,7 @@ export default function CollectionsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: theme.motion.duration.slow, delay: theme.motion.stagger.luxury }}
-                  className={`lg:col-span-5 flex flex-col space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1 lg:items-end lg:text-right'}`}
+                  className={`xl:col-span-5 flex flex-col space-y-8 ${isEven ? 'xl:order-2' : 'xl:order-1 xl:items-end xl:text-right'}`}
                 >
                   <div>
                     <p className="text-luxury-gold uppercase tracking-[0.3em] text-[10px] font-medium mb-4">

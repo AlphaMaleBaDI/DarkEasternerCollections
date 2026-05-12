@@ -17,7 +17,7 @@ export const Philosophy: React.FC = () => {
       {/* Subtle Atmospheric Light */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-luxury-gold/5 blur-[150px] pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

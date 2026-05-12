@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from '@/components/ui/Navbar';
+import { Footer } from '@/components/ui/Footer';
 import { PageTransition } from '@/components/ui/PageTransition';
 
 const playfair = Playfair_Display({
@@ -33,11 +34,15 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${playfair.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-deep-black text-soft-white selection:bg-luxury-gold selection:text-deep-black">
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col bg-deep-black text-soft-white selection:bg-luxury-gold selection:text-deep-black"
+      >
         <Navbar />
         <PageTransition>
           {children}
         </PageTransition>
+        <Footer />
       </body>
     </html>
   );

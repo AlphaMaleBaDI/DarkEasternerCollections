@@ -7,6 +7,7 @@ import { EditorialNotes } from '@/components/sections/EditorialNotes';
 import { Philosophy } from '@/components/sections/Philosophy';
 import { PrivateStyling } from '@/components/sections/PrivateStyling';
 import { ClientMoments } from '@/components/sections/ClientMoments';
+import { FragranceTeaser } from '@/components/sections/FragranceTeaser';
 import { InstagramFeed } from '@/components/sections/InstagramFeed';
 import { ConciergeFAQ } from '@/components/sections/ConciergeFAQ';
 
@@ -30,7 +31,10 @@ export default function HomePage() {
       {/* 4. Editorial Notes - Status & Authority */}
       <EditorialNotes />
 
-      {/* 5. Client Moments - Visual Validation */}
+      {/* 5. Fragrance Teaser - Universe Expansion */}
+      <FragranceTeaser />
+
+      {/* 6. Client Moments - Visual Validation */}
       <ClientMoments />
 
       {/* 6. Private Styling - Concierge Pathway */}

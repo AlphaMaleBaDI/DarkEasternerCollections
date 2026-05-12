@@ -15,7 +15,7 @@ import { theme } from '@/styles/theme';
 export const ClientMoments: React.FC = () => {
   return (
     <section className="py-24 md:py-32 lg:py-48 bg-deep-black overflow-hidden">
-      <div className="container mx-auto px-6">
+      <div className="container">
         
         {/* Section Header */}
         <div className="max-w-xl mb-24">

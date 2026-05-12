@@ -15,7 +15,14 @@ export const PageTransition: React.FC<{ children: React.ReactNode }> = ({ childr
   const pathname = usePathname();
 
   return (
-    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+    <AnimatePresence 
+      mode="wait" 
+      onExitComplete={() => {
+        if (!window.location.hash) {
+          window.scrollTo(0, 0);
+        }
+      }}
+    >
       <motion.div
         key={pathname}
         initial={{ opacity: 0 }}

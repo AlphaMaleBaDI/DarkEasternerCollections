@@ -13,17 +13,17 @@ import { theme } from '@/styles/theme';
 export const Founder: React.FC = () => {
   return (
     <section id="about" className="py-24 md:py-32 lg:py-48 bg-deep-black overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+      <div className="container">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-16 lg:gap-24 items-center">
           
           {/* Founder Cinematic Portrait */}
-          <div className="lg:col-span-6 relative">
+          <div className="xl:col-span-6 relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: theme.motion.duration.slower, ease: theme.motion.ease.cinematic }}
-              className="relative z-10"
+              className="relative z-10 max-w-2xl mx-auto xl:mx-0"
             >
               <EditorialFrame
                 src="/assets/images/founder/cynthia-hero.png"
@@ -34,11 +34,11 @@ export const Founder: React.FC = () => {
               />
             </motion.div>
             
-            <div className="absolute -top-10 -left-10 w-full h-full border border-luxury-gold/5 hidden lg:block -z-0" />
+            <div className="absolute -top-10 -left-10 w-full h-full border border-luxury-gold/5 hidden xl:block -z-0" />
           </div>
 
           {/* Couture Storytelling */}
-          <div className="lg:col-span-6 flex flex-col space-y-12">
+          <div className="xl:col-span-6 flex flex-col space-y-12 mt-16 xl:mt-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

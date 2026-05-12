@@ -17,10 +17,10 @@ export const FeaturedCollections: React.FC = () => {
 
   return (
     <section id="collections" className="py-24 md:py-32 lg:py-48 bg-deep-black">
-      <div className="container mx-auto px-6">
+      <div className="container">
         
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8">
+        <div className="flex flex-col xl:flex-row xl:items-end justify-between mb-24 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,8 +56,8 @@ export const FeaturedCollections: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-24 md:gap-x-12 lg:gap-x-20">
           {featuredProducts.map((product, index) => {
             const isWide = index === 0;
-            const gridSpan = isWide ? 'md:col-span-12' : 'md:col-span-6';
-            const offset = index === 1 ? 'lg:translate-y-12' : '';
+            const gridSpan = isWide ? 'md:col-span-12' : 'md:col-span-12 xl:col-span-6';
+            const offset = index === 1 ? 'xl:translate-y-12' : '';
             
             return (
               <motion.div

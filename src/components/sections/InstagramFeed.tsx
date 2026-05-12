@@ -21,7 +21,7 @@ const instaPosts = [
 export const InstagramFeed: React.FC = () => {
   return (
     <section className="py-24 bg-deep-black overflow-hidden border-t border-soft-white/5">
-      <div className="container mx-auto px-6">
+      <div className="container">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
