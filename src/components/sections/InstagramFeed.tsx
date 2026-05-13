@@ -68,7 +68,7 @@ export const InstagramFeed: React.FC = () => {
                 duration: theme.motion.duration.slow, 
                 delay: index * theme.motion.stagger.normal 
               }}
-              className="relative aspect-square grayscale hover:grayscale-0 transition-all duration-1000"
+              className="relative aspect-square lg:grayscale lg:hover:grayscale-0 transition-all duration-1000"
             >
               <EditorialFrame
                 src={post.src}

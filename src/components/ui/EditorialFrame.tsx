@@ -60,7 +60,11 @@ export const EditorialFrame: React.FC<EditorialFrameProps> = ({
 
       {/* Main Image */}
       <motion.div
-        className={`relative w-full h-full ${grayscaleHover ? 'editorial-grayscale' : ''}`}
+        className={`relative w-full h-full ${
+          grayscaleHover 
+            ? 'transition-[filter] duration-[800ms] lg:grayscale lg:hover:grayscale-0' 
+            : ''
+        }`}
         whileHover={hoverZoom ? { scale: 1.05 } : {}}
         transition={{ duration: theme.motion.duration.slow, ease: theme.motion.ease.cinematic }}
       >

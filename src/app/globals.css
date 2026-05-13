@@ -68,28 +68,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* 
-  Editorial Grayscale Engine
-  Restricts grayscale-to-color reveals to desktop devices with hover capability.
-  Restores full-color richness to touch devices (iPads, Mobile) by default.
-*/
-@media (hover: hover) and (pointer: fine) {
-  .editorial-grayscale {
-    filter: grayscale(100%);
-    transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .editorial-grayscale:hover {
-    filter: grayscale(0%);
-  }
-}
-
-/* Fallback for touch devices: ensure full color */
-@media (hover: none), (pointer: coarse) {
-  .editorial-grayscale {
-    filter: grayscale(0%);
-  }
-}
 
 /*
   Fragrance Cinema Background
