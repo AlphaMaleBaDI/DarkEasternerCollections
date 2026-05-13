@@ -37,40 +37,47 @@ export const ClientMoments: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Staggered Visual Strip */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16">
-          {clientMoments.map((moment, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ 
-                duration: theme.motion.duration.slow, 
-                delay: index * theme.motion.stagger.luxury,
-                ease: theme.motion.ease.cinematic
-              }}
-              className="group"
-            >
-              <div className={index === 1 ? 'md:translate-y-24' : ''}>
-                <EditorialFrame
-                  src={moment.image}
-                  alt={moment.title}
-                  aspectRatio="portrait"
-                  vignette
-                  grayscaleHover
-                />
-                <div className="mt-8 flex flex-col space-y-2">
-                  <p className="text-luxury-gold uppercase tracking-[0.3em] text-[10px] font-medium">
-                    {moment.context}
-                  </p>
-                  <h4 className="text-soft-white text-2xl font-heading group-hover:text-luxury-gold transition-colors duration-500">
-                    {moment.title}
-                  </h4>
+        {/* Staggered Visual Strip - Flexible Grid */}
+        <div className="flex flex-wrap -mx-4 lg:-mx-8">
+          {clientMoments.map((moment, index) => {
+            // Stagger offsets: reduced on tablet to prevent drift
+            const isFirstRow = index < 3;
+            const widthClass = isFirstRow ? 'w-full md:w-1/3' : 'w-full md:w-1/2 lg:w-1/2 max-w-2xl mx-auto';
+            const offsetClass = index % 3 === 1 ? 'lg:translate-y-24 md:translate-y-12' : '';
+            
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: theme.motion.duration.slow, 
+                  delay: (index % 3) * theme.motion.stagger.luxury,
+                  ease: theme.motion.ease.cinematic
+                }}
+                className={`px-4 lg:px-8 mb-24 ${widthClass} group`}
+              >
+                <div className={offsetClass}>
+                  <EditorialFrame
+                    src={moment.image}
+                    alt={moment.title}
+                    aspectRatio="portrait"
+                    vignette
+                    grayscaleHover
+                  />
+                  <div className="mt-8 flex flex-col space-y-2">
+                    <p className="text-luxury-gold uppercase tracking-[0.3em] text-[10px] font-medium">
+                      {moment.context}
+                    </p>
+                    <h4 className="text-soft-white text-2xl font-heading group-hover:text-luxury-gold transition-colors duration-500">
+                      {moment.title}
+                    </h4>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>

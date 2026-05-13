@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Logo } from './Logo';
 import { BrandCrest } from './BrandCrest';
 import { createWhatsAppInquiry } from '@/lib/whatsapp';
 

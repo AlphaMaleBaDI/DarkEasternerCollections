@@ -56,6 +56,16 @@ export const clientMoments = [
     context: "Custom Selection",
     image: "/assets/images/editorial/moment-3.jpg",
   },
+  {
+    title: "Traditional Mastery",
+    context: "Embroidery Detail",
+    image: "/assets/images/editorial/past-work-1.jpg",
+  },
+  {
+    title: "Modern Heritage",
+    context: "Male Couture",
+    image: "/assets/images/editorial/past-work-2.jpg",
+  },
 ];
 
 export const editorialNotes = [

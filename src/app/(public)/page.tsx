@@ -3,6 +3,7 @@
 import { Hero } from '@/components/sections/Hero';
 import { Founder } from '@/components/sections/Founder';
 import { FeaturedCollections } from '@/components/sections/FeaturedCollections';
+import { FragranceBridge } from '@/components/sections/FragranceBridge';
 import { EditorialNotes } from '@/components/sections/EditorialNotes';
 import { Philosophy } from '@/components/sections/Philosophy';
 import { PrivateStyling } from '@/components/sections/PrivateStyling';
@@ -27,6 +28,9 @@ export default function HomePage() {
 
       {/* 3. Featured Collections - Product Showcase */}
       <FeaturedCollections />
+
+      {/* 3.5 Fragrance Bridge - Sensory Transition */}
+      <FragranceBridge />
 
       {/* 4. Editorial Notes - Status & Authority */}
       <EditorialNotes />
