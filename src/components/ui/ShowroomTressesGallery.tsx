@@ -20,8 +20,8 @@ const tressesAssets = [
 
 export const ShowroomTressesGallery: React.FC = () => {
   return (
-    <div className="mt-24 md:mt-32 relative max-w-full overflow-hidden px-1">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 relative z-10">
+    <div className="mt-16 md:mt-24 relative max-w-full overflow-hidden px-1">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 relative z-10 items-start">
         {tressesAssets.map((asset, index) => (
           <motion.div
             key={index}
@@ -30,30 +30,32 @@ export const ShowroomTressesGallery: React.FC = () => {
             viewport={{ once: true }}
             transition={{ 
               duration: theme.motion.duration.slow, 
-              delay: index * theme.motion.stagger.luxury,
+              delay: index * 0.15,
               ease: theme.motion.ease.cinematic
             }}
             className={`${asset.span} relative z-10`}
           >
-            <EditorialFrame
-              src={asset.src}
-              alt={asset.alt}
-              aspectRatio={asset.ratio}
-              vignette
-              grayscaleHover
-            />
-            
-            {/* Subtle Editorial Label */}
-            <div className="mt-4">
-              <p className="text-[9px] text-luxury-gold/40 uppercase tracking-[0.4em] font-medium">
-                {asset.alt}
-              </p>
+            <div className="group">
+              <EditorialFrame
+                src={asset.src}
+                alt={asset.alt}
+                aspectRatio={asset.ratio}
+                vignette
+                grayscaleHover
+              />
+              
+              {/* Subtle Editorial Label */}
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                <p className="text-[8px] text-luxury-gold/40 uppercase tracking-[0.4em] font-medium">
+                  {asset.alt}
+                </p>
+              </div>
             </div>
           </motion.div>
         ))}
       </div>
         
-      {/* Floating Atmospheric Element - Contained to prevent leak */}
+      {/* Floating Atmospheric Element - Contained */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-luxury-gold/[0.03] blur-[120px] pointer-events-none z-0 overflow-hidden" />
     </div>
   );

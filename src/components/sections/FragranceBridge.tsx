@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { theme } from '@/styles/theme';
 
@@ -14,24 +13,14 @@ import { theme } from '@/styles/theme';
 export const FragranceBridge: React.FC = () => {
   return (
     <section className="relative min-h-[70vh] lg:min-h-[85vh] w-full flex items-center justify-center bg-deep-black overflow-hidden">
-      {/* Immersive Cinematic Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden max-w-full">
-        <Image
-          src="/assets/images/atmosphere/perfume-silhouette.png" // User explicitly requested the ORIGINAL full image
-          alt="Dark Easterner Fragrance Atelier Campaign"
-          fill
-          className="object-cover transition-transform duration-[15000ms] ease-out scale-105"
-          priority
-        />
-        
-        {/* Cinematic Depth Layering - Protecting typography while preserving the atelier environment */}
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50 z-10" />
-        
-        {/* Soft Luxury Vignette */}
-        <div className="absolute inset-0 shadow-[inset_0_0_300px_rgba(0,0,0,0.7)] z-10" />
-      </div>
+      {/* Immersive Cinematic Background - CSS-based for contained fixed attachment */}
+      <div className="absolute inset-0 z-0 fragrance-bg" />
+
+      {/* Cinematic Depth Layering */}
+      <div className="absolute inset-0 z-[1] bg-black/40" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black via-transparent to-black/60" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/50 via-transparent to-black/50" />
+      <div className="absolute inset-0 z-[1] shadow-[inset_0_0_300px_rgba(0,0,0,0.7)]" />
 
       {/* Editorial Campaign Content */}
       <div className="container relative z-20 text-center flex flex-col items-center justify-center space-y-16">

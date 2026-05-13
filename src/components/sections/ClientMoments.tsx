@@ -43,7 +43,7 @@ export const ClientMoments: React.FC = () => {
             // Stagger offsets: neutralized on tablet landscape for visual balance
             const isFirstRow = index < 3;
             const widthClass = isFirstRow ? 'w-full md:w-1/3 xl:w-1/3' : 'w-full md:w-1/2 lg:w-1/2 max-w-2xl mx-auto';
-            const offsetClass = index % 3 === 1 ? 'xl:translate-y-24 lg:translate-y-0 md:translate-y-12' : '';
+            const offsetClass = '';
             
             return (
               <motion.div

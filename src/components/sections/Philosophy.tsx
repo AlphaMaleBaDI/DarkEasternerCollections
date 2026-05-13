@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { philosophy } from '@/data/editorial';
 import { theme } from '@/styles/theme';
-import { EditorialWigGallery } from '@/components/ui/EditorialWigGallery';
 
 /**
  * Philosophy Section
@@ -20,7 +20,7 @@ export const Philosophy: React.FC = () => {
 
       <div className="container relative z-10 lg:px-12 xl:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 xl:gap-24 items-center">
-          
+
           {/* Brand Vision Column */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -32,16 +32,16 @@ export const Philosophy: React.FC = () => {
             <h2 className="text-luxury-gold uppercase tracking-[0.4em] text-[10px] md:text-xs font-medium">
               The Brand Philosophy
             </h2>
-            
+
             <div className="space-y-6">
-              <h3 
+              <h3
                 className="text-soft-white text-4xl md:text-5xl xl:text-7xl font-heading leading-tight text-left lg:text-center xl:text-left"
                 suppressHydrationWarning
               >
                 {philosophy.statement} <br />
                 <span className="italic text-luxury-gold/80">{philosophy.italicWord}</span>
               </h3>
-              
+
               <p className="text-soft-white/40 text-base md:text-lg xl:text-xl font-light leading-relaxed italic text-left lg:text-center xl:text-left max-w-lg xl:max-w-xl">
                 &ldquo;{philosophy.description}&rdquo;
               </p>
@@ -67,22 +67,37 @@ export const Philosophy: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Editorial Gallery Column */}
+          {/* Editorial Gallery Column — Desktop Only */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: theme.motion.duration.slow, ease: theme.motion.ease.cinematic, delay: 0.2 }}
-            className="lg:col-span-12 xl:col-span-7 lg:max-w-3xl lg:mx-auto xl:max-w-none"
+            className="hidden xl:block xl:col-span-7"
           >
-            <EditorialWigGallery />
+            <motion.div
+              className="relative xl:max-w-[520px] 2xl:max-w-[600px] ml-auto overflow-hidden"
+              style={{ aspectRatio: '3/4' }}
+              whileHover={{ scale: 0.98 }}
+              transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <Image
+                src="/assets/images/editorial/wig-straight.png"
+                alt="Signature Luxury Tresses — Straight Edition"
+                fill
+                className="object-cover opacity-[0.92]"
+                priority
+              />
+              {/* Subtle cinematic gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+            </motion.div>
           </motion.div>
 
         </div>
       </div>
 
       {/* Cinematic Transition Anchor */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 0.15 }}
         viewport={{ once: true }}
