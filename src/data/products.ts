@@ -57,7 +57,7 @@ export const products: Product[] = [
     title: 'Signature Luxury Tresses',
     description: 'Premium quality meets effortless glamour. Curated for those who understand that confidence begins with detail.',
     category: 'wigs',
-    images: ['/assets/images/wigs/luxury-hair-v2.jpg'],
+    images: ['/assets/images/editorial/wig-dominant.png'],
     featured: true,
   },
 ];

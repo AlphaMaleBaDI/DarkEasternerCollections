@@ -8,7 +8,6 @@ import { EditorialNotes } from '@/components/sections/EditorialNotes';
 import { Philosophy } from '@/components/sections/Philosophy';
 import { PrivateStyling } from '@/components/sections/PrivateStyling';
 import { ClientMoments } from '@/components/sections/ClientMoments';
-import { FragranceTeaser } from '@/components/sections/FragranceTeaser';
 import { InstagramFeed } from '@/components/sections/InstagramFeed';
 import { ConciergeFAQ } from '@/components/sections/ConciergeFAQ';
 
@@ -29,14 +28,11 @@ export default function HomePage() {
       {/* 3. Featured Collections - Product Showcase */}
       <FeaturedCollections />
 
-      {/* 3.5 Fragrance Bridge - Sensory Transition */}
+      {/* 3.5 Fragrance Feature - Immersive Campaign Takeover */}
       <FragranceBridge />
 
       {/* 4. Editorial Notes - Status & Authority */}
       <EditorialNotes />
-
-      {/* 5. Fragrance Teaser - Universe Expansion */}
-      <FragranceTeaser />
 
       {/* 6. Client Moments - Visual Validation */}
       <ClientMoments />

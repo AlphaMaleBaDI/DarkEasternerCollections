@@ -3,90 +3,104 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { theme } from '@/styles/theme';
 
 /**
- * FragranceBridge Section
- * An editorial transition chamber between Wigs/Couture and Fragrance.
- * Focus: Sensory atmosphere, intentional silence, and narrative bridge.
+ * FragranceBridge Section (The Fragrance Feature)
+ * Refactored into a full cinematic editorial feature takeover.
+ * Focus: Immersive campaign experience and brand universe expansion.
  */
 
 export const FragranceBridge: React.FC = () => {
   return (
-    <section className="py-20 lg:py-32 bg-deep-black relative overflow-hidden">
-      {/* Cinematic Atmosphere Layer - Soft ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-luxury-gold/5 blur-[140px] pointer-events-none opacity-40 select-none" />
-      
-      <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-          
-          {/* Dominant Fragrance Silhouette - Scaled for presence */}
-          <div className="lg:col-span-8 relative order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
-              className="relative aspect-[4/5] lg:aspect-[16/10] w-full max-w-4xl mx-auto"
-            >
-              {/* Layered Shadow Masks - High-status discovery lighting */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/90 z-10" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-black/90 z-10" />
-              <div className="absolute inset-0 shadow-[inset_0_0_120px_40px_rgba(0,0,0,0.85)] z-10" />
-              
-              <Image
-                src="/assets/images/atmosphere/perfume-silhouette.png"
-                alt="Fragrance Atelier Silhouette"
-                fill
-                className="object-cover grayscale brightness-[1.15] contrast-[1.6] saturate-[0.9] blur-[0.3px]"
-              />
-            </motion.div>
-
-            {/* Editorial Whisper Typography - Centered within the bottle's aura */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center space-y-6 pointer-events-none">
-              <motion.p
-                initial={{ opacity: 0, letterSpacing: '0.4em' }}
-                whileInView={{ opacity: 0.9, letterSpacing: '0.8em' }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, delay: 1 }}
-                className="text-luxury-gold uppercase text-[10px] md:text-[11px] font-medium"
-              >
-                Fragrance Atelier
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 0.5, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, delay: 1.5 }}
-                className="text-soft-white text-sm md:text-base font-light italic tracking-widest max-w-xs mx-auto leading-relaxed"
-              >
-                &ldquo;Crafted for those remembered long after departure.&rdquo;
-              </motion.p>
-            </div>
-          </div>
-
-          {/* Supporting Texture Anchor - Offset for asymmetrical rhythm */}
-          <div className="lg:col-span-4 relative order-1 lg:order-2 hidden lg:block">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 0.18 }}
-              viewport={{ once: true }}
-              transition={{ duration: 4, delay: 0.5 }}
-              className="relative aspect-[3/4] w-72 ml-auto -mr-16"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10" />
-              
-              <Image
-                src="/assets/images/atmosphere/braided-study.png"
-                alt="Couture Texture Study"
-                fill
-                className="object-cover grayscale blur-[1.5px]"
-              />
-            </motion.div>
-          </div>
-
-        </div>
+    <section className="relative min-h-[70vh] lg:min-h-[85vh] w-full flex items-center justify-center bg-deep-black overflow-hidden">
+      {/* Immersive Cinematic Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden max-w-full">
+        <Image
+          src="/assets/images/atmosphere/perfume-silhouette.png" // User explicitly requested the ORIGINAL full image
+          alt="Dark Easterner Fragrance Atelier Campaign"
+          fill
+          className="object-cover transition-transform duration-[15000ms] ease-out scale-105"
+          priority
+        />
+        
+        {/* Cinematic Depth Layering - Protecting typography while preserving the atelier environment */}
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50 z-10" />
+        
+        {/* Soft Luxury Vignette */}
+        <div className="absolute inset-0 shadow-[inset_0_0_300px_rgba(0,0,0,0.7)] z-10" />
       </div>
+
+      {/* Editorial Campaign Content */}
+      <div className="container relative z-20 text-center flex flex-col items-center justify-center space-y-16">
+        
+        {/* Typography Header */}
+        <div className="space-y-6">
+          <motion.p
+            initial={{ opacity: 0, letterSpacing: '0.8em' }}
+            whileInView={{ opacity: 1, letterSpacing: '1.2em' }}
+            viewport={{ once: true }}
+            transition={{ duration: 3, ease: theme.motion.ease.cinematic }}
+            className="text-luxury-gold uppercase text-[10px] md:text-xs font-medium tracking-[1.2em] ml-[1.2em]"
+          >
+            Fragrance Atelier
+          </motion.p>
+          <motion.div 
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 2.5, delay: 0.5 }}
+            className="h-px w-20 bg-luxury-gold/30 mx-auto origin-center" 
+          />
+        </div>
+
+        {/* Narrative Anchor */}
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 0.9, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2.5, delay: 0.8, ease: theme.motion.ease.cinematic }}
+          className="text-soft-white text-4xl md:text-6xl lg:text-7xl font-heading leading-tight max-w-5xl drop-shadow-[0_4px_16px_rgba(0,0,0,1)] px-4"
+        >
+          &ldquo;Crafted for those remembered long after departure.&rdquo;
+        </motion.h2>
+
+        {/* Secondary Details */}
+        <div className="flex flex-col items-center space-y-3 pt-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 0.7 }}
+            viewport={{ once: true }}
+            transition={{ duration: 2, delay: 1.8 }}
+            className="flex flex-col items-center space-y-3"
+          >
+            <p className="text-luxury-gold uppercase text-[10px] tracking-[0.5em] font-medium">
+              Signature Collection
+            </p>
+            <div className="flex items-center gap-4 text-soft-white/40 uppercase text-[9px] tracking-[0.6em] font-light">
+              <span>Eau de Parfum</span>
+              <span className="w-1 h-1 bg-luxury-gold/30 rounded-full" />
+              <span>In Development</span>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator - Editorial Cue */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 0.4, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+        >
+          <span className="text-luxury-gold/40 uppercase text-[8px] tracking-[0.8em] font-medium ml-[0.8em]">Scroll to Discover</span>
+          <div className="w-px h-12 bg-gradient-to-b from-luxury-gold/40 to-transparent" />
+        </motion.div>
+      </div>
+
+      {/* Cinematic Taper - Ensuring smooth transition into Editorial Notes */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black to-transparent z-30 pointer-events-none" />
     </section>
   );
 };

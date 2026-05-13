@@ -14,7 +14,7 @@ import { theme } from '@/styles/theme';
 
 export const ClientMoments: React.FC = () => {
   return (
-    <section className="py-24 md:py-32 lg:py-48 bg-deep-black overflow-hidden">
+    <section className="py-24 md:py-28 lg:py-32 bg-deep-black overflow-hidden">
       <div className="container">
         
         {/* Section Header */}
@@ -40,10 +40,10 @@ export const ClientMoments: React.FC = () => {
         {/* Staggered Visual Strip - Flexible Grid */}
         <div className="flex flex-wrap -mx-4 lg:-mx-8">
           {clientMoments.map((moment, index) => {
-            // Stagger offsets: reduced on tablet to prevent drift
+            // Stagger offsets: neutralized on tablet landscape for visual balance
             const isFirstRow = index < 3;
-            const widthClass = isFirstRow ? 'w-full md:w-1/3' : 'w-full md:w-1/2 lg:w-1/2 max-w-2xl mx-auto';
-            const offsetClass = index % 3 === 1 ? 'lg:translate-y-24 md:translate-y-12' : '';
+            const widthClass = isFirstRow ? 'w-full md:w-1/3 xl:w-1/3' : 'w-full md:w-1/2 lg:w-1/2 max-w-2xl mx-auto';
+            const offsetClass = index % 3 === 1 ? 'xl:translate-y-24 lg:translate-y-0 md:translate-y-12' : '';
             
             return (
               <motion.div

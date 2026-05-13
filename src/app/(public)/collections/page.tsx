@@ -6,6 +6,7 @@ import { EditorialFrame } from '@/components/ui/EditorialFrame';
 import { products } from '@/data/products';
 import { createWhatsAppInquiry } from '@/lib/whatsapp';
 import { theme } from '@/styles/theme';
+import { ShowroomTressesGallery } from '@/components/ui/ShowroomTressesGallery';
 
 /**
  * Collections Page
@@ -40,7 +41,7 @@ export default function CollectionsPage() {
         </header>
 
         {/* Staggered Editorial Gallery */}
-        <div className="space-y-32 lg:space-y-64">
+        <div className="space-y-24 lg:space-y-40">
           {products.map((product, index) => {
             const isEven = index % 2 === 0;
             
@@ -99,6 +100,13 @@ export default function CollectionsPage() {
                       <span className="ml-4 text-luxury-gold transform group-hover:translate-x-2 transition-transform duration-500">→</span>
                     </a>
                   </div>
+
+                  {/* Showroom Expansion for Tresses - Dedicated Editorial Depth */}
+                  {product.category === 'wigs' && (
+                    <div className="pt-12">
+                      <ShowroomTressesGallery />
+                    </div>
+                  )}
                 </motion.div>
               </section>
             );
@@ -106,7 +114,7 @@ export default function CollectionsPage() {
         </div>
 
         {/* Editorial Conclusion */}
-        <section className="mt-64 text-center">
+        <section className="mt-40 text-center">
           <div className="max-w-2xl mx-auto space-y-12">
             <div className="w-px h-32 bg-luxury-gold/20 mx-auto" />
             <p className="text-soft-white/40 text-sm uppercase tracking-[0.4em] font-light">

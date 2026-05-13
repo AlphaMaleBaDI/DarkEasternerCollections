@@ -3,9 +3,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { EditorialFrame } from '@/components/ui/EditorialFrame';
+import { ShowroomTressesGallery } from '@/components/ui/ShowroomTressesGallery';
 import { getFeaturedProducts } from '@/data/products';
 import { createWhatsAppInquiry } from '@/lib/whatsapp';
 import { theme } from '@/styles/theme';
+import Link from 'next/link';
 
 /**
  * FeaturedCollections Section
@@ -16,7 +18,7 @@ export const FeaturedCollections: React.FC = () => {
   const featuredProducts = getFeaturedProducts();
 
   return (
-    <section id="collections" className="py-24 md:py-32 lg:py-48 bg-deep-black">
+    <section id="collections" className="py-24 md:py-28 lg:py-32 bg-deep-black overflow-hidden">
       <div className="container">
         
         {/* Section Header */}
@@ -53,11 +55,13 @@ export const FeaturedCollections: React.FC = () => {
         </div>
 
         {/* Editorial Layout - Asymmetrical Rhythm */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-24 md:gap-x-12 lg:gap-x-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-16 md:gap-y-24 lg:gap-x-20">
           {featuredProducts.map((product, index) => {
-            const isWide = index === 0;
-            const gridSpan = isWide ? 'md:col-span-12' : 'md:col-span-12 xl:col-span-6';
-            const offset = index === 1 ? 'xl:translate-y-12' : '';
+            const isHero = index === 0;
+            const isEven = index % 2 === 0;
+            
+            // Hero item is full-width, others are full-width with split layout on desktop
+            const gridSpan = 'md:col-span-12';
             
             return (
               <motion.div
@@ -66,39 +70,49 @@ export const FeaturedCollections: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: theme.motion.duration.slow, delay: index * theme.motion.stagger.normal }}
-                className={`${gridSpan} ${offset} group`}
+                className={`${gridSpan} group`}
               >
-                <EditorialFrame
-                  src={product.images[0]}
-                  alt={product.title}
-                  aspectRatio={isWide ? 'landscape' : 'portrait'}
-                  overlay
-                  vignette
-                  grayscaleHover
-                />
-                
-                <div className="mt-8 space-y-4">
-                  <p className="text-luxury-gold uppercase tracking-[0.3em] text-[10px] font-medium">
-                    {product.category.replace('-', ' ')}
-                  </p>
+                <div className={`flex flex-col ${isHero ? '' : isEven ? 'xl:flex-row-reverse xl:gap-24' : 'xl:flex-row xl:gap-24'} lg:items-center xl:items-start`}>
+                  <div className={`${isHero ? 'w-full' : 'w-full xl:w-[60%] lg:max-w-4xl lg:mx-auto xl:mx-0'} shrink-0`}>
+                    <EditorialFrame
+                      src={product.images[0]}
+                      alt={product.title}
+                      aspectRatio={isHero ? 'landscape' : 'portrait'}
+                      overlay
+                      vignette
+                      grayscaleHover
+                    />
+                  </div>
                   
-                  <h4 className="text-soft-white text-2xl md:text-3xl font-heading leading-tight group-hover:text-luxury-gold transition-colors duration-500">
-                    {product.title}
-                  </h4>
-                  
-                  <p className="text-soft-white/40 text-sm font-light leading-relaxed max-w-sm line-clamp-2">
-                    {product.description}
-                  </p>
-                  
-                  <div className="pt-4">
-                    <a
-                      href={createWhatsAppInquiry({ type: 'collection', productName: product.title, category: product.category })}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-soft-white/60 text-[10px] uppercase tracking-[0.2em] font-medium hover:text-luxury-gold transition-colors duration-300"
-                    >
-                      Private Inquiry
-                    </a>
+                  <div className={`${isHero ? 'mt-8' : 'mt-8 xl:mt-0 xl:pt-12'} space-y-4 max-w-xl lg:text-center xl:text-left lg:mx-auto xl:mx-0`}>
+                    <p className="text-luxury-gold uppercase tracking-[0.3em] text-[10px] font-medium">
+                      {product.category.replace('-', ' ')}
+                    </p>
+                    
+                    <h4 className="text-soft-white text-3xl md:text-4xl lg:text-5xl font-heading leading-tight group-hover:text-luxury-gold transition-colors duration-500">
+                      {product.title}
+                    </h4>
+                    
+                    <p className="text-soft-white/40 text-lg font-light leading-relaxed">
+                      {product.description}
+                    </p>
+                    
+                    <div className="pt-6">
+                      <a
+                        href={createWhatsAppInquiry({ type: 'collection', productName: product.title, category: product.category })}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative inline-flex items-center text-soft-white uppercase tracking-[0.2em] text-[10px] font-medium pb-2 border-b border-soft-white/10 hover:border-luxury-gold transition-colors duration-500"
+                      >
+                        Private Inquiry
+                        <span className="ml-4 text-luxury-gold transform group-hover:translate-x-2 transition-transform duration-500">→</span>
+                      </a>
+                    </div>
+
+                    {/* Showroom Expansion for Tresses - Dedicated Editorial Depth */}
+                    {product.category === 'wigs' && (
+                      <ShowroomTressesGallery />
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -109,6 +123,3 @@ export const FeaturedCollections: React.FC = () => {
     </section>
   );
 };
-
-// Add missing import for Link
-import Link from 'next/link';
