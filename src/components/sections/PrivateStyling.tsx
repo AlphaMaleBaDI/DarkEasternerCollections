@@ -29,8 +29,11 @@ export const PrivateStyling: React.FC = () => {
               <h2 className="text-luxury-gold uppercase tracking-[0.4em] text-[10px] font-medium mb-6">
                 Concierge Services
               </h2>
-              <h3 className="text-4xl md:text-6xl font-heading text-soft-white leading-tight">
-                Private <span className="italic">Styling</span> <br /> 
+              <h3 
+                className="text-4xl md:text-6xl font-heading text-soft-white leading-tight"
+                suppressHydrationWarning
+              >
+                Private <span className="italic">Styling</span> <br />
                 Experience
               </h3>
             </motion.div>

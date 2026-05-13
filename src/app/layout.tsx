@@ -18,8 +18,35 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
   description: "Confidence, elegance, and African luxury. Curated fashion for men and women who command presence effortlessly.",
+  metadataBase: new URL('https://dark-easterner-collections.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
+    description: "Confidence, elegance, and African luxury. Curated fashion for men and women who command presence effortlessly.",
+    url: 'https://dark-easterner-collections.vercel.app',
+    siteName: 'Dark Easterner Collections',
+    images: [
+      {
+        url: '/assets/images/founder/cynthia-hero.png',
+        width: 1200,
+        height: 1500, // Portrait ratio matches the asset
+        alt: 'Dark Easterner Collections - Luxury Afro-Luxe Couture',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
+    description: "Confidence, elegance, and African luxury. Curated fashion for men and women who command presence effortlessly.",
+    images: ['/assets/images/founder/cynthia-hero.png'],
+  },
   icons: {
     icon: "/icon.jpg",
+    apple: "/icon.jpg",
   },
 };
 

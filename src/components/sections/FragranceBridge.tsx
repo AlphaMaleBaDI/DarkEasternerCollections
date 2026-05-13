@@ -63,6 +63,7 @@ export const FragranceBridge: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 2.5, delay: 0.8, ease: theme.motion.ease.cinematic }}
           className="text-soft-white text-4xl md:text-6xl lg:text-7xl font-heading leading-tight max-w-5xl drop-shadow-[0_4px_16px_rgba(0,0,0,1)] px-4"
+          suppressHydrationWarning
         >
           &ldquo;Crafted for those remembered long after departure.&rdquo;
         </motion.h2>

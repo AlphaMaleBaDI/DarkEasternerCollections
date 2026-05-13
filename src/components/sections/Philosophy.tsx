@@ -34,7 +34,10 @@ export const Philosophy: React.FC = () => {
             </h2>
             
             <div className="space-y-6">
-              <h3 className="text-soft-white text-4xl md:text-5xl xl:text-7xl font-heading leading-tight text-left lg:text-center xl:text-left">
+              <h3 
+                className="text-soft-white text-4xl md:text-5xl xl:text-7xl font-heading leading-tight text-left lg:text-center xl:text-left"
+                suppressHydrationWarning
+              >
                 {philosophy.statement} <br />
                 <span className="italic text-luxury-gold/80">{philosophy.italicWord}</span>
               </h3>

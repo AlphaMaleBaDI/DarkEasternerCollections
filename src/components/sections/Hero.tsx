@@ -35,8 +35,11 @@ export const Hero: React.FC = () => {
                 <h2 className="text-luxury-gold uppercase tracking-[0.4em] text-[10px] md:text-xs font-medium mb-4 md:mb-6">
                   Dark Easterner Collections
                 </h2>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-heading leading-[1] lg:leading-[1.1] xl:leading-[0.95] tracking-tight">
-                  Confidence <br /> 
+                <h1 
+                  className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-heading leading-[1] lg:leading-[1.1] xl:leading-[0.95] tracking-tight"
+                  suppressHydrationWarning
+                >
+                  Confidence <br />
                   <span className="italic pl-4 md:pl-8 lg:pl-0 xl:pl-8">Tailored</span> <br />
                   to <span className="text-luxury-gold">Presence</span>.
                 </h1>
