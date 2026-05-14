@@ -17,35 +17,38 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
-  description: "Confidence, elegance, and African luxury. Curated fashion for men and women who command presence effortlessly.",
-  metadataBase: new URL('https://dark-easterner-collections.vercel.app'),
+  description:
+    "Luxury Afro-Luxe couture curated for individuals who command presence effortlessly.",
+  metadataBase: new URL("https://darkeasternercollections.com"),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
-    description: "Confidence, elegance, and African luxury. Curated fashion for men and women who command presence effortlessly.",
-    url: 'https://dark-easterner-collections.vercel.app',
-    siteName: 'Dark Easterner Collections',
+    title: "Dark Easterner Collections",
+    description:
+      "Luxury Afro-Luxe couture curated for individuals who command presence effortlessly.",
+    url: "https://darkeasternercollections.com",
+    siteName: "Dark Easterner Collections",
     images: [
       {
-        url: '/assets/images/founder/cynthia-hero.png',
+        url: "/og-image.jpg",
         width: 1200,
-        height: 1500, // Portrait ratio matches the asset
-        alt: 'Dark Easterner Collections - Luxury Afro-Luxe Couture',
+        height: 630,
+        alt: "Dark Easterner Collections",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
-    description: "Confidence, elegance, and African luxury. Curated fashion for men and women who command presence effortlessly.",
-    images: ['/assets/images/founder/cynthia-hero.png'],
+    card: "summary_large_image",
+    title: "Dark Easterner Collections",
+    description:
+      "Luxury Afro-Luxe couture curated for individuals who command presence effortlessly.",
+    images: ["/og-image.jpg"],
   },
   icons: {
-    icon: "/icon.jpg",
+    icon: "/icon.svg",
     apple: "/icon.jpg",
   },
 };
