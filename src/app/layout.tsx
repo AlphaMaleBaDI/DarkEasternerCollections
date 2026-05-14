@@ -18,7 +18,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
   description:
-    "Luxury Afro-Luxe couture curated for individuals who command presence effortlessly.",
+    "Luxury Afro-Luxe couture curated for individuals who command presence effortlessly through timeless editorial craftsmanship.",
   metadataBase: new URL("https://darkeasternercollections.com"),
   alternates: {
     canonical: '/',
