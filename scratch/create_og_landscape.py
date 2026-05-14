@@ -3,7 +3,7 @@ import os
 
 # Paths
 input_path = r'C:\Users\mails\.gemini\antigravity\brain\960e9b17-c472-4c4e-b7b6-4b93fea92544\og_image_cinematic_black_skin_v4_1778743388996.png'
-output_path = r'd:\my programming\DarkEasternerCollections\public\og-image.jpg'
+output_path = r'd:\my programming\DarkEasternerCollections\public\og-image-v2.jpg'
 
 # Target dimensions
 TARGET_W = 1200
