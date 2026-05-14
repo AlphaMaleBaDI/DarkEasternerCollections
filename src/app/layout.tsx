@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Dark Easterner Collections",
+    title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
     description:
-      "Luxury Afro-Luxe couture curated for individuals who command presence effortlessly.",
+      "Luxury Afro-Luxe couture curated for individuals who command presence effortlessly through timeless editorial craftsmanship.",
     url: "https://darkeasternercollections.com",
     siteName: "Dark Easterner Collections",
     images: [
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dark Easterner Collections",
+    title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
     description:
-      "Luxury Afro-Luxe couture curated for individuals who command presence effortlessly.",
+      "Luxury Afro-Luxe couture curated for individuals who command presence effortlessly through timeless editorial craftsmanship.",
     images: ["/og-image.jpg"],
   },
   icons: {
