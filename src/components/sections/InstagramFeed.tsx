@@ -20,7 +20,7 @@ const instaPosts = [
 
 export const InstagramFeed: React.FC = () => {
   return (
-    <section className="py-24 bg-deep-black overflow-hidden border-t border-soft-white/5">
+    <section className="pt-12 pb-24 md:py-24 bg-deep-black overflow-hidden border-t border-soft-white/5">
       <div className="container">
         
         {/* Section Header */}

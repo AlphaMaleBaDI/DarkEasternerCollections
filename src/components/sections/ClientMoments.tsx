@@ -14,11 +14,11 @@ import { theme } from '@/styles/theme';
 
 export const ClientMoments: React.FC = () => {
   return (
-    <section className="py-24 md:py-28 lg:py-32 bg-deep-black overflow-hidden">
+    <section className="py-12 md:py-16 lg:py-20 bg-deep-black overflow-hidden">
       <div className="container">
         
         {/* Section Header */}
-        <div className="max-w-xl mb-24">
+        <div className="max-w-xl mb-10 md:mb-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -56,7 +56,7 @@ export const ClientMoments: React.FC = () => {
                   delay: (index % 3) * theme.motion.stagger.luxury,
                   ease: theme.motion.ease.cinematic
                 }}
-                className={`px-4 lg:px-8 mb-24 ${widthClass} group`}
+                className={`px-4 lg:px-8 mb-16 md:mb-24 last:mb-0 ${widthClass} group`}
               >
                 <div className={offsetClass}>
                   <EditorialFrame

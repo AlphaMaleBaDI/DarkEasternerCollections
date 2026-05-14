@@ -14,7 +14,7 @@ import { theme } from '@/styles/theme';
 
 export const PrivateStyling: React.FC = () => {
   return (
-    <section className="py-24 md:py-32 lg:py-48 bg-deep-black border-y border-soft-white/5">
+    <section className="py-12 md:py-16 lg:py-20 bg-deep-black border-y border-soft-white/5">
       <div className="container">
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-16 lg:gap-24 items-center">
           

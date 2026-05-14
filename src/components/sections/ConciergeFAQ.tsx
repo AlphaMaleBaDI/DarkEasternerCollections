@@ -16,7 +16,7 @@ export const ConciergeFAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24 md:py-32 lg:py-48 bg-deep-black">
+    <section id="faq" className="pt-24 pb-12 md:pb-32 lg:py-48 bg-deep-black">
       <div className="container max-w-4xl">
         
         {/* Section Header */}
@@ -72,7 +72,7 @@ export const ConciergeFAQ: React.FC = () => {
         </div>
 
         {/* Private Stylist Invitation */}
-        <div className="mt-24 pt-12 border-t border-luxury-gold/10 text-center">
+        <div className="mt-12 pt-8 md:mt-24 md:pt-12 border-t border-luxury-gold/10 text-center">
           <p className="text-soft-white/40 text-sm tracking-widest mb-8">
             Require further bespoke assistance?
           </p>

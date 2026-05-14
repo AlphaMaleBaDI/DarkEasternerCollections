@@ -12,7 +12,7 @@ import { theme } from '@/styles/theme';
 
 export const Founder: React.FC = () => {
   return (
-    <section id="about" className="py-24 md:py-32 lg:py-48 bg-deep-black overflow-hidden">
+    <section id="about" className="pt-24 pb-12 md:pb-32 lg:py-48 bg-deep-black overflow-hidden">
       <div className="container">
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-16 lg:gap-24 items-center">
           

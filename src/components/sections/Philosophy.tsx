@@ -14,7 +14,7 @@ import { theme } from '@/styles/theme';
 
 export const Philosophy: React.FC = () => {
   return (
-    <section className="py-24 lg:py-32 bg-deep-black relative overflow-hidden">
+    <section className="pt-24 pb-12 md:pb-24 lg:py-32 bg-deep-black relative overflow-hidden">
       {/* Subtle Atmospheric Light */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[40%] h-[40%] bg-luxury-gold/5 blur-[150px] pointer-events-none" />
 
