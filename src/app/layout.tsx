@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Dark Easterner Collections",
     images: [
       {
-        url: "/og-image-v2.jpg",
+        url: "https://darkeasternercollections.com/og-image-v2.jpg",
         width: 1200,
         height: 630,
         alt: "Dark Easterner Collections",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
     description:
       "Luxury Afro-Luxe couture curated for individuals who command presence effortlessly through timeless editorial craftsmanship.",
-    images: ["/og-image-v2.jpg"],
+    images: ["https://darkeasternercollections.com/og-image-v2.jpg"],
   },
   icons: {
     icon: "/icon.svg",
