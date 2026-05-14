@@ -46,12 +46,12 @@ export const InstagramFeed: React.FC = () => {
             transition={{ duration: theme.motion.duration.slow }}
           >
             <a 
-              href="https://www.instagram.com/darkeasternercollections" 
+              href="https://www.instagram.com/darkeasterner_styles" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-soft-white/40 hover:text-luxury-gold transition-colors duration-500 uppercase tracking-[0.2em] text-[10px] font-medium pb-1 border-b border-soft-white/10"
             >
-              @darkeasternercollections
+              @darkeasterner_styles
             </a>
           </motion.div>
         </div>
@@ -79,6 +79,30 @@ export const InstagramFeed: React.FC = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Footer CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: theme.motion.duration.slow, delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <a 
+            href="https://www.instagram.com/darkeasterner_styles" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group inline-flex flex-col items-center gap-2"
+          >
+            <span className="text-luxury-gold uppercase tracking-[0.3em] text-[9px] font-medium opacity-0 group-hover:opacity-100 transition-all duration-700 -translate-y-1 group-hover:translate-y-0">
+              Enter the Editorial World
+            </span>
+            <span className="text-soft-white/40 group-hover:text-soft-white text-lg md:text-xl font-heading tracking-[0.2em] transition-all duration-700 italic">
+              @darkeasterner_styles
+            </span>
+            <div className="w-8 h-[1px] bg-luxury-gold/20 group-hover:w-16 group-hover:bg-luxury-gold/50 transition-all duration-700" />
+          </a>
+        </motion.div>
 
       </div>
     </section>
