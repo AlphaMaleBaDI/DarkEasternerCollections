@@ -79,8 +79,8 @@ export const Hero: React.FC = () => {
             >
               <div className="max-w-[550px] ml-auto">
                 <EditorialFrame
-                  src="/assets/images/founder/cynthia-hero.png"
-                  alt="Cynthia Nwaigbo - Founder of Dark Easterner Collections"
+                  src="/assets/images/hero/hero.png"
+                  alt="Dark Easterner Collections - Luxury Afro-Luxe"
                   priority
                   aspectRatio="portrait"
                   overlay

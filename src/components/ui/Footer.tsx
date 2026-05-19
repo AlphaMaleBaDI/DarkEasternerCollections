@@ -6,11 +6,7 @@ import { BrandCrest } from './BrandCrest';
 import { createWhatsAppInquiry } from '@/lib/whatsapp';
 
 export const Footer: React.FC = () => {
-  const [currentYear, setCurrentYear] = React.useState<number>(2026);
-
-  React.useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-  }, []);
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-deep-black border-t border-soft-white/5 pt-24 pb-12">

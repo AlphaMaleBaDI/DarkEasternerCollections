@@ -1,53 +1,60 @@
 'use client';
 
+import React from 'react';
 import { Hero } from '@/components/sections/Hero';
 import { Founder } from '@/components/sections/Founder';
-import { FeaturedCollections } from '@/components/sections/FeaturedCollections';
-import { FragranceBridge } from '@/components/sections/FragranceBridge';
-import { EditorialNotes } from '@/components/sections/EditorialNotes';
 import { Philosophy } from '@/components/sections/Philosophy';
 import { PrivateStyling } from '@/components/sections/PrivateStyling';
 import { ClientMoments } from '@/components/sections/ClientMoments';
 import { InstagramFeed } from '@/components/sections/InstagramFeed';
 import { ConciergeFAQ } from '@/components/sections/ConciergeFAQ';
-
-/**
- * Dark Easterner Collections - Homepage
- * Engineered for Brand Legitimacy & Editorial Authority.
- */
+import CategoryPortal from '@/components/commerce/CategoryPortal';
+import FeaturedShowcase from '@/components/commerce/FeaturedShowcase';
 
 export default function HomePage() {
+  const categories: ['men', 'women', 'hair', 'perfumes'] = ['men', 'women', 'hair', 'perfumes'];
+
   return (
-    <main className="flex min-h-screen flex-col bg-deep-black">
-      {/* 1. Hero - Atmospheric Anchor */}
+    <main className="flex min-h-screen flex-col bg-zinc-950">
+      {/* 1. Hero - The Emotional Threshold */}
       <Hero />
 
-      {/* 2. Philosophy - World-Building Legitimacy */}
+      {/* 2. Philosophy - World-Building */}
       <Philosophy />
 
-      {/* 3. Featured Collections - Product Showcase */}
-      <FeaturedCollections />
+      {/* 3. Category Portals - The Discovery Layer */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-0">
+        {categories.map((cat) => (
+          <CategoryPortal key={cat} category={cat} />
+        ))}
+      </section>
 
-      {/* 3.5 Fragrance Feature - Immersive Campaign Takeover */}
-      <FragranceBridge />
+      {/* 4. Controlled Product Validation - Evidence of Commerce */}
+      <FeaturedShowcase />
 
-      {/* 4. Editorial Notes - Status & Authority */}
-      <EditorialNotes />
+      {/* 5. Editorial Narrative */}
+      <div className="py-32 px-6 md:px-12 lg:px-24 max-w-5xl mx-auto text-center">
+          <p className="text-gold-500 text-xs uppercase tracking-widest mb-8">Curated Editorial</p>
+          <h2 className="text-3xl md:text-5xl font-serif italic text-white leading-relaxed">
+            &ldquo;True luxury is not about a product, but the silence between the stitches, the aura of the wearer, and the legacy of the House.&rdquo;
+          </h2>
+      </div>
 
-      {/* 6. Client Moments - Visual Validation */}
+      {/* 6. Visual Validation */}
       <ClientMoments />
 
-      {/* 6. Private Styling - Concierge Pathway */}
+      {/* 7. Private Styling - Concierge Pathway */}
       <PrivateStyling />
 
-      {/* 7. Founder Section - Brand Story & Trust */}
+      {/* 8. Founder - Brand Authority */}
       <Founder />
 
-      {/* 8. Concierge FAQ - Guidance & Clarity */}
+      {/* 9. Guidance */}
       <ConciergeFAQ />
 
-      {/* 9. Social Atmosphere - Instagram Strip */}
+      {/* 10. Social Atmosphere */}
       <InstagramFeed />
     </main>
   );
 }
+
