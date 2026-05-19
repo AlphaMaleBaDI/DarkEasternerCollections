@@ -13,8 +13,6 @@ import { theme } from '@/styles/theme';
 
 const tressesAssets = [
   { src: '/assets/images/editorial/wig-straight.png', alt: 'Premium Straight Texture', ratio: 'landscape' as const, span: 'md:col-span-8' },
-  { src: '/assets/images/editorial/wig-braided.png', alt: 'Frontal Craftsmanship', ratio: 'portrait' as const, span: 'md:col-span-4' },
-  { src: '/assets/images/atmosphere/braided-study.png', alt: 'Sculptural Braided Study', ratio: 'square' as const, span: 'md:col-span-6 md:col-start-1 md:-mt-12 xl:-mt-32' },
   { src: '/assets/images/editorial/wig-curls.png', alt: 'Glossy Curly Volume', ratio: 'portrait' as const, span: 'md:col-span-6 md:col-start-7 md:-mt-6 xl:-mt-24' },
 ];
 

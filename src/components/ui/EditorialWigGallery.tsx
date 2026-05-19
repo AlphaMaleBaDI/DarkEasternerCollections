@@ -13,7 +13,6 @@ import { theme } from '@/styles/theme';
 
 const wigAssets = [
   { id: 'dominant', src: '/assets/images/editorial/wig-dominant.png', alt: 'Dominant Wig Editorial', size: 'large' },
-  { id: 'braided', src: '/assets/images/editorial/wig-braided.png', alt: 'Braided Wig Detail', size: 'small' },
   { id: 'straight', src: '/assets/images/editorial/wig-straight.png', alt: 'Straight Wig Detail', size: 'small' },
   { id: 'curls', src: '/assets/images/editorial/wig-curls.png', alt: 'Curly Wig Detail', size: 'small' },
 ];
@@ -29,7 +28,7 @@ export const EditorialWigGallery: React.FC = () => {
     >
       <EditorialFrame
         src="/assets/images/editorial/wig-straight.png"
-        alt="Signature Luxury Tresses â€” Straight Edition"
+        alt="Signature Luxury Tresses — Straight Edition"
         aspectRatio="portrait"
         overlay
         glow

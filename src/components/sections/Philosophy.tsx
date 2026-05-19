@@ -56,8 +56,6 @@ export const Philosophy: React.FC = () => {
                     <span>100% Human Hair</span>
                     <span className="opacity-30">|</span>
                     <span>Wholesale & Retail</span>
-                    <span className="opacity-30">|</span>
-                    <span>Braided Wig Editions</span>
                   </div>
                   <p className="text-soft-white/30 text-xs md:text-sm font-light italic leading-relaxed max-w-xs xl:max-w-sm">
                     Curated textures for women who understand that confidence begins in the details.
@@ -67,7 +65,7 @@ export const Philosophy: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Editorial Gallery Column â€” Desktop Only */}
+          {/* Editorial Gallery Column — Desktop Only */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -83,7 +81,7 @@ export const Philosophy: React.FC = () => {
             >
               <Image
                 src="/assets/images/editorial/wig-straight.png"
-                alt="Signature Luxury Tresses â€” Straight Edition"
+                alt="Signature Luxury Tresses — Straight Edition"
                 fill
                 className="object-cover opacity-[0.92]"
                 priority

@@ -16,7 +16,7 @@ import { Logo } from './Logo';
 
 const navLinks = [
   { name: 'Showroom', href: '/collections' },
-  { name: 'The House', href: '/#about' },
+  { name: 'The House', href: '/about' },
   { name: 'Private Inquiry', href: createWhatsAppInquiry({ type: 'general' }) },
 ];
 
@@ -59,7 +59,6 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center gap-12">
             {navLinks.map((link) => {
               const isExternal = link.href.includes('wa.me');
-              const isAbout = link.name === 'The House';
 
               return (
                 <Link 
@@ -67,12 +66,6 @@ export const Navbar: React.FC = () => {
                   href={link.href}
                   target={isExternal ? '_blank' : undefined}
                   rel={isExternal ? 'noopener noreferrer' : undefined}
-                  onClick={(e) => {
-                    if (isAbout && window.location.pathname === '/') {
-                      e.preventDefault();
-                      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
                   className="group relative text-soft-white/60 hover:text-soft-white uppercase tracking-[0.3em] text-[10px] font-medium transition-colors duration-500"
                 >
                   {link.name}
