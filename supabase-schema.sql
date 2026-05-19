@@ -2,6 +2,7 @@
 CREATE TABLE IF NOT EXISTS products (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   title TEXT NOT NULL,
+  sku TEXT UNIQUE,
   slug TEXT NOT NULL UNIQUE,
   description TEXT,
   category TEXT NOT NULL,

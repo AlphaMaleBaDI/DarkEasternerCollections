@@ -30,10 +30,13 @@ export async function uploadProduct(formData: FormData) {
     const description = formData.get('description') as string;
     const category = formData.get('category') as ProductCategory;
     const price = formData.get('price') ? Number(formData.get('price')) : null;
-    const showPrice = formData.get('showPrice') === 'true';
+    const showPrice = formData.get('showPrice') != null;
     const stock = formData.get('stock') ? Number(formData.get('stock')) : 0;
-    const featured = formData.get('featured') === 'true';
+    const featured = formData.get('featured') != null;
     const status = formData.get('status') || 'draft';
+
+    const rawSku = formData.get('sku') as string | null;
+    const sku = rawSku?.trim().toUpperCase() || null;
 
     // 1. Handle Image Upload
     const imageFile = formData.get('image') as File;
@@ -69,6 +72,7 @@ export async function uploadProduct(formData: FormData) {
       .from('products')
       .insert({
         title,
+        sku,
         slug,
         description,
         category,
@@ -81,12 +85,39 @@ export async function uploadProduct(formData: FormData) {
         main_image_url: imagePath,
       });
 
-    if (insertError) throw insertError;
+    if (insertError) {
+      if (insertError.code === '23505' || (insertError.message && insertError.message.includes('sku'))) {
+        throw new Error('This SKU is already registered in the House archives. Please use a unique SKU.');
+      }
+      throw insertError;
+    }
 
     return { success: true, message: 'Product added to the House archives.' };
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'An unexpected error occurred during upload.';
     console.error('Upload error:', message);
+    return { success: false, message };
+  }
+}
+
+export async function toggleProductArchive(id: string, currentStatus: string) {
+  try {
+    const newStatus = currentStatus === 'archived' ? 'published' : 'archived';
+    const { error } = await supabaseAdmin
+      .from('products')
+      .update({ status: newStatus })
+      .eq('id', id);
+
+    if (error) throw error;
+
+    return { 
+      success: true, 
+      message: `Product successfully ${newStatus === 'archived' ? 'archived' : 'restored to published'}.`,
+      newStatus
+    };
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'An unexpected error occurred.';
+    console.error('Archive toggle error:', message);
     return { success: false, message };
   }
 }

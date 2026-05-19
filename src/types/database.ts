@@ -4,6 +4,7 @@ export type ProductCategory = 'men' | 'women' | 'hair' | 'perfumes';
 export interface Product {
   id: string;
   title: string;
+  sku?: string | null;
   slug: string;
   description: string;
   category: ProductCategory;

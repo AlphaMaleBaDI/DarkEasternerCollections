@@ -56,7 +56,15 @@ export default function ProductUpload() {
           <textarea name="description" rows={4} className="bg-zinc-900 border border-zinc-800 p-3 text-white focus:border-gold-500 outline-none transition-colors" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="flex flex-col gap-2">
+            <label className="text-zinc-400 text-xs uppercase tracking-widest">SKU Code</label>
+            <input 
+              name="sku" 
+              placeholder="e.g. DE-COUTURE-01" 
+              className="bg-zinc-900 border border-zinc-800 p-3 text-white focus:border-gold-500 outline-none uppercase placeholder:text-zinc-700 transition-colors" 
+            />
+          </div>
           <div className="flex flex-col gap-2">
             <label className="text-zinc-400 text-xs uppercase tracking-widest">Price (NGN)</label>
             <input name="price" type="number" className="bg-zinc-900 border border-zinc-800 p-3 text-white focus:border-gold-500 outline-none transition-colors" />
@@ -103,9 +111,17 @@ export default function ProductUpload() {
           <motion.div 
             initial={{ opacity: 0, y: 10 }} 
             animate={{ opacity: 1, y: 0 }}
-            className={`p-4 rounded border text-sm text-center ${statusMsg.type === 'success' ? 'border-gold-800 text-gold-400 bg-gold-900/10' : 'border-red-800 text-red-400 bg-red-900/10'}`}
+            className={`p-4 rounded border text-sm text-center flex flex-col gap-2 items-center ${statusMsg.type === 'success' ? 'border-gold-800 text-gold-400 bg-gold-900/10' : 'border-red-800 text-red-400 bg-red-900/10'}`}
           >
-            {statusMsg.text}
+            <span>{statusMsg.text}</span>
+            {statusMsg.type === 'success' && (
+              <a 
+                href="/admin/products" 
+                className="mt-1 text-xs uppercase tracking-widest text-white border-b border-white hover:text-gold-500 hover:border-gold-500 transition-colors pb-0.5"
+              >
+                View House Inventory
+              </a>
+            )}
           </motion.div>
         )}
       </form>
