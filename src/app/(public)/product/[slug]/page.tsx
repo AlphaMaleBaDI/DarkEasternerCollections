@@ -1,8 +1,8 @@
 import React from 'react'
 import { getProductBySlug } from '@/lib/products/queries'
-import { getWhatsAppLink } from '@/lib/constants/contact'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import { AddToInquiryButton } from '@/components/commerce/AddToInquiryButton'
 
 export const dynamic = 'force-dynamic'
 
@@ -13,8 +13,6 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   if (!product) {
     notFound();
   }
-
-  const whatsappLink = getWhatsAppLink(product.title, product.category);
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
@@ -56,18 +54,19 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             )}
 
             <div className="flex flex-col gap-4">
-              <a 
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 bg-white text-black text-center text-sm uppercase tracking-widest hover:bg-gold-500 transition-colors duration-500 font-medium"
-              >
-                {product.category === 'hair' ? 'Consult The Atelier' : 
-                 product.category === 'perfumes' ? 'Experience This Scent' : 
-                 'Reserve This Piece'}
-              </a>
-              <p className="text-center text-zinc-600 text-xs italic mt-4">
-                Private inquiry via WhatsApp
+              <AddToInquiryButton 
+                product={{
+                  id: product.id,
+                  title: product.title,
+                  slug: product.slug,
+                  sku: product.sku,
+                  category: product.category,
+                  price: product.price,
+                  main_image_url: product.main_image_url,
+                }}
+              />
+              <p className="text-center text-zinc-600 text-[10px] uppercase tracking-wider mt-4">
+                Curate multiple pieces for a single inquiry
               </p>
             </div>
           </div>

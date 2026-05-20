@@ -10,6 +10,12 @@ type UploadResult = { success: boolean; message: string }
 export default function ProductUpload() {
   const [isLoading, setIsLoading] = useState(false)
   const [statusMsg, setStatusMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+  const [selectedFileName, setSelectedFileName] = useState<string | null>(null)
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    setSelectedFileName(file ? file.name : null)
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -22,6 +28,7 @@ export default function ProductUpload() {
     if (result.success) {
       setStatusMsg({ type: 'success', text: result.message })
       ;(e.target as HTMLFormElement).reset()
+      setSelectedFileName(null)
     } else {
       setStatusMsg({ type: 'error', text: result.message })
     }
@@ -76,7 +83,26 @@ export default function ProductUpload() {
           </div>
           <div className="flex flex-col gap-2">
             <label className="text-zinc-400 text-xs uppercase tracking-widest">Image Asset</label>
-            <input name="image" type="file" accept="image/*" className="p-2 text-zinc-500 text-sm file:border-0 file:bg-zinc-800 file:text-zinc-300 file:px-3 file:py-1 file:rounded-sm file:cursor-pointer" />
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <label 
+                htmlFor="image-upload"
+                className="bg-zinc-900 border border-zinc-800 px-4 py-3 text-zinc-300 text-xs uppercase tracking-widest hover:text-white hover:border-zinc-650 transition-all cursor-pointer rounded-sm text-center font-semibold"
+              >
+                Upload Asset
+              </label>
+              <input 
+                id="image-upload"
+                name="image" 
+                type="file" 
+                accept="image/*" 
+                onChange={handleFileChange}
+                className="hidden" 
+                required
+              />
+              <span className="text-xs text-zinc-500 truncate max-w-[200px] font-mono sm:mt-0 mt-1">
+                {selectedFileName || 'No asset selected'}
+              </span>
+            </div>
           </div>
         </div>
 

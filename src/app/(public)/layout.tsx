@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from '@/components/ui/Navbar';
 import { Footer } from '@/components/ui/Footer';
+import { InquiryTray } from '@/components/commerce/InquiryTray';
 
 export default function PublicLayout({
   children,
@@ -11,6 +12,7 @@ export default function PublicLayout({
     <>
       <Navbar />
       {children}
+      <InquiryTray />
       <Footer />
     </>
   );

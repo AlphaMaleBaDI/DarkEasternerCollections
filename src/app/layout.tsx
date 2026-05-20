@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { PageTransition } from '@/components/ui/PageTransition';
+import { InquiryProvider } from '@/context/InquiryContext';
 
 export const metadata: Metadata = {
   title: "Dark Easterner Collections | Luxury Afro-Luxe Couture",
@@ -60,9 +61,11 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-full flex flex-col bg-deep-black text-soft-white selection:bg-luxury-gold selection:text-deep-black overflow-x-hidden"
       >
-        <PageTransition>
-          {children}
-        </PageTransition>
+        <InquiryProvider>
+          <PageTransition>
+            {children}
+          </PageTransition>
+        </InquiryProvider>
       </body>
     </html>
   );

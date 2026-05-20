@@ -18,6 +18,7 @@ export default function AdminLayout({
   const navItems = [
     { label: 'Dashboard', href: '/admin' },
     { label: 'Products', href: '/admin/products' },
+    { label: 'Inquiries', href: '/admin/inquiries' },
     { label: 'Upload New', href: '/admin/upload' },
     { label: 'Return to Showroom', href: '/' },
   ]
@@ -75,17 +76,17 @@ export default function AdminLayout({
         </div>
 
         {/* Mobile Navigation Row */}
-        <nav className="flex md:hidden flex-row gap-2 border-t border-zinc-900/40 pt-4 overflow-x-auto scrollbar-none">
+        <nav className="flex md:hidden flex-wrap gap-2 border-t border-zinc-900/40 pt-4">
           {navItems.map((item) => {
             const isActive = pathname === item.href
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex-1 text-center py-2 px-3 text-xs rounded transition-colors whitespace-nowrap ${
+                className={`py-2 px-3 text-xs rounded transition-colors whitespace-nowrap ${
                   isActive
                     ? 'bg-zinc-850 text-white font-medium'
-                    : 'text-zinc-400 hover:bg-zinc-850 hover:text-white'
+                    : 'text-zinc-400 bg-zinc-900/40 hover:bg-zinc-850 hover:text-white'
                 }`}
               >
                 {item.label}
