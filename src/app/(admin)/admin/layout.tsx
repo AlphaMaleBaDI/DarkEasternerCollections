@@ -19,6 +19,7 @@ export default function AdminLayout({
     { label: 'Dashboard', href: '/admin' },
     { label: 'Products', href: '/admin/products' },
     { label: 'Upload New', href: '/admin/upload' },
+    { label: 'Return to Showroom', href: '/' },
   ]
 
   async function handleSignOut() {
