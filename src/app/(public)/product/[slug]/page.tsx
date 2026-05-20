@@ -2,7 +2,6 @@ import React from 'react'
 import { getProductBySlug } from '@/lib/products/queries'
 import { getWhatsAppLink } from '@/lib/constants/contact'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import { notFound } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
@@ -30,15 +29,11 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             className="object-cover opacity-90"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent lg:hidden" />
         </div>
 
         <div className="relative w-full lg:w-2/5 p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-zinc-950">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div className="animate-fade-in">
             <p className="text-gold-500 text-xs uppercase tracking-widest mb-4">
               {product.category}
             </p>
@@ -75,7 +70,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 Private inquiry via WhatsApp
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>
