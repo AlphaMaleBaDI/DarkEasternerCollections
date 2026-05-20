@@ -9,6 +9,7 @@ export interface InquiryItem {
   sku?: string | null
   category: string
   price?: number | null
+  show_price?: boolean | null
   main_image_url?: string | null
   quantity: number
   notes?: string

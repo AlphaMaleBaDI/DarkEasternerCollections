@@ -11,6 +11,7 @@ interface AddToInquiryButtonProps {
     sku?: string | null
     category: string
     price?: number | null
+    show_price?: boolean | null
     main_image_url?: string | null
   }
 }
@@ -29,6 +30,7 @@ export function AddToInquiryButton({ product }: AddToInquiryButtonProps) {
       sku: product.sku,
       category: product.category,
       price: product.price,
+      show_price: product.show_price,
       main_image_url: product.main_image_url,
     })
     setIsAdded(true)

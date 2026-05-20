@@ -62,6 +62,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                   sku: product.sku,
                   category: product.category,
                   price: product.price,
+                  show_price: product.show_price,
                   main_image_url: product.main_image_url,
                 }}
               />

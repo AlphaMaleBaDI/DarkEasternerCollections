@@ -80,8 +80,10 @@ export function InquiryTray() {
     const hasCouture = inquiryItems.some(item => item.category !== 'hair')
     const whatsappNumber = hasCouture ? '2347083794965' : '2349151024440'
 
-    // Determine if any item has a visible price
-    const hasVisiblePrice = inquiryItems.some(item => typeof item.price === 'number' && item.price > 0)
+    // Determine if any item has a price that Cynthia has explicitly enabled for display
+    const hasVisiblePrice = inquiryItems.some(
+      item => item.show_price === true && typeof item.price === 'number' && item.price > 0
+    )
 
     // Formulate luxury copy message
     let msg = `Hello ${hasCouture ? "Cynthia's House" : "The Atelier"},\n\n`
@@ -90,11 +92,7 @@ export function InquiryTray() {
     }
 
     if (hasVisiblePrice) {
-      if (inquiryItems.length === 1) {
-        msg += `I am interested in proceeding with the following curated piece:\n\n`
-      } else {
-        msg += `I would like to inquire about the following curated selections:\n\n`
-      }
+      msg += `I would like to inquire about the following curated selections:\n\n`
     } else {
       msg += `I am interested in exploring the details, sizing, and availability for the following curated pieces:\n\n`
     }
@@ -104,7 +102,8 @@ export function InquiryTray() {
       if (item.sku) {
         msg += ` (SKU: ${item.sku})`
       }
-      if (typeof item.price === 'number' && item.price > 0) {
+      // Only append price if Cynthia has explicitly enabled Show Pricing for this product
+      if (item.show_price === true && typeof item.price === 'number' && item.price > 0) {
         msg += ` – ₦${item.price.toLocaleString('en-US')}`
       }
       msg += `\n`
