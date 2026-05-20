@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { uploadProduct } from '@/app/actions/product-actions'
 
@@ -115,12 +116,12 @@ export default function ProductUpload() {
           >
             <span>{statusMsg.text}</span>
             {statusMsg.type === 'success' && (
-              <a 
+              <Link 
                 href="/admin/products" 
                 className="mt-1 text-xs uppercase tracking-widest text-white border-b border-white hover:text-gold-500 hover:border-gold-500 transition-colors pb-0.5"
               >
                 View House Inventory
-              </a>
+              </Link>
             )}
           </motion.div>
         )}

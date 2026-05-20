@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from '@/components/ui/Navbar';
-import { Footer } from '@/components/ui/Footer';
 import { PageTransition } from '@/components/ui/PageTransition';
 
 export const metadata: Metadata = {
@@ -62,11 +60,9 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-full flex flex-col bg-deep-black text-soft-white selection:bg-luxury-gold selection:text-deep-black overflow-x-hidden"
       >
-        <Navbar />
         <PageTransition>
           {children}
         </PageTransition>
-        <Footer />
       </body>
     </html>
   );

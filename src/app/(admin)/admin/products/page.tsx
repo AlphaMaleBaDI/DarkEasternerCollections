@@ -1,10 +1,11 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { supabase } from '@/lib/supabase/client'
 import { Product, ProductCategory, ProductStatus } from '@/types/database'
-import { toggleProductArchive } from '@/app/actions/product-actions'
+import { toggleProductArchive, deleteProduct } from '@/app/actions/product-actions'
 
 const CATEGORY_MAP: Record<ProductCategory, string> = {
   men: 'Sovereign Tailoring',
@@ -65,6 +66,23 @@ export default function AdminProductsList() {
     setProcessingId(null)
   }
 
+  // Permanent destructive delete handler
+  async function handleDeleteProduct(id: string) {
+    const confirmed = window.confirm("Are you sure you want to permanently delete this product? This will also remove its associated image asset.")
+    if (!confirmed) return
+
+    setProcessingId(id)
+    const result = await deleteProduct(id)
+
+    if (result.success) {
+      setProducts(prev => prev.filter(p => p.id !== id))
+      showToast('success', result.message)
+    } else {
+      showToast('error', result.message)
+    }
+    setProcessingId(null)
+  }
+
   // Filter products based on search, category, and status
   const filteredProducts = products.filter(product => {
     const matchesSearch = 
@@ -100,12 +118,12 @@ export default function AdminProductsList() {
           <h1 className="text-3xl font-serif text-white italic">House Archives</h1>
           <p className="text-zinc-500 text-sm mt-2">Manage couture inventory and editorial statuses.</p>
         </div>
-        <a 
+        <Link 
           href="/admin/upload" 
-          className="px-6 py-3 bg-white text-black uppercase tracking-widest text-xs font-semibold hover:bg-gold-500 transition-all duration-300 self-start md:self-auto"
+          className="px-6 py-3 bg-white text-black uppercase tracking-widest text-xs font-semibold hover:bg-gold-500 transition-all duration-300 self-start md:self-auto animate-fade-in"
         >
           Curate New Asset
-        </a>
+        </Link>
       </header>
 
       {/* Control Bar: Search & Filter Tabs */}
@@ -244,9 +262,9 @@ export default function AdminProductsList() {
                 </div>
 
                 {/* Status / Stock / Actions */}
-                <div className="flex items-center justify-between md:justify-end gap-8 border-t border-zinc-900/60 pt-4 md:border-0 md:pt-0">
+                <div className="flex flex-wrap items-center justify-between md:justify-end gap-4 md:gap-8 border-t border-zinc-900/60 pt-4 md:border-0 md:pt-0 w-full md:w-auto">
                   {/* Stock count */}
-                  <div className="text-right">
+                  <div className="text-left md:text-right">
                     <div className="text-xs text-zinc-500 uppercase tracking-widest">Stock Level</div>
                     <div className={`text-sm mt-0.5 ${product.stock_quantity === 0 ? 'text-red-500' : 'text-zinc-300'}`}>
                       {product.stock_quantity === 0 ? 'Out of Stock' : `${product.stock_quantity} units`}
@@ -266,8 +284,15 @@ export default function AdminProductsList() {
                     </span>
                   </div>
 
-                  {/* Archival Actions */}
-                  <div className="flex items-center gap-2">
+                  {/* Archival & Purge Actions */}
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Link
+                      href={`/admin/products/${product.id}`}
+                      className="px-4 py-2 text-[10px] uppercase tracking-widest font-semibold transition-all duration-300 border border-zinc-800 text-zinc-400 hover:border-zinc-500 hover:text-white"
+                    >
+                      Edit
+                    </Link>
+
                     <button
                       disabled={processingId === product.id}
                       onClick={() => handleToggleArchive(product.id, product.status)}
@@ -277,11 +302,15 @@ export default function AdminProductsList() {
                           : 'border-zinc-800 text-zinc-400 hover:border-zinc-500 hover:text-white'
                       } disabled:opacity-30`}
                     >
-                      {processingId === product.id 
-                        ? '...' 
-                        : product.status === 'archived' 
-                        ? 'Restore' 
-                        : 'Archive'}
+                      {processingId === product.id ? '...' : product.status === 'archived' ? 'Restore' : 'Archive'}
+                    </button>
+
+                    <button
+                      disabled={processingId === product.id}
+                      onClick={() => handleDeleteProduct(product.id)}
+                      className="px-4 py-2 text-[10px] uppercase tracking-widest font-semibold transition-all duration-300 border border-red-950 text-red-500 hover:bg-red-950/20 hover:text-red-400 disabled:opacity-30"
+                    >
+                      {processingId === product.id ? '...' : 'Delete'}
                     </button>
                   </div>
                 </div>

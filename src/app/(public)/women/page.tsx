@@ -4,6 +4,8 @@ import { CATEGORY_CONFIGS } from '@/lib/constants/categories'
 import CategoryHeader from '@/components/commerce/CategoryHeader'
 import ProductGrid from '@/components/commerce/ProductGrid'
 
+export const dynamic = 'force-dynamic'
+
 export default async function WomenCategoryPage() {
   const category = 'women' as const
   const config = CATEGORY_CONFIGS[category]
@@ -22,7 +24,7 @@ export default async function WomenCategoryPage() {
         </div>
         
         {products.length > 0 ? (
-          <div className="opacity-0 animate-fade-in">
+          <div>
             <ProductGrid products={products} />
           </div>
         ) : (

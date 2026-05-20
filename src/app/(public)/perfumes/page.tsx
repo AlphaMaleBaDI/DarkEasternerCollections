@@ -4,6 +4,8 @@ import { CATEGORY_CONFIGS } from '@/lib/constants/categories'
 import CategoryHeader from '@/components/commerce/CategoryHeader'
 import ProductCard from '@/components/commerce/ProductCard'
 
+export const dynamic = 'force-dynamic'
+
 export default async function PerfumeCategoryPage() {
   const category = 'perfumes' as const
   const config = CATEGORY_CONFIGS[category]

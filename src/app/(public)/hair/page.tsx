@@ -4,6 +4,8 @@ import { CATEGORY_CONFIGS } from '@/lib/constants/categories'
 import CategoryHeader from '@/components/commerce/CategoryHeader'
 import ProductGrid from '@/components/commerce/ProductGrid'
 
+export const dynamic = 'force-dynamic'
+
 export default async function HairCategoryPage() {
   const category = 'hair' as const
   const config = CATEGORY_CONFIGS[category]

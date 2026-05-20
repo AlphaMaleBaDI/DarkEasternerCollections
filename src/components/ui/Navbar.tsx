@@ -18,6 +18,7 @@ const navLinks = [
   { name: 'Showroom', href: '/collections' },
   { name: 'The House', href: '/about' },
   { name: 'Private Inquiry', href: createWhatsAppInquiry({ type: 'general' }) },
+  { name: 'Curator Access', href: '/admin' },
 ];
 
 export const Navbar: React.FC = () => {
