@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-deep-black border-t border-soft-white/5 pt-24 pb-12">
+    <footer className="bg-deep-black border-t border-soft-white/5 pt-12 md:pt-24 pb-12">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-24">
           
@@ -45,12 +45,21 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-2 space-y-6">
             <h4 className="text-luxury-gold uppercase tracking-[0.3em] text-[10px] font-medium">Concierge</h4>
             <ul className="space-y-4">
               <li><a href={createWhatsAppInquiry({ type: 'general' })} target="_blank" rel="noopener noreferrer" className="text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors">Private Inquiry</a></li>
               <li><a href={createWhatsAppInquiry({ type: 'styling' })} target="_blank" rel="noopener noreferrer" className="text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors">Styling Consultation</a></li>
               <li><Link href="/#faq" className="text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors">Acquisition FAQ</Link></li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2 space-y-6">
+            <h4 className="text-luxury-gold uppercase tracking-[0.3em] text-[10px] font-medium">Presence</h4>
+            <ul className="space-y-4">
+              <li><a href="https://www.instagram.com/darkeasterner_styles" target="_blank" rel="noopener noreferrer" className="text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors">Instagram (Styles)</a></li>
+              <li><a href="https://www.instagram.com/darkeasterner_hairs" target="_blank" rel="noopener noreferrer" className="text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors">Instagram (Hairs)</a></li>
+              <li><a href="https://vm.tiktok.com/ZS9YfsAJ7Xxdj-QBIL5/" target="_blank" rel="noopener noreferrer" className="text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors">TikTok</a></li>
             </ul>
           </div>
         </div>

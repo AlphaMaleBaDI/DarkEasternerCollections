@@ -20,7 +20,7 @@ const instaPosts = [
 
 export const InstagramFeed: React.FC = () => {
   return (
-    <section className="pt-12 pb-24 md:py-24 bg-deep-black overflow-hidden border-t border-soft-white/5">
+    <section className="pt-12 pb-10 md:pb-16 md:pt-24 bg-deep-black overflow-hidden border-t border-soft-white/5">
       <div className="container">
         
         {/* Section Header */}
@@ -44,6 +44,7 @@ export const InstagramFeed: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: theme.motion.duration.slow }}
+            className="flex flex-wrap justify-end gap-4 md:gap-6"
           >
             <a 
               href="https://www.instagram.com/darkeasterner_styles" 
@@ -52,6 +53,22 @@ export const InstagramFeed: React.FC = () => {
               className="text-soft-white/40 hover:text-luxury-gold transition-colors duration-500 uppercase tracking-[0.2em] text-[10px] font-medium pb-1 border-b border-soft-white/10"
             >
               @darkeasterner_styles
+            </a>
+            <a 
+              href="https://www.instagram.com/darkeasterner_hairs" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-soft-white/40 hover:text-luxury-gold transition-colors duration-500 uppercase tracking-[0.2em] text-[10px] font-medium pb-1 border-b border-soft-white/10"
+            >
+              @darkeasterner_hairs
+            </a>
+            <a 
+              href="https://vm.tiktok.com/ZS9YfsAJ7Xxdj-QBIL5/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-soft-white/40 hover:text-luxury-gold transition-colors duration-500 uppercase tracking-[0.2em] text-[10px] font-medium pb-1 border-b border-soft-white/10"
+            >
+              TikTok
             </a>
           </motion.div>
         </div>
@@ -86,22 +103,46 @@ export const InstagramFeed: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: theme.motion.duration.slow, delay: 0.4 }}
-          className="mt-16 text-center"
+          className="mt-16 flex flex-col items-center gap-8"
         >
-          <a 
-            href="https://www.instagram.com/darkeasterner_styles" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group inline-flex flex-col items-center gap-2"
-          >
-            <span className="text-luxury-gold uppercase tracking-[0.3em] text-[9px] font-medium opacity-0 group-hover:opacity-100 transition-all duration-700 -translate-y-1 group-hover:translate-y-0">
-              Enter the Editorial World
-            </span>
-            <span className="text-soft-white/40 group-hover:text-soft-white text-lg md:text-xl font-heading tracking-[0.2em] transition-all duration-700 italic">
-              @darkeasterner_styles
-            </span>
-            <div className="w-8 h-[1px] bg-luxury-gold/20 group-hover:w-16 group-hover:bg-luxury-gold/50 transition-all duration-700" />
-          </a>
+          <span className="text-luxury-gold uppercase tracking-[0.3em] text-[9px] font-medium">
+            Enter the Editorial World
+          </span>
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
+            <a 
+              href="https://www.instagram.com/darkeasterner_styles" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-2"
+            >
+              <span className="text-soft-white/40 group-hover:text-soft-white text-lg md:text-xl font-heading tracking-[0.2em] transition-all duration-700 italic">
+                @darkeasterner_styles
+              </span>
+              <div className="w-8 h-[1px] bg-luxury-gold/20 group-hover:w-16 group-hover:bg-luxury-gold/50 transition-all duration-700" />
+            </a>
+            <a 
+              href="https://www.instagram.com/darkeasterner_hairs" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-2"
+            >
+              <span className="text-soft-white/40 group-hover:text-soft-white text-lg md:text-xl font-heading tracking-[0.2em] transition-all duration-700 italic">
+                @darkeasterner_hairs
+              </span>
+              <div className="w-8 h-[1px] bg-luxury-gold/20 group-hover:w-16 group-hover:bg-luxury-gold/50 transition-all duration-700" />
+            </a>
+            <a 
+              href="https://vm.tiktok.com/ZS9YfsAJ7Xxdj-QBIL5/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-2"
+            >
+              <span className="text-soft-white/40 group-hover:text-soft-white text-lg md:text-xl font-heading tracking-[0.2em] transition-all duration-700 italic">
+                TikTok
+              </span>
+              <div className="w-8 h-[1px] bg-luxury-gold/20 group-hover:w-16 group-hover:bg-luxury-gold/50 transition-all duration-700" />
+            </a>
+          </div>
         </motion.div>
 
       </div>
