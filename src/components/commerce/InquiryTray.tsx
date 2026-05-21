@@ -24,6 +24,8 @@ export function InquiryTray() {
   const [phone, setPhone] = useState('')
   const [showForm, setShowForm] = useState(false)
   const [nameError, setNameError] = useState(false)
+  const [emailError, setEmailError] = useState(false)
+  const [phoneError, setPhoneError] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
 
@@ -38,13 +40,48 @@ export function InquiryTray() {
 
   // Prepares the final submission to Supabase and routes to WhatsApp
   const executeInquiry = async (isAnonymous: boolean) => {
-    if (!isAnonymous && !name.trim()) {
-      setNameError(true)
-      return
+    if (!isAnonymous) {
+      let hasError = false
+      if (!name.trim()) {
+        setNameError(true)
+        hasError = true
+      } else {
+        setNameError(false)
+      }
+
+      if (email.trim()) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(email.trim())) {
+          setEmailError(true)
+          hasError = true
+        } else {
+          setEmailError(false)
+        }
+      } else {
+        setEmailError(false)
+      }
+
+      if (phone.trim()) {
+        const cleanedPhone = phone.replace(/\s+/g, '')
+        const phoneRegex = /^\+?[0-9]{7,15}$/
+        if (!phoneRegex.test(cleanedPhone)) {
+          setPhoneError(true)
+          hasError = true
+        } else {
+          setPhoneError(false)
+        }
+      } else {
+        setPhoneError(false)
+      }
+
+      if (hasError) return
+    } else {
+      setNameError(false)
+      setEmailError(false)
+      setPhoneError(false)
     }
     
     setIsSubmitting(true)
-    setNameError(false)
 
     const customerName = isAnonymous ? 'Anonymous Client' : name.trim()
     const customerEmail = isAnonymous ? null : email.trim()
@@ -169,7 +206,7 @@ export function InquiryTray() {
             {/* Left: Continue Curating */}
             <button 
               onClick={() => setIsOpen(false)}
-              className="text-gold-500 hover:text-white text-[10px] uppercase tracking-widest flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="text-luxury-gold hover:text-white text-[10px] uppercase tracking-widest flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -208,7 +245,7 @@ export function InquiryTray() {
               <button
                 key={cat.href}
                 onClick={() => handleNavigate(cat.href)}
-                className="text-[9px] uppercase tracking-widest text-zinc-500 hover:text-gold-500 transition-colors cursor-pointer"
+                className="text-[9px] uppercase tracking-widest text-zinc-500 hover:text-luxury-gold transition-colors cursor-pointer"
               >
                 {cat.name}
               </button>
@@ -289,7 +326,7 @@ export function InquiryTray() {
                       placeholder="Specify sizing details, custom adjustments, or styling questions..."
                       value={item.notes || ''}
                       onChange={(e) => handleNoteChange(item.id, e.target.value)}
-                      className="w-full bg-deep-black border border-zinc-900 focus:border-zinc-700 text-xs p-2 text-white outline-none rounded-sm resize-none h-14"
+                      className="w-full bg-deep-black border border-zinc-900 focus:border-luxury-gold/40 focus:ring-1 focus:ring-luxury-gold/5 transition-all text-xs p-2 text-white outline-none rounded-sm resize-none h-14"
                     />
                     {(!item.notes || !item.notes.trim()) && (
                       <span className="text-[9px] text-zinc-500 italic mt-1 block">
@@ -327,11 +364,13 @@ export function InquiryTray() {
                       if (e.target.value.trim()) setNameError(false)
                     }}
                     className={`w-full bg-deep-black border text-xs p-2.5 outline-none rounded-sm text-white ${
-                      nameError ? 'border-red-900 focus:border-red-500' : 'border-zinc-900 focus:border-zinc-700'
+                      nameError 
+                        ? 'border-red-900/60 focus:border-red-500/60 focus:ring-1 focus:ring-red-500/5 transition-all' 
+                        : 'border-zinc-900 focus:border-luxury-gold/40 focus:ring-1 focus:ring-luxury-gold/5 transition-all'
                     }`}
                   />
                   {nameError && (
-                    <span className="text-[10px] text-red-500 mt-1 block">Your name is required to personalize your greeting.</span>
+                    <span className="text-[10px] text-red-500/80 mt-1 block">Your name is required to personalize your greeting.</span>
                   )}
                 </div>
 
@@ -342,9 +381,19 @@ export function InquiryTray() {
                       type="email" 
                       placeholder="client@mail.com"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-deep-black border border-zinc-900 focus:border-zinc-700 text-xs p-2.5 outline-none rounded-sm text-white"
+                      onChange={(e) => {
+                        setEmail(e.target.value)
+                        if (emailError) setEmailError(false)
+                      }}
+                      className={`w-full bg-deep-black border text-xs p-2.5 outline-none rounded-sm text-white ${
+                        emailError 
+                          ? 'border-red-900/60 focus:border-red-500/60 focus:ring-1 focus:ring-red-500/5 transition-all' 
+                          : 'border-zinc-900 focus:border-luxury-gold/40 focus:ring-1 focus:ring-luxury-gold/5 transition-all'
+                      }`}
                     />
+                    {emailError && (
+                      <span className="text-[10px] text-red-500/80 mt-1 block">Please enter a valid email address.</span>
+                    )}
                   </div>
                   <div>
                     <label className="block text-[10px] uppercase text-zinc-500 tracking-widest mb-1">Phone (Optional)</label>
@@ -352,9 +401,19 @@ export function InquiryTray() {
                       type="text" 
                       placeholder="+234..."
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      className="w-full bg-deep-black border border-zinc-900 focus:border-zinc-700 text-xs p-2.5 outline-none rounded-sm text-white"
+                      onChange={(e) => {
+                        setPhone(e.target.value)
+                        if (phoneError) setPhoneError(false)
+                      }}
+                      className={`w-full bg-deep-black border text-xs p-2.5 outline-none rounded-sm text-white ${
+                        phoneError 
+                          ? 'border-red-900/60 focus:border-red-500/60 focus:ring-1 focus:ring-red-500/5 transition-all' 
+                          : 'border-zinc-900 focus:border-luxury-gold/40 focus:ring-1 focus:ring-luxury-gold/5 transition-all'
+                      }`}
                     />
+                    {phoneError && (
+                      <span className="text-[10px] text-red-500/80 mt-1 block">Please enter a valid phone number.</span>
+                    )}
                   </div>
                 </div>
 
@@ -367,14 +426,14 @@ export function InquiryTray() {
                     <button
                       disabled={isSubmitting}
                       onClick={() => executeInquiry(false)}
-                      className="flex-1 py-3 bg-white text-black text-center text-[10px] uppercase tracking-widest font-semibold hover:bg-gold-500 transition-colors disabled:opacity-50 rounded-sm cursor-pointer"
+                      className="flex-1 py-3 bg-white text-black text-center text-[10px] uppercase tracking-widest font-semibold hover:bg-luxury-gold hover:text-black transition-colors duration-500 disabled:opacity-50 rounded-sm cursor-pointer"
                     >
                       {isSubmitting ? 'Securing...' : 'Begin Private Inquiry'}
                     </button>
                     <button
                       disabled={isSubmitting}
                       onClick={() => executeInquiry(true)}
-                      className="px-4 py-3 border border-zinc-800 text-zinc-400 text-center text-[10px] uppercase tracking-widest hover:text-white transition-colors rounded-sm cursor-pointer"
+                      className="px-4 py-3 border border-zinc-800 text-zinc-400 text-center text-[10px] uppercase tracking-widest hover:text-white transition-colors duration-500 rounded-sm cursor-pointer"
                     >
                       Send Instantly
                     </button>
@@ -392,7 +451,7 @@ export function InquiryTray() {
                 <div className="flex flex-col gap-2">
                   <button
                     onClick={() => setShowForm(true)}
-                    className="w-full py-4 bg-white text-black text-center text-xs uppercase tracking-widest font-semibold hover:bg-gold-500 transition-all duration-300 shadow-xl rounded-sm cursor-pointer"
+                    className="w-full py-4 bg-white text-black text-center text-xs uppercase tracking-widest font-semibold hover:bg-luxury-gold hover:text-black transition-all duration-500 shadow-xl rounded-sm cursor-pointer"
                   >
                     Begin Private Inquiry
                   </button>

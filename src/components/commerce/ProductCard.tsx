@@ -89,7 +89,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             className={`pointer-events-auto px-4 py-1.5 text-[10px] uppercase tracking-widest transition-all duration-500 ease-luxury border font-medium ${
               isCurated
                 ? 'bg-luxury-gold/15 border-luxury-gold/30 text-luxury-gold cursor-not-allowed pointer-events-none'
-                : 'bg-transparent border-zinc-800 hover:border-luxury-gold/40 text-zinc-300 hover:text-white cursor-pointer'
+                : 'bg-transparent border-zinc-800 hover:border-luxury-gold/50 text-zinc-300 hover:text-white cursor-pointer'
             }`}
           >
             {isCurated ? 'Curated' : 'Curate'}

@@ -43,7 +43,7 @@ export function AddToInquiryButton({ product }: AddToInquiryButtonProps) {
       className={`w-full py-4 text-center uppercase tracking-widest text-xs font-semibold transition-all duration-500 ${
         hasBeenAdded 
           ? 'bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white' 
-          : 'bg-white text-black hover:bg-gold-500'
+          : 'bg-white text-black hover:bg-luxury-gold hover:text-black transition-colors duration-500'
       } shadow-xl`}
     >
       {isAdded ? 'Curated' : hasBeenAdded ? 'In Private Inquiry (Open Tray)' : 'Curate Private Inquiry'}

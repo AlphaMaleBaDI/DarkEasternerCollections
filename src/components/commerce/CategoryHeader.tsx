@@ -17,7 +17,7 @@ export default function CategoryHeader({ config }: CategoryHeaderProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <p className="text-gold-500 text-xs uppercase tracking-[0.3em] mb-4 font-medium">
+          <p className="text-luxury-gold text-xs uppercase tracking-[0.3em] mb-4 font-medium">
             {config.label}
           </p>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif italic text-white mb-8 leading-tight">

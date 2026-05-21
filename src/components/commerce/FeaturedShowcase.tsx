@@ -67,7 +67,7 @@ export default function FeaturedShowcase() {
     <section className="pt-32 pb-16 md:pb-24 bg-zinc-950 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20 text-center">
-          <p className="text-gold-500 text-[10px] uppercase tracking-[0.4em] mb-4">
+          <p className="text-luxury-gold text-[10px] uppercase tracking-[0.4em] mb-4">
             The Curated Selection
           </p>
           <h2 className="text-3xl md:text-5xl font-serif italic text-white">

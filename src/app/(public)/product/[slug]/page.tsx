@@ -55,40 +55,41 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <ProductHeroImage 
             src={product.main_image_url} 
             alt={product.title} 
+            category={product.category}
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent lg:hidden" />
         </div>
 
-        <div className="relative w-full lg:w-2/5 p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-zinc-950">
+        <div className="relative w-full lg:w-2/5 p-6 md:p-16 flex flex-col justify-center bg-zinc-950">
           <div className="animate-fade-in">
-            <p className="text-gold-500 text-xs uppercase tracking-widest mb-4">
+            <p className="text-luxury-gold text-xs uppercase tracking-[0.25em] mb-4 font-medium">
               {product.category}
             </p>
-            <h1 className="text-4xl md:text-6xl font-serif italic text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-white mb-4 leading-[1.15]">
               {product.title}
             </h1>
-            <div className="h-px w-12 bg-gold-600 mb-8" />
+            <div className="h-px w-16 bg-luxury-gold/30 mb-6" />
             
-            <p className="text-zinc-400 text-lg font-light leading-relaxed mb-8 italic">
+            <p className="text-zinc-400 text-base md:text-lg font-light leading-relaxed mb-6 italic">
               {product.description}
             </p>
 
             {/* House Status Indicators */}
             <div className="flex flex-wrap gap-2.5 mb-6 md:mb-8">
-              <span className="text-[9px] uppercase tracking-[0.15em] text-zinc-500 font-light border border-zinc-900 px-2.5 py-1 bg-zinc-950/40">
+              <span className="text-[9px] uppercase tracking-[0.15em] text-luxury-gold/60 font-light border border-luxury-gold/10 px-2.5 py-1 bg-zinc-950/40">
                 Curated on Request
               </span>
-              <span className="text-[9px] uppercase tracking-[0.15em] text-zinc-500 font-light border border-zinc-900 px-2.5 py-1 bg-zinc-950/40">
+              <span className="text-[9px] uppercase tracking-[0.15em] text-luxury-gold/60 font-light border border-luxury-gold/10 px-2.5 py-1 bg-zinc-950/40">
                 Limited House Availability
               </span>
-              <span className="text-[9px] uppercase tracking-[0.15em] text-zinc-500 font-light border border-zinc-900 px-2.5 py-1 bg-zinc-950/40">
+              <span className="text-[9px] uppercase tracking-[0.15em] text-luxury-gold/60 font-light border border-luxury-gold/10 px-2.5 py-1 bg-zinc-950/40">
                 Private Styling Guidance
               </span>
             </div>
 
             {/* Dynamic Editorial Persuasion Block */}
-            <div className="border-l border-gold-600/30 pl-4 py-1 my-6 md:my-8 space-y-2 md:space-y-2.5">
+            <div className="border-l border-luxury-gold/25 pl-6 py-1 my-6 md:my-8 space-y-2 md:space-y-2.5">
               {persuasionLines.map((line, idx) => (
                 <p 
                   key={idx} 
@@ -100,9 +101,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             </div>
 
             {product.show_price && (
-              <div className="mb-12">
-                <span className="text-zinc-500 text-sm uppercase tracking-widest block mb-1">Investment</span>
-                <span className="text-white text-2xl font-light">
+              <div className="mb-8">
+                <span className="text-zinc-500 text-[10px] uppercase tracking-[0.2em] block mb-1.5">Investment</span>
+                <span className="text-white text-2xl font-light tracking-wide">
                   {product.price?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}
                 </span>
               </div>
@@ -121,23 +122,23 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                   main_image_url: product.main_image_url,
                 }}
               />
-              <p className="text-center text-zinc-650 text-[10px] uppercase tracking-wider mt-4">
+              <p className="text-center text-zinc-500 text-[9px] uppercase tracking-[0.15em] mt-3">
                 Inquiries are non-binding &middot; Curate multiple pieces for a single inquiry
               </p>
 
               {/* Trust Signals */}
-              <div className="mt-8 pt-6 border-t border-zinc-900 flex flex-col gap-3">
+              <div className="mt-8 pt-6 border-t border-zinc-900 flex flex-col gap-2.5">
                 <div className="flex items-center gap-3 text-zinc-400">
-                  <span className="w-1.5 h-[1px] bg-luxury-gold" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-light">Non-Binding Private Inquiry</span>
+                  <span className="w-1.5 h-[1px] bg-luxury-gold/40" />
+                  <span className="text-[9px] uppercase tracking-[0.2em] font-light text-zinc-400">Non-Binding Private Inquiry</span>
                 </div>
                 <div className="flex items-center gap-3 text-zinc-400">
-                  <span className="w-1.5 h-[1px] bg-luxury-gold" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-light">Styling Consultation &amp; Fit Support</span>
+                  <span className="w-1.5 h-[1px] bg-luxury-gold/40" />
+                  <span className="text-[9px] uppercase tracking-[0.2em] font-light text-zinc-400">Styling Consultation &amp; Fit Support</span>
                 </div>
                 <div className="flex items-center gap-3 text-zinc-400">
-                  <span className="w-1.5 h-[1px] bg-luxury-gold" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-light">Tailored House Response</span>
+                  <span className="w-1.5 h-[1px] bg-luxury-gold/40" />
+                  <span className="text-[9px] uppercase tracking-[0.2em] font-light text-zinc-400">Tailored House Response</span>
                 </div>
               </div>
 

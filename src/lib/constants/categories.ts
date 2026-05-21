@@ -24,7 +24,7 @@ export const CATEGORY_CONFIGS: Record<ProductCategory, CategoryConfig> = {
     heroCopy: 'Celestial Couture',
     editorialStatement: 'Fluidity meets authority. Our feminine collections explore the intersection of ethereal elegance and structural power, crafted for the woman who commands every room.',
     mood: 'elegant',
-    accentColor: 'text-gold-400',
+    accentColor: 'text-luxury-gold',
   },
   hair: {
     label: 'The Crown',
@@ -40,6 +40,6 @@ export const CATEGORY_CONFIGS: Record<ProductCategory, CategoryConfig> = {
     heroCopy: 'Invisible Presence',
     editorialStatement: 'Scent is the most intimate form of memory. Our fragrances are atmospheric compositions designed to linger long after the presence has left the room.',
     mood: 'mysterious',
-    accentColor: 'text-gold-600',
+    accentColor: 'text-luxury-gold',
   },
 };

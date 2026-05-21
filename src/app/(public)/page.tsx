@@ -31,7 +31,7 @@ export default function HomePage() {
 
       {/* 5. Editorial Narrative */}
       <div className="py-16 md:py-24 px-6 md:px-12 lg:px-24 max-w-5xl mx-auto text-center">
-        <p className="text-gold-500 text-xs uppercase tracking-widest mb-8">Curated Editorial</p>
+        <p className="text-luxury-gold text-xs uppercase tracking-widest mb-8">Curated Editorial</p>
         <h2 className="text-3xl md:text-5xl font-serif italic text-white leading-relaxed">
           &ldquo;True luxury is not about a product, but the silence between the stitches, the aura of the wearer, and the legacy of the House.&rdquo;
         </h2>

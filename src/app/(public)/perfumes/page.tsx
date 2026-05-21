@@ -17,11 +17,11 @@ export default async function PerfumeCategoryPage() {
       
       <section className="px-6 md:px-12 lg:px-24 pb-20 md:pb-24">
         <div className="mb-24 text-center max-w-2xl mx-auto">
-          <p className="text-gold-500 text-xs uppercase tracking-[0.3em] mb-6">The Alchemical Study</p>
+          <p className="text-luxury-gold text-xs uppercase tracking-[0.3em] mb-6">The Alchemical Study</p>
           <h2 className="text-2xl font-serif italic text-white mb-8">
             Our fragrances are a conversation between shadow and light, crafted to linger in the consciousness.
           </h2>
-          <div className="w-12 h-px bg-gold-600 mx-auto" />
+          <div className="w-12 h-px bg-luxury-gold mx-auto" />
         </div>
         
         {products.length > 0 ? (

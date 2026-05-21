@@ -14,7 +14,7 @@ export default function HeritageStrip() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-gold-500 text-[10px] uppercase tracking-[0.4em] mb-6">
+          <p className="text-luxury-gold text-[10px] uppercase tracking-[0.4em] mb-6">
             Designed from Heritage
           </p>
           <h2 className="text-2xl md:text-4xl font-serif italic text-white mb-8 leading-relaxed">
@@ -22,9 +22,9 @@ export default function HeritageStrip() {
           </h2>
           <Link 
             href="/about" 
-            className="inline-flex items-center gap-3 text-zinc-400 hover:text-gold-500 transition-colors duration-500 text-sm uppercase tracking-widest"
+            className="inline-flex items-center gap-3 text-zinc-400 hover:text-luxury-gold transition-colors duration-500 text-sm uppercase tracking-widest"
           >
-            Discover Our Story <span className="text-gold-500">→</span>
+            Discover Our Story <span className="text-luxury-gold">→</span>
           </Link>
         </motion.div>
       </div>
