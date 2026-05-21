@@ -15,7 +15,7 @@ export default async function MenCategoryPage() {
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <CategoryHeader config={config} />
       
-      <section className="px-6 md:px-12 lg:px-24 pb-40">
+      <section className="px-6 md:px-12 lg:px-24 pb-20 md:pb-24">
         <div className="mb-24 flex justify-between items-end">
           <div className="flex flex-col gap-2">
             <h2 className="text-zinc-500 text-xs uppercase tracking-[0.3em] font-medium">

@@ -51,7 +51,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
       {/* Cinematic Hero Section */}
       <section className="relative min-h-screen flex flex-col lg:flex-row">
-        <div className="relative w-full lg:w-3/5 h-[60vh] lg:h-full overflow-hidden">
+        <div className="relative w-full lg:w-3/5 h-[60vh] lg:min-h-screen overflow-hidden">
           <ProductHeroImage 
             src={product.main_image_url} 
             alt={product.title} 

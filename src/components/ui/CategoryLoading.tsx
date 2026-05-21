@@ -19,7 +19,7 @@ export default function CategoryLoading() {
       </div>
       
       {/* Grid List Skeleton */}
-      <section className="px-6 md:px-12 lg:px-24 pb-40">
+      <section className="px-6 md:px-12 lg:px-24 pb-20 md:pb-24">
         <div className="mb-24 flex justify-between items-end">
           <div className="flex flex-col gap-2 w-48">
             <div className="luxury-shimmer h-3 w-32" />

@@ -16,7 +16,7 @@ export default async function HairCategoryPage() {
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <CategoryHeader config={config} />
       
-      <section className="px-6 md:px-12 lg:px-24 pb-40">
+      <section className="px-6 md:px-12 lg:px-24 pb-20 md:pb-24">
         <div className="mb-24 flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-soft-white/5 pb-8">
           <div className="flex flex-col gap-4">
             <h2 className="text-zinc-500 text-xs uppercase tracking-[0.2em] font-medium">
