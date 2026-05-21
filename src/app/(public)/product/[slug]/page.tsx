@@ -126,19 +126,34 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 Inquiries are non-binding &middot; Curate multiple pieces for a single inquiry
               </p>
 
-              {/* Trust Signals */}
-              <div className="mt-8 pt-6 border-t border-zinc-900 flex flex-col gap-2.5">
-                <div className="flex items-center gap-3 text-zinc-400">
-                  <span className="w-1.5 h-[1px] bg-luxury-gold/40" />
-                  <span className="text-[9px] uppercase tracking-[0.2em] font-light text-zinc-400">Non-Binding Private Inquiry</span>
+              {/* Luxury Reassurance Band */}
+              <div className="mt-8 pt-6 border-t border-zinc-900 flex flex-col gap-4">
+                <div className="flex items-start gap-3.5">
+                  <span className="w-1.5 h-[1px] bg-luxury-gold/40 mt-2 flex-shrink-0" />
+                  <div className="min-w-0">
+                    <h4 className="text-[10px] uppercase tracking-[0.2em] text-white font-medium">Bespoke Fitting &amp; Sizing</h4>
+                    <p className="text-[9px] text-zinc-500 tracking-[0.08em] font-light mt-0.5 uppercase leading-normal">
+                      Every piece is custom verified by a House curator to guarantee correct measurements before handoff.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 text-zinc-400">
-                  <span className="w-1.5 h-[1px] bg-luxury-gold/40" />
-                  <span className="text-[9px] uppercase tracking-[0.2em] font-light text-zinc-400">Styling Consultation &amp; Fit Support</span>
+                <div className="flex items-start gap-3.5">
+                  <span className="w-1.5 h-[1px] bg-luxury-gold/40 mt-2 flex-shrink-0" />
+                  <div className="min-w-0">
+                    <h4 className="text-[10px] uppercase tracking-[0.2em] text-white font-medium">House Authenticity</h4>
+                    <p className="text-[9px] text-zinc-500 tracking-[0.08em] font-light mt-0.5 uppercase leading-normal">
+                      Sourced directly from Atelier Archives. Delivered with official certification of genuine provenance.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 text-zinc-400">
-                  <span className="w-1.5 h-[1px] bg-luxury-gold/40" />
-                  <span className="text-[9px] uppercase tracking-[0.2em] font-light text-zinc-400">Tailored House Response</span>
+                <div className="flex items-start gap-3.5">
+                  <span className="w-1.5 h-[1px] bg-luxury-gold/40 mt-2 flex-shrink-0" />
+                  <div className="min-w-0">
+                    <h4 className="text-[10px] uppercase tracking-[0.2em] text-white font-medium">Non-Binding Consultation</h4>
+                    <p className="text-[9px] text-zinc-500 tracking-[0.08em] font-light mt-0.5 uppercase leading-normal">
+                      Curate items for private review. Complete handoff occurs via WhatsApp with zero immediate obligation.
+                    </p>
+                  </div>
                 </div>
               </div>
 

@@ -42,6 +42,14 @@ export default function ProductCard({ product }: ProductCardProps) {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="group relative overflow-hidden cursor-pointer bg-zinc-950 border border-zinc-900/60 transition-all duration-700 ease-luxury hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.85)] hover:border-zinc-800"
     >
+      {/* Selected Badge */}
+      {isCurated && (
+        <div className="absolute top-3 right-3 z-30 bg-black/85 text-luxury-gold/90 border border-luxury-gold/20 backdrop-blur-sm px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-lg select-none pointer-events-none">
+          <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
+          <span className="text-[8px] uppercase tracking-[0.15em] font-semibold">In Inquiry</span>
+        </div>
+      )}
+
       <Link href={`/product/${product.slug}`}>
         <div className="relative aspect-[3/4] overflow-hidden">
           <Image 
@@ -74,7 +82,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="mt-4 pt-3 border-t border-zinc-900/60 flex justify-end opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 ease-luxury">
             {/* Visual layout placeholder to preserve height and design rhythm inside Link */}
             <div className="px-4 py-1.5 text-[10px] uppercase tracking-widest border border-transparent font-medium invisible select-none">
-              {isCurated ? 'Curated' : 'Curate'}
+              {isCurated ? 'In Inquiry' : 'Curate'}
             </div>
           </div>
         </div>
@@ -92,7 +100,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 : 'bg-transparent border-zinc-800 hover:border-luxury-gold/50 text-zinc-300 hover:text-white cursor-pointer'
             }`}
           >
-            {isCurated ? 'Curated' : 'Curate'}
+            {isCurated ? 'In Inquiry' : 'Curate'}
           </button>
         </div>
       </div>

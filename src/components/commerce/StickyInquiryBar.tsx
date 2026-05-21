@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInquiry } from '@/context/InquiryContext'
@@ -11,20 +11,20 @@ export function StickyInquiryBar() {
   
   const [isVisibleScroll, setIsVisibleScroll] = useState(true)
   const count = inquiryItems.length
-  const [prevCount, setPrevCount] = useState(count)
+  const prevCountRef = useRef(count)
   const [pulse, setPulse] = useState(false)
 
   // Track additions to trigger a one-off concierge-grade pulse/glow feedback
   useEffect(() => {
-    if (count > prevCount) {
+    if (count > prevCountRef.current) {
       setPulse(true)
       const timer = setTimeout(() => setPulse(false), 1500)
-      setPrevCount(count)
+      prevCountRef.current = count
       return () => clearTimeout(timer)
-    } else if (count < prevCount) {
-      setPrevCount(count)
+    } else {
+      prevCountRef.current = count
     }
-  }, [count, prevCount])
+  }, [count])
 
   // Scroll listener to hide the bar when close to the footer to prevent visual competition
   useEffect(() => {
@@ -49,7 +49,6 @@ export function StickyInquiryBar() {
   }, [])
 
   // Visibility conditions
-  const count = inquiryItems.length
   const shouldRender = 
     count > 0 && 
     !isOpen && 
@@ -66,7 +65,11 @@ export function StickyInquiryBar() {
           animate={{ y: 0, x: '-50%', opacity: 1 }}
           exit={{ y: 100, x: '-50%', opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))] left-1/2 z-[90] w-[calc(100%-2rem)] max-w-xl bg-black/90 backdrop-blur-md border border-luxury-gold/30 shadow-2xl rounded-full px-6 py-3.5 flex items-center justify-between gap-4"
+          className={`fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))] left-1/2 z-[90] w-[calc(100%-2rem)] max-w-xl bg-black/90 backdrop-blur-md border shadow-2xl rounded-full px-6 py-3.5 flex items-center justify-between gap-4 transition-all duration-700 ease-out ${
+            pulse 
+              ? 'border-luxury-gold shadow-[0_0_25px_rgba(212,175,55,0.35)] scale-[1.02]' 
+              : 'border-luxury-gold/30'
+          }`}
         >
           {/* Left Cluster: Confidence Cue & Luxury Reassurance */}
           <div className="flex flex-col min-w-0">
