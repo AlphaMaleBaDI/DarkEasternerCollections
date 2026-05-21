@@ -38,9 +38,22 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             </h1>
             <div className="h-px w-12 bg-gold-600 mb-8" />
             
-            <p className="text-zinc-400 text-lg font-light leading-relaxed mb-12 italic">
+            <p className="text-zinc-400 text-lg font-light leading-relaxed mb-8 italic">
               {product.description}
             </p>
+
+            {/* House Status Indicators */}
+            <div className="flex flex-wrap gap-2.5 mb-8">
+              <span className="text-[9px] uppercase tracking-[0.15em] text-zinc-500 font-light border border-zinc-900 px-2.5 py-1 bg-zinc-950/40">
+                Curated on Request
+              </span>
+              <span className="text-[9px] uppercase tracking-[0.15em] text-zinc-500 font-light border border-zinc-900 px-2.5 py-1 bg-zinc-950/40">
+                Limited House Availability
+              </span>
+              <span className="text-[9px] uppercase tracking-[0.15em] text-zinc-500 font-light border border-zinc-900 px-2.5 py-1 bg-zinc-950/40">
+                Private Styling Guidance
+              </span>
+            </div>
 
             {product.show_price && (
               <div className="mb-12">
@@ -64,23 +77,23 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                   main_image_url: product.main_image_url,
                 }}
               />
-              <p className="text-center text-zinc-600 text-[10px] uppercase tracking-wider mt-4">
-                Curate multiple pieces for a single inquiry
+              <p className="text-center text-zinc-650 text-[10px] uppercase tracking-wider mt-4">
+                Inquiries are non-binding &middot; Curate multiple pieces for a single inquiry
               </p>
 
               {/* Trust Signals */}
               <div className="mt-8 pt-6 border-t border-zinc-900 flex flex-col gap-3">
                 <div className="flex items-center gap-3 text-zinc-400">
                   <span className="w-1.5 h-[1px] bg-luxury-gold" />
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-light">Non-Binding Private Inquiry</span>
+                </div>
+                <div className="flex items-center gap-3 text-zinc-400">
+                  <span className="w-1.5 h-[1px] bg-luxury-gold" />
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-light">Styling Consultation &amp; Fit Support</span>
+                </div>
+                <div className="flex items-center gap-3 text-zinc-400">
+                  <span className="w-1.5 h-[1px] bg-luxury-gold" />
                   <span className="text-[10px] uppercase tracking-[0.2em] font-light">Tailored House Response</span>
-                </div>
-                <div className="flex items-center gap-3 text-zinc-400">
-                  <span className="w-1.5 h-[1px] bg-luxury-gold" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-light">Styling & Availability Guidance</span>
-                </div>
-                <div className="flex items-center gap-3 text-zinc-400">
-                  <span className="w-1.5 h-[1px] bg-luxury-gold" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-light">Custom Fit Options</span>
                 </div>
               </div>
 
