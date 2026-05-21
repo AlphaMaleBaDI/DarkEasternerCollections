@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { useInquiry } from '@/context/InquiryContext'
 import { supabase } from '@/lib/supabase/client'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -286,26 +287,30 @@ export function InquiryTray() {
               {inquiryItems.map((item) => (
                 <div key={item.id} className="p-4 border border-zinc-900 bg-zinc-950/40 rounded-none space-y-4">
                   <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-center gap-4">
+                    <Link 
+                      href={`/product/${item.slug}`}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center gap-4 group/item cursor-pointer"
+                    >
                       {item.main_image_url ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img 
                           src={item.main_image_url} 
                           alt={item.title} 
-                          className="w-12 h-16 object-cover border border-zinc-900"
+                          className="w-12 h-16 object-cover border border-zinc-900 transition-colors duration-300 group-hover/item:border-luxury-gold/50"
                         />
                       ) : (
-                        <div className="w-12 h-16 bg-zinc-900 border border-zinc-900 flex items-center justify-center text-[8px] uppercase tracking-wider text-zinc-700">
+                        <div className="w-12 h-16 bg-zinc-900 border border-zinc-900 flex items-center justify-center text-[8px] uppercase tracking-wider text-zinc-700 transition-colors duration-300 group-hover/item:border-luxury-gold/30">
                           No Img
                         </div>
                       )}
                       <div>
-                        <h4 className="font-serif text-white text-sm">{item.title}</h4>
+                        <h4 className="font-serif text-white text-sm transition-colors duration-300 group-hover/item:text-luxury-gold">{item.title}</h4>
                         <p className="text-zinc-500 text-[10px] uppercase tracking-widest mt-1">
                           {item.category} {item.sku && `• ${item.sku}`}
                         </p>
                       </div>
-                    </div>
+                    </Link>
                     
                     <button 
                       onClick={() => removeFromInquiry(item.id)}

@@ -37,7 +37,7 @@ export function ProductHeroImage({ src, alt, category, priority = false }: Produ
   const positionClass = isPortrait ? getObjectPositionClass(category) : 'object-center'
 
   return (
-    <div className="relative w-full h-full overflow-hidden bg-zinc-950">
+    <div className="relative w-full h-full overflow-hidden bg-zinc-950 group">
       <Image 
         src={src} 
         alt={alt} 
@@ -45,10 +45,10 @@ export function ProductHeroImage({ src, alt, category, priority = false }: Produ
         sizes="(max-width: 1024px) 100vw, 60vw"
         priority={priority}
         onLoad={handleLoad}
-        className={`object-cover ${positionClass} transition-all duration-[1500ms] ease-luxury ${
+        className={`object-cover ${positionClass} transition-all duration-[2000ms] ease-luxury ${
           isLoaded 
-            ? 'opacity-90 blur-0 scale-100' 
-            : 'opacity-0 blur-md scale-110'
+            ? 'opacity-100 blur-0 scale-100 group-hover:scale-[1.03]' 
+            : 'opacity-0 blur-md scale-100'
         }`}
       />
     </div>

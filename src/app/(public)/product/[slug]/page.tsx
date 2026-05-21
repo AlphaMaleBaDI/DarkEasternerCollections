@@ -61,22 +61,22 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent lg:hidden" />
         </div>
 
-        <div className="relative w-full lg:w-2/5 p-6 md:p-16 flex flex-col justify-center bg-zinc-950">
+        <div className="relative w-full lg:w-2/5 px-5 py-8 md:p-16 flex flex-col justify-center bg-zinc-950">
           <div className="animate-fade-in">
             <p className="text-luxury-gold text-xs uppercase tracking-[0.25em] mb-4 font-medium">
               {product.category}
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-white mb-4 leading-[1.15]">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-white mb-3 md:mb-4 leading-[1.15]">
               {product.title}
             </h1>
-            <div className="h-px w-16 bg-luxury-gold/30 mb-6" />
+            <div className="h-px w-16 bg-luxury-gold/30 mb-4 md:mb-6" />
             
-            <p className="text-zinc-400 text-base md:text-lg font-light leading-relaxed mb-6 italic">
+            <p className="text-zinc-400 text-base md:text-lg font-light leading-relaxed mb-5 md:mb-6 italic">
               {product.description}
             </p>
 
             {/* House Status Indicators */}
-            <div className="flex flex-wrap gap-2.5 mb-6 md:mb-8">
+            <div className="flex flex-wrap gap-2.5 mb-4 md:mb-8">
               <span className="text-[9px] uppercase tracking-[0.15em] text-luxury-gold/60 font-light border border-luxury-gold/10 px-2.5 py-1 bg-zinc-950/40">
                 Curated on Request
               </span>
@@ -89,7 +89,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             </div>
 
             {/* Dynamic Editorial Persuasion Block */}
-            <div className="border-l border-luxury-gold/25 pl-6 py-1 my-6 md:my-8 space-y-2 md:space-y-2.5">
+            <div className="border-l border-luxury-gold/25 pl-6 py-1 my-4 md:my-8 space-y-2 md:space-y-2.5">
               {persuasionLines.map((line, idx) => (
                 <p 
                   key={idx} 
@@ -101,7 +101,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             </div>
 
             {product.show_price && (
-              <div className="mb-8">
+              <div className="mb-5 md:mb-8">
                 <span className="text-zinc-500 text-[10px] uppercase tracking-[0.2em] block mb-1.5">Investment</span>
                 <span className="text-white text-2xl font-light tracking-wide">
                   {product.price?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}
@@ -127,7 +127,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               </p>
 
               {/* Luxury Reassurance Band */}
-              <div className="mt-8 pt-6 border-t border-zinc-900 flex flex-col gap-4">
+              <div className="mt-6 pt-5 md:mt-8 md:pt-6 border-t border-zinc-900 flex flex-col gap-4">
                 <div className="flex items-start gap-3.5">
                   <span className="w-1.5 h-[1px] bg-luxury-gold/40 mt-2 flex-shrink-0" />
                   <div className="min-w-0">
