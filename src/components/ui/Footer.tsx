@@ -10,8 +10,8 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="bg-deep-black border-t border-soft-white/5 pt-12 md:pt-24 pb-12">
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-24">
+      <div className="container px-6 md:px-10 lg:px-14 xl:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-y-12 md:gap-x-8 lg:gap-x-10 xl:gap-x-24">
           
           {/* Brand Philosophy column */}
           <div className="lg:col-span-4 space-y-8">

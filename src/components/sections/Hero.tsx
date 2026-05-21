@@ -21,7 +21,7 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 lg:gap-0 items-center">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 md:gap-6 xl:gap-0 items-center">
           
           {/* Asymmetrical Text Composition */}
           <div className="lg:col-span-12 xl:col-span-5 flex flex-col items-start xl:pr-12 order-2 lg:order-2 xl:order-1 relative z-20">
@@ -29,7 +29,7 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: theme.motion.duration.slow, ease: theme.motion.ease.cinematic }}
-              className="space-y-6 md:space-y-8 max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-none lg:mt-12 xl:mt-0"
+              className="space-y-6 md:space-y-8 max-w-xl md:max-w-[520px] lg:max-w-[520px] xl:max-w-none lg:mt-6 xl:mt-0"
             >
               <div>
                 <h2 className="text-luxury-gold uppercase tracking-[0.4em] text-[10px] md:text-xs font-medium mb-4 md:mb-6">
@@ -39,7 +39,8 @@ export const Hero: React.FC = () => {
                   className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-heading leading-[1] lg:leading-[1.1] xl:leading-[0.95] tracking-tight"
                   suppressHydrationWarning
                 >
-                  Confidence <br />
+                  Confidence{" "}
+                  <br className="md:hidden xl:inline" />
                   <span className="italic pl-4 md:pl-8 lg:pl-0 xl:pl-8">Tailored</span> <br />
                   to <span className="text-luxury-gold">Presence</span>.
                 </h1>
@@ -52,7 +53,7 @@ export const Hero: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-8 pt-4">
                 <a
                   href="#collections"
-                  className="group relative text-soft-white uppercase tracking-[0.2em] text-xs font-medium pb-2 overflow-hidden"
+                  className="group relative text-soft-white uppercase tracking-[0.22em] text-[13px] md:text-sm font-medium pb-2 overflow-hidden"
                 >
                   Enter Showroom
                   <span className="absolute bottom-0 left-0 w-full h-px bg-luxury-gold transform translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700 ease-in-out" />
@@ -61,7 +62,7 @@ export const Hero: React.FC = () => {
                   href={createWhatsAppInquiry({ type: 'general' })}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative text-soft-white/60 hover:text-soft-white uppercase tracking-[0.2em] text-xs font-medium pb-2 transition-colors duration-500"
+                  className="group relative text-soft-white/60 hover:text-soft-white uppercase tracking-[0.22em] text-[13px] md:text-sm font-medium pb-2 transition-colors duration-500"
                 >
                   Private Inquiry
                 </a>
@@ -75,9 +76,9 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: theme.motion.duration.cinematic, ease: theme.motion.ease.cinematic }}
-              className="relative lg:translate-y-12"
+              className="relative md:translate-y-6 lg:translate-y-6 xl:translate-y-12"
             >
-              <div className="max-w-[550px] ml-auto">
+              <div className="max-w-[550px] md:max-w-[495px] lg:max-w-[495px] xl:max-w-[550px] ml-auto">
                 <EditorialFrame
                   src="/assets/images/hero/hero.png"
                   alt="Dark Easterner Collections - Luxury Afro-Luxe"
