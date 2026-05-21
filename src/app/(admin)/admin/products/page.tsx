@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { supabase } from '@/lib/supabase/client'
@@ -24,7 +24,7 @@ export default function AdminProductsList() {
   const [processingId, setProcessingId] = useState<string | null>(null)
 
   // Fetch all products
-  async function fetchProducts() {
+  const fetchProducts = useCallback(async () => {
     setIsLoading(true)
     const { data, error } = await supabase
       .from('products')
@@ -38,11 +38,15 @@ export default function AdminProductsList() {
       setProducts(data || [])
     }
     setIsLoading(false)
-  }
+  }, [])
 
   useEffect(() => {
-    fetchProducts()
-  }, [])
+    const initialize = async () => {
+      await Promise.resolve()
+      fetchProducts()
+    }
+    initialize()
+  }, [fetchProducts])
 
   function showToast(type: 'success' | 'error', message: string) {
     setToast({ type, message })

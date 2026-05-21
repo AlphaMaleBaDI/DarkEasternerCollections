@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { supabase } from '@/lib/supabase/client'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -33,7 +33,7 @@ export default function AdminInquiries() {
   const [processingId, setProcessingId] = useState<string | null>(null)
 
   // Fetch all inquiries from Supabase
-  async function fetchInquiries() {
+  const fetchInquiries = useCallback(async () => {
     setIsLoading(true)
     const { data, error } = await supabase
       .from('inquiries')
@@ -47,11 +47,15 @@ export default function AdminInquiries() {
       setInquiries(data || [])
     }
     setIsLoading(false)
-  }
+  }, [])
 
   useEffect(() => {
-    fetchInquiries()
-  }, [])
+    const initialize = async () => {
+      await Promise.resolve()
+      fetchInquiries()
+    }
+    initialize()
+  }, [fetchInquiries])
 
   function showToast(type: 'success' | 'error', message: string) {
     setToast({ type, message })
@@ -194,7 +198,7 @@ export default function AdminInquiries() {
                     <select
                       disabled={processingId === inq.id}
                       value={inq.status}
-                      onChange={(e) => handleStatusChange(inq.id, e.target.value as any)}
+                      onChange={(e) => handleStatusChange(inq.id, e.target.value as 'pending' | 'responded' | 'completed')}
                       className={`text-xs p-1.5 border bg-deep-black text-white outline-none ${
                         inq.status === 'pending' ? 'border-gold-800 text-gold-500' :
                         inq.status === 'responded' ? 'border-zinc-700 text-zinc-300' :

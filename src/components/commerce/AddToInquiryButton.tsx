@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
-import { useInquiry, InquiryItem } from '@/context/InquiryContext'
+import { useInquiry } from '@/context/InquiryContext'
 
 interface AddToInquiryButtonProps {
   product: {

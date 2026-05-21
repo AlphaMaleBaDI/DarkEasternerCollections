@@ -20,7 +20,7 @@ interface InquiryContextType {
   inquiryItems: InquiryItem[]
   isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
-  addToInquiry: (item: Omit<InquiryItem, 'quantity'>) => void
+  addToInquiry: (item: Omit<InquiryItem, 'quantity'>, openDrawer?: boolean) => void
   removeFromInquiry: (id: string) => void
   updateItemNote: (id: string, notes: string) => void
   updateItemSize: (id: string, size: string) => void
@@ -36,15 +36,20 @@ export function InquiryProvider({ children }: { children: React.ReactNode }) {
 
   // Load from localStorage on mount
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem('dark_easterner_inquiry')
-      if (stored) {
-        setInquiryItems(JSON.parse(stored))
+    const initialize = async () => {
+      await Promise.resolve()
+      try {
+        const stored = localStorage.getItem('dark_easterner_inquiry')
+        if (stored) {
+          setInquiryItems(JSON.parse(stored))
+        }
+      } catch (e) {
+        console.warn('Failed to load inquiry items from localStorage:', e)
+      } finally {
+        setIsInitialized(true)
       }
-    } catch (e) {
-      console.warn('Failed to load inquiry items from localStorage:', e)
     }
-    setIsInitialized(true)
+    initialize()
   }, [])
 
   // Save to localStorage on change
@@ -57,7 +62,7 @@ export function InquiryProvider({ children }: { children: React.ReactNode }) {
     }
   }, [inquiryItems, isInitialized])
 
-  const addToInquiry = (newItem: Omit<InquiryItem, 'quantity'>) => {
+  const addToInquiry = (newItem: Omit<InquiryItem, 'quantity'>, openDrawer: boolean = true) => {
     setInquiryItems((prev) => {
       const existing = prev.find((item) => item.id === newItem.id)
       if (existing) {
@@ -66,7 +71,9 @@ export function InquiryProvider({ children }: { children: React.ReactNode }) {
       }
       return [...prev, { ...newItem, quantity: 1 }]
     })
-    setIsOpen(true) // Automatically slide open the drawer for immediate feedback
+    if (openDrawer) {
+      setIsOpen(true) // Automatically slide open the drawer for immediate feedback
+    }
   }
 
   const removeFromInquiry = (id: string) => {

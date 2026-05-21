@@ -67,9 +67,10 @@ function LoginContent() {
       const targetRedirect = searchParams.get('redirect') || '/admin'
       router.replace(targetRedirect)
 
-    } catch (err: any) {
-      console.error('Authentication gate error:', err.message)
-      setErrorMsg(err.message || 'An unexpected error occurred during entry.')
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'An unexpected error occurred during entry.'
+      console.error('Authentication gate error:', message)
+      setErrorMsg(message)
       setIsLoading(false)
     }
   }

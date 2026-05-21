@@ -15,6 +15,38 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     notFound();
   }
 
+  const getEditorialPersuasion = (category: string) => {
+    const cat = category?.toLowerCase();
+    if (cat === 'men' || cat === 'women') {
+      return [
+        'Tailored for presence.',
+        'Designed for distinction.',
+        'Built for unforgettable arrival.'
+      ]
+    }
+    if (cat === 'hair') {
+      return [
+        'Crafted for elegance in motion.',
+        'Presence begins with detail.',
+        'Styled to complete the House rhythm.'
+      ]
+    }
+    if (cat === 'perfumes') {
+      return [
+        'Composed to linger beyond presence.',
+        'Crafted for quiet impact.',
+        'Designed to leave memory behind.'
+      ]
+    }
+    return [
+      'Designed for the House presence.',
+      'Crafted with uncompromising detail.',
+      'Expressed through timeless form.'
+    ]
+  }
+
+  const persuasionLines = getEditorialPersuasion(product.category);
+
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
       {/* Cinematic Hero Section */}
@@ -43,7 +75,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             </p>
 
             {/* House Status Indicators */}
-            <div className="flex flex-wrap gap-2.5 mb-8">
+            <div className="flex flex-wrap gap-2.5 mb-6 md:mb-8">
               <span className="text-[9px] uppercase tracking-[0.15em] text-zinc-500 font-light border border-zinc-900 px-2.5 py-1 bg-zinc-950/40">
                 Curated on Request
               </span>
@@ -53,6 +85,18 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               <span className="text-[9px] uppercase tracking-[0.15em] text-zinc-500 font-light border border-zinc-900 px-2.5 py-1 bg-zinc-950/40">
                 Private Styling Guidance
               </span>
+            </div>
+
+            {/* Dynamic Editorial Persuasion Block */}
+            <div className="border-l border-gold-600/30 pl-4 py-1 my-6 md:my-8 space-y-2 md:space-y-2.5">
+              {persuasionLines.map((line, idx) => (
+                <p 
+                  key={idx} 
+                  className="text-[10px] md:text-xs uppercase tracking-[0.18em] md:tracking-[0.24em] text-zinc-400 font-light"
+                >
+                  {line}
+                </p>
+              ))}
             </div>
 
             {product.show_price && (

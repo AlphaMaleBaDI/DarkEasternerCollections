@@ -5,7 +5,6 @@ import { Hero } from '@/components/sections/Hero';
 import { PrivateStyling } from '@/components/sections/PrivateStyling';
 import { ClientMoments } from '@/components/sections/ClientMoments';
 import { ConciergeFAQ } from '@/components/sections/ConciergeFAQ';
-import HeritageStrip from '@/components/sections/HeritageStrip';
 import CategoryPortal from '@/components/commerce/CategoryPortal';
 import FeaturedShowcase from '@/components/commerce/FeaturedShowcase';
 

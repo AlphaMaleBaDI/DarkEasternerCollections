@@ -11,12 +11,6 @@ import { theme } from '@/styles/theme';
  * Focus: High-status atmosphere and quiet storytelling.
  */
 
-const wigAssets = [
-  { id: 'dominant', src: '/assets/images/editorial/wig-dominant.png', alt: 'Dominant Wig Editorial', size: 'large' },
-  { id: 'straight', src: '/assets/images/editorial/wig-straight.png', alt: 'Straight Wig Detail', size: 'small' },
-  { id: 'curls', src: '/assets/images/editorial/wig-curls.png', alt: 'Curly Wig Detail', size: 'small' },
-];
-
 export const EditorialWigGallery: React.FC = () => {
   return (
     <motion.div
@@ -28,7 +22,7 @@ export const EditorialWigGallery: React.FC = () => {
     >
       <EditorialFrame
         src="/assets/images/editorial/wig-straight.png"
-        alt="Signature Luxury Tresses — Straight Edition"
+        alt="Signature Luxury Tresses - Straight Edition"
         aspectRatio="portrait"
         overlay
         glow

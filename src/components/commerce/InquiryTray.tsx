@@ -192,8 +192,8 @@ export function InquiryTray() {
           {/* Title Row */}
           <div>
             <h2 className="font-serif text-lg text-white italic">Curated Selections</h2>
-            <p className="text-zinc-500 text-xs uppercase tracking-widest mt-1">
-              {inquiryItems.length} {inquiryItems.length === 1 ? 'piece' : 'pieces'} curated
+            <p className="text-luxury-gold text-xs uppercase tracking-widest mt-1.5 font-medium">
+              {inquiryItems.length} Curated {inquiryItems.length === 1 ? 'Piece' : 'Pieces'} Ready for Review
             </p>
           </div>
 
@@ -291,6 +291,11 @@ export function InquiryTray() {
                       onChange={(e) => handleNoteChange(item.id, e.target.value)}
                       className="w-full bg-deep-black border border-zinc-900 focus:border-zinc-700 text-xs p-2 text-white outline-none rounded-sm resize-none h-14"
                     />
+                    {(!item.notes || !item.notes.trim()) && (
+                      <span className="text-[9px] text-zinc-500 italic mt-1 block">
+                        Sizing, styling, or fit notes can be added later.
+                      </span>
+                    )}
                   </div>
                 </div>
               ))}
@@ -300,10 +305,10 @@ export function InquiryTray() {
 
         {/* Footer Area with Form and CTA */}
         {inquiryItems.length > 0 && (
-          <div className="p-6 border-t border-zinc-900 bg-zinc-950/20 space-y-4">
+          <div className="p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] border-t border-zinc-900 bg-zinc-950/20 space-y-4">
             {/* Trust Reassurance Line */}
             <p className="text-[9px] uppercase tracking-[0.18em] text-zinc-500 text-center font-light leading-relaxed mb-1">
-              Curated on Request &middot; Private Styling Guidance &middot; Response Within House Hours
+              Curated on Request &middot; Private Styling Guidance &middot; House curator responses handled within active hours
             </p>
             
             {/* Lead capture drawer overlay */}
@@ -357,21 +362,26 @@ export function InquiryTray() {
                   Your private inquiry is non-binding. A House curator will guide fit, styling, and availability details via WhatsApp before any order is confirmed.
                 </p>
 
-                <div className="flex gap-3 pt-2">
-                  <button
-                    disabled={isSubmitting}
-                    onClick={() => executeInquiry(false)}
-                    className="flex-1 py-3 bg-white text-black text-center text-[10px] uppercase tracking-widest font-semibold hover:bg-gold-500 transition-colors disabled:opacity-50 rounded-sm cursor-pointer"
-                  >
-                    {isSubmitting ? 'Securing...' : 'Begin Private Inquiry'}
-                  </button>
-                  <button
-                    disabled={isSubmitting}
-                    onClick={() => executeInquiry(true)}
-                    className="px-4 py-3 border border-zinc-800 text-zinc-400 text-center text-[10px] uppercase tracking-widest hover:text-white transition-colors rounded-sm cursor-pointer"
-                  >
-                    Send Instantly
-                  </button>
+                <div className="flex flex-col gap-2 pt-2">
+                  <div className="flex gap-3">
+                    <button
+                      disabled={isSubmitting}
+                      onClick={() => executeInquiry(false)}
+                      className="flex-1 py-3 bg-white text-black text-center text-[10px] uppercase tracking-widest font-semibold hover:bg-gold-500 transition-colors disabled:opacity-50 rounded-sm cursor-pointer"
+                    >
+                      {isSubmitting ? 'Securing...' : 'Begin Private Inquiry'}
+                    </button>
+                    <button
+                      disabled={isSubmitting}
+                      onClick={() => executeInquiry(true)}
+                      className="px-4 py-3 border border-zinc-800 text-zinc-400 text-center text-[10px] uppercase tracking-widest hover:text-white transition-colors rounded-sm cursor-pointer"
+                    >
+                      Send Instantly
+                    </button>
+                  </div>
+                  <p className="text-[9px] tracking-[0.12em] text-luxury-gold text-center font-medium mt-1">
+                    No payment required &middot; Styling confirmation via WhatsApp
+                  </p>
                 </div>
               </div>
             ) : (
@@ -379,12 +389,17 @@ export function InquiryTray() {
                 <p className="text-[9px] text-zinc-500 text-center font-light leading-relaxed mb-1">
                   Your private inquiry is non-binding. A House curator will guide fit, styling, and availability details via WhatsApp before any order is confirmed.
                 </p>
-                <button
-                  onClick={() => setShowForm(true)}
-                  className="w-full py-4 bg-white text-black text-center text-xs uppercase tracking-widest font-semibold hover:bg-gold-500 transition-all duration-300 shadow-xl rounded-sm cursor-pointer"
-                >
-                  Begin Private Inquiry
-                </button>
+                <div className="flex flex-col gap-2">
+                  <button
+                    onClick={() => setShowForm(true)}
+                    className="w-full py-4 bg-white text-black text-center text-xs uppercase tracking-widest font-semibold hover:bg-gold-500 transition-all duration-300 shadow-xl rounded-sm cursor-pointer"
+                  >
+                    Begin Private Inquiry
+                  </button>
+                  <p className="text-[9px] tracking-[0.12em] text-luxury-gold text-center font-medium mt-1">
+                    No payment required &middot; Styling confirmation via WhatsApp
+                  </p>
+                </div>
                 <button
                   onClick={() => executeInquiry(true)}
                   className="w-full py-2.5 text-center text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"

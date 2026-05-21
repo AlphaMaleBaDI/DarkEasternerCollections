@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Image, { ImageProps } from 'next/image';
-import { theme } from '@/styles/theme';
 
 /**
  * EditorialFrame Component

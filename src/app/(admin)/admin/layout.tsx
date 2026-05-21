@@ -30,9 +30,10 @@ export default function AdminLayout({
       const { error } = await supabase.auth.signOut()
       if (error) throw error
       router.replace('/')
-    } catch (err: any) {
-      console.error('Sign out error:', err.message)
-      setErrorMsg(err.message || 'Sign out failed.')
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Sign out failed.'
+      console.error('Sign out error:', message)
+      setErrorMsg(message)
       setIsSigningOut(false)
     }
   }
