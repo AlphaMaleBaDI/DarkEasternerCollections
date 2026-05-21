@@ -33,7 +33,7 @@ export default function FeaturedShowcase() {
 
   if (isLoading) {
     return (
-      <section className="py-32 bg-zinc-950 px-6 md:px-12 lg:px-24">
+      <section className="pt-32 pb-16 md:pb-24 bg-zinc-950 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20 text-center">
             <div className="luxury-shimmer h-3 w-32 mx-auto mb-4" />
@@ -64,7 +64,7 @@ export default function FeaturedShowcase() {
   if (products.length === 0) return null
 
   return (
-    <section className="py-32 bg-zinc-950 px-6 md:px-12 lg:px-24">
+    <section className="pt-32 pb-16 md:pb-24 bg-zinc-950 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20 text-center">
           <p className="text-gold-500 text-[10px] uppercase tracking-[0.4em] mb-4">
