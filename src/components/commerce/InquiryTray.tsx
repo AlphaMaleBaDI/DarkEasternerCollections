@@ -344,20 +344,24 @@ export function InquiryTray() {
         {inquiryItems.length > 0 && (
           <div className="p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] border-t border-zinc-900 bg-zinc-950/20 space-y-4">
             {/* Trust Reassurance Line */}
-            <p className="text-[9px] uppercase tracking-[0.18em] text-zinc-500 text-center font-light leading-relaxed mb-1">
-              Curated on Request &middot; Private Styling Guidance &middot; House curator responses handled within active hours
-            </p>
+            <div className="flex items-center justify-center gap-1.5 border-b border-zinc-900/60 pb-3 mb-2 text-[8px] md:text-[9px] uppercase tracking-[0.18em] text-zinc-400 font-light text-center">
+              <span>Curated on Request</span>
+              <span className="text-luxury-gold/40">&middot;</span>
+              <span>Private Styling Guidance</span>
+              <span className="text-luxury-gold/40">&middot;</span>
+              <span className="text-luxury-gold/80">Active Concierge Hours</span>
+            </div>
             
             {/* Lead capture drawer overlay */}
             {showForm ? (
               <div className="space-y-4 border-b border-zinc-900 pb-4 animate-fade-in">
-                <h3 className="font-serif text-sm italic text-white">Concierge Details</h3>
+                <h3 className="font-serif text-sm italic text-white tracking-wide">Personalize Your Styling Consultation</h3>
                 
                 <div>
-                  <label className="block text-[10px] uppercase text-zinc-500 tracking-widest mb-1">Name *</label>
+                  <label className="block text-[10px] uppercase text-zinc-500 tracking-widest mb-1">Name / Client Identification *</label>
                   <input 
                     type="text" 
-                    placeholder="Your Full Name"
+                    placeholder="Enter your full name"
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value)
@@ -376,10 +380,10 @@ export function InquiryTray() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] uppercase text-zinc-500 tracking-widest mb-1">Email (Optional)</label>
+                    <label className="block text-[10px] uppercase text-zinc-500 tracking-widest mb-1">Email Address (Optional)</label>
                     <input 
                       type="email" 
-                      placeholder="client@mail.com"
+                      placeholder="preferred.client@domain.com"
                       value={email}
                       onChange={(e) => {
                         setEmail(e.target.value)
@@ -396,10 +400,10 @@ export function InquiryTray() {
                     )}
                   </div>
                   <div>
-                    <label className="block text-[10px] uppercase text-zinc-500 tracking-widest mb-1">Phone (Optional)</label>
+                    <label className="block text-[10px] uppercase text-zinc-500 tracking-widest mb-1">Contact Number (Optional)</label>
                     <input 
                       type="text" 
-                      placeholder="+234..."
+                      placeholder="+234... (for WhatsApp concierge)"
                       value={phone}
                       onChange={(e) => {
                         setPhone(e.target.value)
@@ -417,8 +421,8 @@ export function InquiryTray() {
                   </div>
                 </div>
 
-                <p className="text-[9px] text-zinc-500 text-center font-light leading-relaxed">
-                  Your private inquiry is non-binding. A House curator will guide fit, styling, and availability details via WhatsApp before any order is confirmed.
+                <p className="text-[9px] text-zinc-550 text-center font-light leading-relaxed">
+                  This private inquiry is entirely non-binding. A dedicated House curator will personally guide your sizing, fit, and styling preferences via WhatsApp before any request is finalized.
                 </p>
 
                 <div className="flex flex-col gap-2 pt-2">
@@ -438,15 +442,15 @@ export function InquiryTray() {
                       Send Instantly
                     </button>
                   </div>
-                  <p className="text-[9px] tracking-[0.12em] text-luxury-gold text-center font-medium mt-1">
-                    No payment required &middot; Styling confirmation via WhatsApp
+                  <p className="text-[9px] tracking-[0.12em] text-luxury-gold text-center font-medium mt-2.5">
+                    No payment required &middot; Complimentary Private Consultation &middot; Secure Hand-off via WhatsApp
                   </p>
                 </div>
               </div>
             ) : (
               <div className="space-y-3">
-                <p className="text-[9px] text-zinc-500 text-center font-light leading-relaxed mb-1">
-                  Your private inquiry is non-binding. A House curator will guide fit, styling, and availability details via WhatsApp before any order is confirmed.
+                <p className="text-[9px] text-zinc-550 text-center font-light leading-relaxed mb-1">
+                  This private inquiry is entirely non-binding. A dedicated House curator will personally guide your sizing, fit, and styling preferences via WhatsApp before any request is finalized.
                 </p>
                 <div className="flex flex-col gap-2">
                   <button
@@ -455,8 +459,8 @@ export function InquiryTray() {
                   >
                     Begin Private Inquiry
                   </button>
-                  <p className="text-[9px] tracking-[0.12em] text-luxury-gold text-center font-medium mt-1">
-                    No payment required &middot; Styling confirmation via WhatsApp
+                  <p className="text-[9px] tracking-[0.12em] text-luxury-gold text-center font-medium mt-2.5">
+                    No payment required &middot; Complimentary Private Consultation &middot; Secure Hand-off via WhatsApp
                   </p>
                 </div>
                 <button

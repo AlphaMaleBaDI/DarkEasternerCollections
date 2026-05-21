@@ -10,6 +10,21 @@ export function StickyInquiryBar() {
   const { inquiryItems, isOpen, setIsOpen } = useInquiry()
   
   const [isVisibleScroll, setIsVisibleScroll] = useState(true)
+  const count = inquiryItems.length
+  const [prevCount, setPrevCount] = useState(count)
+  const [pulse, setPulse] = useState(false)
+
+  // Track additions to trigger a one-off concierge-grade pulse/glow feedback
+  useEffect(() => {
+    if (count > prevCount) {
+      setPulse(true)
+      const timer = setTimeout(() => setPulse(false), 1500)
+      setPrevCount(count)
+      return () => clearTimeout(timer)
+    } else if (count < prevCount) {
+      setPrevCount(count)
+    }
+  }, [count, prevCount])
 
   // Scroll listener to hide the bar when close to the footer to prevent visual competition
   useEffect(() => {
