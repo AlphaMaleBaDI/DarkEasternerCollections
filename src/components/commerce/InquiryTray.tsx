@@ -4,6 +4,9 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useInquiry } from '@/context/InquiryContext'
 import { supabase } from '@/lib/supabase/client'
+import { motion, AnimatePresence } from 'framer-motion'
+
+const luxuryEase = [0.16, 1, 0.3, 1] as [number, number, number, number]
 
 export function InquiryTray() {
   const router = useRouter()
@@ -23,7 +26,6 @@ export function InquiryTray() {
   const [nameError, setNameError] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  if (!isOpen) return null
 
   const handleNoteChange = (id: string, text: string) => {
     updateItemNote(id, text)
@@ -129,15 +131,36 @@ export function InquiryTray() {
   }
 
   return (
-    <div className="fixed inset-0 z-[200] flex justify-end animate-fade-in">
-      {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
-        onClick={() => setIsOpen(false)}
-      />
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div 
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="fixed inset-0 z-[200] flex justify-end"
+        >
+          {/* Backdrop */}
+          <motion.div 
+            variants={{
+              initial: { opacity: 0 },
+              animate: { opacity: 1 },
+              exit: { opacity: 0 }
+            }}
+            transition={{ duration: 0.5, ease: luxuryEase }}
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
+            onClick={() => setIsOpen(false)}
+          />
 
-      {/* Drawer Panel */}
-      <div className="relative w-full max-w-md h-full bg-deep-black border-l border-zinc-900 flex flex-col shadow-2xl justify-between">
+          {/* Drawer Panel */}
+          <motion.div 
+            variants={{
+              initial: { x: '100%' },
+              animate: { x: 0 },
+              exit: { x: '100%' }
+            }}
+            transition={{ duration: 0.5, ease: luxuryEase }}
+            className="relative w-full max-w-md h-full bg-deep-black border-l border-zinc-900 flex flex-col shadow-2xl justify-between z-10"
+          >
         
         {/* Header */}
         <div className="p-6 border-b border-zinc-900 space-y-4">
@@ -214,7 +237,7 @@ export function InquiryTray() {
                   <button
                     key={cat.href}
                     onClick={() => handleNavigate(cat.href)}
-                    className="py-3 px-4 border border-zinc-900 bg-zinc-950/40 hover:bg-zinc-900/60 text-[10px] text-zinc-400 hover:text-white uppercase tracking-widest transition-all text-center cursor-pointer"
+                    className="py-3 px-4 border border-zinc-900 bg-zinc-950/40 hover:bg-zinc-900/60 text-[10px] text-zinc-400 hover:text-white uppercase tracking-widest transition-all text-center cursor-pointer rounded-sm"
                   >
                     {cat.name}
                   </button>
@@ -224,7 +247,7 @@ export function InquiryTray() {
           ) : (
             <div className="space-y-6">
               {inquiryItems.map((item) => (
-                <div key={item.id} className="p-4 border border-zinc-900 bg-zinc-950/40 rounded-lg space-y-4">
+                <div key={item.id} className="p-4 border border-zinc-900 bg-zinc-950/40 rounded-none space-y-4">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-4">
                       {item.main_image_url ? (
@@ -266,7 +289,7 @@ export function InquiryTray() {
                       placeholder="e.g. Size M, customized collar style..."
                       value={item.notes || ''}
                       onChange={(e) => handleNoteChange(item.id, e.target.value)}
-                      className="w-full bg-deep-black border border-zinc-900 focus:border-zinc-700 text-xs p-2 text-white outline-none rounded resize-none h-14"
+                      className="w-full bg-deep-black border border-zinc-900 focus:border-zinc-700 text-xs p-2 text-white outline-none rounded-sm resize-none h-14"
                     />
                   </div>
                 </div>
@@ -294,7 +317,7 @@ export function InquiryTray() {
                       setName(e.target.value)
                       if (e.target.value.trim()) setNameError(false)
                     }}
-                    className={`w-full bg-deep-black border text-xs p-2.5 outline-none rounded text-white ${
+                    className={`w-full bg-deep-black border text-xs p-2.5 outline-none rounded-sm text-white ${
                       nameError ? 'border-red-900 focus:border-red-500' : 'border-zinc-900 focus:border-zinc-700'
                     }`}
                   />
@@ -311,7 +334,7 @@ export function InquiryTray() {
                       placeholder="client@mail.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-deep-black border border-zinc-900 focus:border-zinc-700 text-xs p-2.5 outline-none rounded text-white"
+                      className="w-full bg-deep-black border border-zinc-900 focus:border-zinc-700 text-xs p-2.5 outline-none rounded-sm text-white"
                     />
                   </div>
                   <div>
@@ -321,7 +344,7 @@ export function InquiryTray() {
                       placeholder="+234..."
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full bg-deep-black border border-zinc-900 focus:border-zinc-700 text-xs p-2.5 outline-none rounded text-white"
+                      className="w-full bg-deep-black border border-zinc-900 focus:border-zinc-700 text-xs p-2.5 outline-none rounded-sm text-white"
                     />
                   </div>
                 </div>
@@ -330,14 +353,14 @@ export function InquiryTray() {
                   <button
                     disabled={isSubmitting}
                     onClick={() => executeInquiry(false)}
-                    className="flex-1 py-3 bg-white text-black text-center text-[10px] uppercase tracking-widest font-semibold hover:bg-gold-500 transition-colors disabled:opacity-50"
+                    className="flex-1 py-3 bg-white text-black text-center text-[10px] uppercase tracking-widest font-semibold hover:bg-gold-500 transition-colors disabled:opacity-50 rounded-sm cursor-pointer"
                   >
                     {isSubmitting ? 'Securing...' : 'Send Inquiry'}
                   </button>
                   <button
                     disabled={isSubmitting}
                     onClick={() => executeInquiry(true)}
-                    className="px-4 py-3 border border-zinc-800 text-zinc-400 text-center text-[10px] uppercase tracking-widest hover:text-white transition-colors"
+                    className="px-4 py-3 border border-zinc-800 text-zinc-400 text-center text-[10px] uppercase tracking-widest hover:text-white transition-colors rounded-sm cursor-pointer"
                   >
                     Skip & Send
                   </button>
@@ -347,13 +370,13 @@ export function InquiryTray() {
               <div className="space-y-3">
                 <button
                   onClick={() => setShowForm(true)}
-                  className="w-full py-4 bg-white text-black text-center text-xs uppercase tracking-widest font-semibold hover:bg-gold-500 transition-all duration-300 shadow-xl"
+                  className="w-full py-4 bg-white text-black text-center text-xs uppercase tracking-widest font-semibold hover:bg-gold-500 transition-all duration-300 shadow-xl rounded-sm cursor-pointer"
                 >
                   Initiate Concierge Inquiry
                 </button>
                 <button
                   onClick={() => executeInquiry(true)}
-                  className="w-full py-2.5 text-center text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-300 transition-colors"
+                  className="w-full py-2.5 text-center text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"
                 >
                   Skip Capture & Send Instantly
                 </button>
@@ -363,7 +386,9 @@ export function InquiryTray() {
           </div>
         )}
 
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
+      )}
+    </AnimatePresence>
   )
 }

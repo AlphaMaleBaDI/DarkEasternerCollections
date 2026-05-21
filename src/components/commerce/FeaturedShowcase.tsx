@@ -31,7 +31,35 @@ export default function FeaturedShowcase() {
     fetchProducts()
   }, [])
 
-  if (isLoading) return null
+  if (isLoading) {
+    return (
+      <section className="py-32 bg-zinc-950 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20 text-center">
+            <div className="luxury-shimmer h-3 w-32 mx-auto mb-4" />
+            <div className="luxury-shimmer h-10 w-64 mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {Array.from({ length: 3 }).map((_, idx) => (
+              <div key={idx} className="relative overflow-hidden bg-zinc-950 border border-zinc-900/60">
+                <div className="relative aspect-[3/4] w-full luxury-shimmer" />
+                <div className="p-6 space-y-4">
+                  <div className="flex justify-between items-end">
+                    <div className="space-y-2 w-2/3">
+                      <div className="luxury-shimmer h-2 w-1/2" />
+                      <div className="luxury-shimmer h-5 w-full" />
+                    </div>
+                    <div className="luxury-shimmer h-4 w-1/4" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   if (products.length === 0) return null
 

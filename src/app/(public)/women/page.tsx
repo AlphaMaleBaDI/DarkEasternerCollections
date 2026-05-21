@@ -15,8 +15,8 @@ export default async function WomenCategoryPage() {
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <CategoryHeader config={config} />
       
-      <section className="px-6 md:px-12 lg:px-24 pb-32">
-        <div className="mb-16 flex items-center gap-8">
+      <section className="px-6 md:px-12 lg:px-24 pb-40">
+        <div className="mb-24 flex items-center gap-8">
           <h2 className="text-zinc-500 text-xs uppercase tracking-[0.2em] font-medium">
             Curated Elegance
           </h2>

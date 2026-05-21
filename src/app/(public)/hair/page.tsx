@@ -15,8 +15,8 @@ export default async function HairCategoryPage() {
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <CategoryHeader config={config} />
       
-      <section className="px-6 md:px-12 lg:px-24 pb-32">
-        <div className="mb-20 flex flex-col gap-4">
+      <section className="px-6 md:px-12 lg:px-24 pb-40">
+        <div className="mb-24 flex flex-col gap-4">
           <h2 className="text-zinc-500 text-xs uppercase tracking-[0.2em] font-medium">
             The Crown Archives
           </h2>

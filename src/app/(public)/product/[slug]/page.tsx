@@ -1,8 +1,8 @@
 import React from 'react'
 import { getProductBySlug } from '@/lib/products/queries'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { AddToInquiryButton } from '@/components/commerce/AddToInquiryButton'
+import { ProductHeroImage } from '@/components/commerce/ProductHeroImage'
 
 export const dynamic = 'force-dynamic'
 
@@ -19,12 +19,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
       {/* Cinematic Hero Section */}
       <section className="relative min-h-screen flex flex-col lg:flex-row">
         <div className="relative w-full lg:w-3/5 h-[60vh] lg:h-full overflow-hidden">
-          <Image 
+          <ProductHeroImage 
             src={product.main_image_url} 
             alt={product.title} 
-            fill 
-            sizes="(max-width: 1024px) 100vw, 60vw"
-            className="object-cover opacity-90"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent lg:hidden" />

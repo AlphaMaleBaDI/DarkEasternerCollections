@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { theme } from '@/styles/theme';
 import { createWhatsAppInquiry } from '@/lib/whatsapp';
 import { Logo } from './Logo';
@@ -26,6 +27,7 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { inquiryItems, setIsOpen } = useInquiry();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,6 +64,7 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center gap-12">
             {navLinks.map((link) => {
               const isExternal = link.href.includes('wa.me');
+              const isActive = pathname === link.href;
 
               return (
                 <Link 
@@ -69,10 +72,14 @@ export const Navbar: React.FC = () => {
                   href={link.href}
                   target={isExternal ? '_blank' : undefined}
                   rel={isExternal ? 'noopener noreferrer' : undefined}
-                  className="group relative text-soft-white/60 hover:text-soft-white uppercase tracking-[0.3em] text-[10px] font-medium transition-colors duration-500"
+                  className={`group relative uppercase tracking-[0.3em] text-[10px] font-medium transition-colors duration-500 ${
+                    isActive ? 'text-soft-white' : 'text-soft-white/60 hover:text-soft-white'
+                  }`}
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-luxury-gold transition-all duration-500 group-hover:w-full" />
+                  <span className={`absolute -bottom-1 left-0 h-px bg-luxury-gold transition-all duration-500 ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`} />
                 </Link>
               );
             })}
@@ -91,8 +98,10 @@ export const Navbar: React.FC = () => {
               </svg>
               {inquiryItems.length > 0 && (
                 <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
+                  key={inquiryItems.length}
+                  initial={{ scale: 0.6, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: 'spring', stiffness: 350, damping: 15 }}
                   className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-luxury-gold text-deep-black text-[9px] font-bold rounded-full flex items-center justify-center font-mono"
                 >
                   {inquiryItems.length}

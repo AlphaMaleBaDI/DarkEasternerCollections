@@ -7,6 +7,8 @@ import { createWhatsAppInquiry } from '@/lib/whatsapp';
 import { theme } from '@/styles/theme';
 import { ShowroomTressesGallery } from '@/components/ui/ShowroomTressesGallery';
 
+import CategoryLoading from '@/components/ui/CategoryLoading';
+
 type CatalogProduct = {
   id: string;
   slug: string;
@@ -53,11 +55,7 @@ export default function CollectionsPage() {
   }, [])
 
   if (isLoading) {
-    return (
-      <main className="min-h-screen bg-deep-black flex items-center justify-center">
-        <div className="w-8 h-8 border border-luxury-gold border-t-transparent animate-spin rounded-full"></div>
-      </main>
-    )
+    return <CategoryLoading />
   }
 
   return (

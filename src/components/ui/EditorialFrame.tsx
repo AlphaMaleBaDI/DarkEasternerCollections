@@ -1,8 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image, { ImageProps } from 'next/image';
-import { motion } from 'framer-motion';
 import { theme } from '@/styles/theme';
 
 /**
@@ -42,6 +41,8 @@ export const EditorialFrame: React.FC<EditorialFrameProps> = ({
   priority = false,
   ...props
 }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <div 
       className={`relative overflow-hidden group ${aspectRatios[aspectRatio]} ${glow ? 'gold-glow' : ''} bg-deep-black`}
@@ -59,25 +60,30 @@ export const EditorialFrame: React.FC<EditorialFrameProps> = ({
       )}
 
       {/* Main Image */}
-      <motion.div
-        className={`relative w-full h-full ${
+      <div
+        className={`relative w-full h-full overflow-hidden ${
           grayscaleHover 
             ? 'transition-[filter] duration-[800ms] lg:grayscale lg:hover:grayscale-0' 
             : ''
         }`}
-        whileHover={hoverZoom ? { scale: 1.05 } : {}}
-        transition={{ duration: theme.motion.duration.slow, ease: theme.motion.ease.cinematic }}
       >
         <Image
           src={src}
           alt={alt}
           fill
           priority={priority}
-          className="object-cover transition-all duration-700"
+          onLoad={() => setIsLoaded(true)}
+          className={`object-cover transition-all duration-[1200ms] ease-luxury ${
+            isLoaded 
+              ? 'opacity-100 blur-0 scale-100' 
+              : 'opacity-0 blur-md scale-110'
+          } ${
+            hoverZoom ? 'group-hover:scale-105' : ''
+          }`}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           {...props}
         />
-      </motion.div>
+      </div>
 
       {/* Luxury Overlay Layer */}
       {overlay && (

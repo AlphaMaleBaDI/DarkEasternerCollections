@@ -16,8 +16,8 @@ export default function ProductCard({ product }: ProductCardProps) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="group relative overflow-hidden cursor-pointer bg-zinc-900"
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative overflow-hidden cursor-pointer bg-zinc-950 border border-zinc-900/60 transition-all duration-700 ease-luxury hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.85)] hover:border-zinc-800"
     >
       <Link href={`/product/${product.slug}`}>
         <div className="relative aspect-[3/4] overflow-hidden">
@@ -26,15 +26,15 @@ export default function ProductCard({ product }: ProductCardProps) {
             alt={product.title}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover transition-all duration-700 scale-105 group-hover:scale-100"
+            className="object-cover transition-transform duration-1000 ease-luxury scale-100 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-700 ease-luxury" />
         </div>
         
-        <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+        <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-luxury z-10">
           <div className="flex justify-between items-end">
             <div>
-              <p className="text-zinc-400 text-xs uppercase tracking-widest mb-1">
+              <p className="text-zinc-400 text-[10px] uppercase tracking-widest mb-1.5 font-medium">
                 {product.category}
               </p>
               <h3 className="text-white text-lg font-serif italic">
@@ -42,7 +42,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               </h3>
             </div>
             {product.show_price && (
-              <div className="text-gold-500 font-light">
+              <div className="text-luxury-gold font-light tracking-wide">
                 {product.price?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}
               </div>
             )}
