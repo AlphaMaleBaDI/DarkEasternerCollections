@@ -166,17 +166,17 @@ export default function CollectionsPage() {
         )}
 
         {/* Editorial Conclusion */}
-        <section className="mt-40 text-center">
-          <div className="max-w-2xl mx-auto space-y-12">
-            <div className="w-px h-32 bg-luxury-gold/20 mx-auto" />
-            <p className="text-soft-white/40 text-sm uppercase tracking-[0.4em] font-light">
+        <section className="mt-20 md:mt-32 text-center">
+          <div className="max-w-2xl mx-auto flex flex-col items-center">
+            <div className="w-px h-16 md:h-24 bg-luxury-gold/20" />
+            <p className="text-soft-white/40 text-sm uppercase tracking-[0.4em] font-light mt-6 md:mt-8">
               Experience the Unforgettable
             </p>
             <a 
               href={createWhatsAppInquiry({ type: 'general' })}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-soft-white text-3xl md:text-5xl font-heading hover:text-luxury-gold transition-colors duration-500 block"
+              className="text-soft-white text-3xl md:text-5xl font-heading hover:text-luxury-gold transition-colors duration-500 block mt-10 md:mt-12"
             >
               Consult with Our <br />
               <span className="italic">Couture Experts</span>

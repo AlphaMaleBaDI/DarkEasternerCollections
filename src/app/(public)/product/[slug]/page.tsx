@@ -1,6 +1,7 @@
 import React from 'react'
 import { getProductBySlug } from '@/lib/products/queries'
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import { AddToInquiryButton } from '@/components/commerce/AddToInquiryButton'
 import { ProductHeroImage } from '@/components/commerce/ProductHeroImage'
 
@@ -66,6 +67,41 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               <p className="text-center text-zinc-600 text-[10px] uppercase tracking-wider mt-4">
                 Curate multiple pieces for a single inquiry
               </p>
+
+              {/* Trust Signals */}
+              <div className="mt-8 pt-6 border-t border-zinc-900 flex flex-col gap-3">
+                <div className="flex items-center gap-3 text-zinc-400">
+                  <span className="w-1.5 h-[1px] bg-luxury-gold" />
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-light">Tailored House Response</span>
+                </div>
+                <div className="flex items-center gap-3 text-zinc-400">
+                  <span className="w-1.5 h-[1px] bg-luxury-gold" />
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-light">Styling & Availability Guidance</span>
+                </div>
+                <div className="flex items-center gap-3 text-zinc-400">
+                  <span className="w-1.5 h-[1px] bg-luxury-gold" />
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-light">Custom Fit Options</span>
+                </div>
+              </div>
+
+              {/* Internal Cross-Link */}
+              <div className="mt-6 pt-6 border-t border-zinc-900">
+                {/hair/i.test(product.category) ? (
+                  <Link 
+                    href="/hair"
+                    className="text-luxury-gold hover:text-white uppercase tracking-[0.2em] text-[10px] font-medium transition-colors duration-500 pb-1 border-b border-luxury-gold/20 hover:border-white/30 inline-block"
+                  >
+                    View Hair Atelier
+                  </Link>
+                ) : (
+                  <Link 
+                    href="/collections"
+                    className="text-luxury-gold hover:text-white uppercase tracking-[0.2em] text-[10px] font-medium transition-colors duration-500 pb-1 border-b border-luxury-gold/20 hover:border-white/30 inline-block"
+                  >
+                    Explore House Styles
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>

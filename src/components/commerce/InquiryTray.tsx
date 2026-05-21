@@ -301,6 +301,10 @@ export function InquiryTray() {
         {/* Footer Area with Form and CTA */}
         {inquiryItems.length > 0 && (
           <div className="p-6 border-t border-zinc-900 bg-zinc-950/20 space-y-4">
+            {/* Trust Reassurance Line */}
+            <p className="text-[9px] uppercase tracking-[0.18em] text-zinc-500 text-center font-light leading-relaxed mb-1">
+              Tailored House Response &middot; Styling Guidance &middot; Availability Support
+            </p>
             
             {/* Lead capture drawer overlay */}
             {showForm ? (
@@ -355,14 +359,14 @@ export function InquiryTray() {
                     onClick={() => executeInquiry(false)}
                     className="flex-1 py-3 bg-white text-black text-center text-[10px] uppercase tracking-widest font-semibold hover:bg-gold-500 transition-colors disabled:opacity-50 rounded-sm cursor-pointer"
                   >
-                    {isSubmitting ? 'Securing...' : 'Send Inquiry'}
+                    {isSubmitting ? 'Securing...' : 'Begin Private Inquiry'}
                   </button>
                   <button
                     disabled={isSubmitting}
                     onClick={() => executeInquiry(true)}
                     className="px-4 py-3 border border-zinc-800 text-zinc-400 text-center text-[10px] uppercase tracking-widest hover:text-white transition-colors rounded-sm cursor-pointer"
                   >
-                    Skip & Send
+                    Send Instantly
                   </button>
                 </div>
               </div>
@@ -372,13 +376,13 @@ export function InquiryTray() {
                   onClick={() => setShowForm(true)}
                   className="w-full py-4 bg-white text-black text-center text-xs uppercase tracking-widest font-semibold hover:bg-gold-500 transition-all duration-300 shadow-xl rounded-sm cursor-pointer"
                 >
-                  Initiate Concierge Inquiry
+                  Begin Private Inquiry
                 </button>
                 <button
                   onClick={() => executeInquiry(true)}
                   className="w-full py-2.5 text-center text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"
                 >
-                  Skip Capture & Send Instantly
+                  Send Instantly
                 </button>
               </div>
             )}

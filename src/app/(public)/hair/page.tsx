@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { getProductsByCategory } from '@/lib/products/queries'
 import { CATEGORY_CONFIGS } from '@/lib/constants/categories'
 import CategoryHeader from '@/components/commerce/CategoryHeader'
@@ -16,13 +17,21 @@ export default async function HairCategoryPage() {
       <CategoryHeader config={config} />
       
       <section className="px-6 md:px-12 lg:px-24 pb-40">
-        <div className="mb-24 flex flex-col gap-4">
-          <h2 className="text-zinc-500 text-xs uppercase tracking-[0.2em] font-medium">
-            The Crown Archives
-          </h2>
-          <p className="text-zinc-600 text-sm font-light italic max-w-sm">
-            Sourced from the finest origins, crafted for the soul.
-          </p>
+        <div className="mb-24 flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-soft-white/5 pb-8">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-zinc-500 text-xs uppercase tracking-[0.2em] font-medium">
+              The Crown Archives
+            </h2>
+            <p className="text-zinc-600 text-sm font-light italic max-w-sm">
+              Sourced from the finest origins, crafted for the soul.
+            </p>
+          </div>
+          <Link 
+            href="/collections"
+            className="text-luxury-gold hover:text-white uppercase tracking-[0.2em] text-[10px] font-medium transition-colors duration-500 self-start sm:self-auto pb-1 border-b border-luxury-gold/20 hover:border-white/30"
+          >
+            Discover House Styles
+          </Link>
         </div>
         
         {products.length > 0 ? (

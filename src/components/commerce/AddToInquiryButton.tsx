@@ -46,7 +46,7 @@ export function AddToInquiryButton({ product }: AddToInquiryButtonProps) {
           : 'bg-white text-black hover:bg-gold-500'
       } shadow-xl`}
     >
-      {isAdded ? 'Added to Inquiry' : hasBeenAdded ? 'In Inquiry List (Open Tray)' : 'Add to Concierge Inquiry'}
+      {isAdded ? 'Curated' : hasBeenAdded ? 'In Private Inquiry (Open Tray)' : 'Curate Private Inquiry'}
     </button>
   )
 }

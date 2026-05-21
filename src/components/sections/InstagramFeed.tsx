@@ -105,8 +105,11 @@ export const InstagramFeed: React.FC = () => {
           transition={{ duration: theme.motion.duration.slow, delay: 0.4 }}
           className="mt-16 flex flex-col items-center gap-8"
         >
-          <span className="text-luxury-gold uppercase tracking-[0.3em] text-[9px] font-medium">
-            Enter the Editorial World
+          <span className="text-luxury-gold uppercase tracking-[0.4em] text-[10px] font-medium">
+            FOLLOW THE HOUSE
+          </span>
+          <span className="text-soft-white/40 text-[11px] md:text-xs italic tracking-wider font-light -mt-6 max-w-md text-center">
+            Explore the rhythm of couture, hair, and editorial presence.
           </span>
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
             <a 
