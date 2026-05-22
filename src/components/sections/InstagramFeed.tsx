@@ -35,6 +35,16 @@ const instaPosts = [
 export const InstagramFeed: React.FC = () => {
   return (
     <section className="pt-12 pb-10 md:pb-16 md:pt-24 bg-deep-black overflow-hidden border-t border-soft-white/5">
+      {/* Shared SVG Gradients for social icons on mobile */}
+      <svg width="0" height="0" className="absolute pointer-events-none" aria-hidden="true">
+        <defs>
+          <linearGradient id="insta-grad-strip" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#C13584" stopOpacity={0.55} />
+            <stop offset="100%" stopColor="#833AB4" stopOpacity={0.55} />
+          </linearGradient>
+        </defs>
+      </svg>
+      
       <div className="container">
         
         {/* Section Header */}
@@ -134,7 +144,7 @@ export const InstagramFeed: React.FC = () => {
               aria-label="Visit Dark Easterner Styles Instagram"
             >
               <div className="flex items-center gap-3 text-soft-white/40 group-hover:text-luxury-gold transition-colors duration-500">
-                <InstagramIcon className="w-6.5 h-6.5" strokeWidth={1.75} />
+                <InstagramIcon className="w-6.5 h-6.5 social-icon-insta" strokeWidth={1.75} />
                 <span className="text-sm md:text-base font-heading tracking-[0.2em] transition-all duration-500 italic">
                   Styles
                 </span>
@@ -149,7 +159,7 @@ export const InstagramFeed: React.FC = () => {
               aria-label="Visit Dark Easterner Hairs Instagram"
             >
               <div className="flex items-center gap-3 text-soft-white/40 group-hover:text-luxury-gold transition-colors duration-500">
-                <InstagramIcon className="w-6.5 h-6.5" strokeWidth={1.75} />
+                <InstagramIcon className="w-6.5 h-6.5 social-icon-insta" strokeWidth={1.75} />
                 <span className="text-sm md:text-base font-heading tracking-[0.2em] transition-all duration-500 italic">
                   Hairs
                 </span>
@@ -164,7 +174,7 @@ export const InstagramFeed: React.FC = () => {
               aria-label="Visit Dark Easterner TikTok"
             >
               <div className="flex items-center gap-3 text-soft-white/40 group-hover:text-luxury-gold transition-colors duration-500">
-                <TikTokIcon className="w-6.5 h-6.5" strokeWidth={1.75} />
+                <TikTokIcon className="w-6.5 h-6.5 social-icon-tiktok" strokeWidth={1.75} />
                 <span className="text-sm md:text-base font-heading tracking-[0.2em] transition-all duration-500 italic">
                   TikTok
                 </span>

@@ -137,3 +137,24 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Mobile-only social icon brand accents in "Follow The House" strip */
+.social-icon-insta {
+  stroke: currentColor;
+  transition: stroke 0.5s var(--ease-luxury);
+}
+
+.social-icon-tiktok {
+  stroke: currentColor;
+  transition: stroke 0.5s var(--ease-luxury);
+}
+
+@media (hover: none) {
+  .social-icon-insta {
+    stroke: url(#insta-grad-strip) !important;
+  }
+  .social-icon-tiktok {
+    stroke: rgba(37, 244, 238, 0.55) !important;
+  }
+}
+
+
