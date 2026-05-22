@@ -121,7 +121,18 @@ export const Footer: React.FC = () => {
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-soft-white/30 hover:text-luxury-gold transition-colors duration-500"
-              aria-label="Instagram (Styles)"
+              aria-label="Visit Dark Easterner Styles Instagram"
+              title="Styles"
+            >
+              <InstagramIcon className="w-4.5 h-4.5" />
+            </a>
+            <a 
+              href="https://www.instagram.com/darkeasterner_hairs" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-soft-white/30 hover:text-luxury-gold transition-colors duration-500"
+              aria-label="Visit Dark Easterner Hairs Instagram"
+              title="Hairs"
             >
               <InstagramIcon className="w-4.5 h-4.5" />
             </a>
@@ -130,7 +141,8 @@ export const Footer: React.FC = () => {
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-soft-white/30 hover:text-luxury-gold transition-colors duration-500"
-              aria-label="TikTok"
+              aria-label="Visit Dark Easterner TikTok"
+              title="TikTok"
             >
               <TikTokIcon className="w-4.5 h-4.5" />
             </a>

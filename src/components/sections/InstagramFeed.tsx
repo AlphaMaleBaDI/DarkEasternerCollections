@@ -5,6 +5,20 @@ import { motion } from 'framer-motion';
 import { EditorialFrame } from '@/components/ui/EditorialFrame';
 import { theme } from '@/styles/theme';
 
+const InstagramIcon: React.FC<{ className?: string; strokeWidth?: number }> = ({ className = "w-6 h-6", strokeWidth = 1.75 }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
+const TikTokIcon: React.FC<{ className?: string; strokeWidth?: number }> = ({ className = "w-6 h-6", strokeWidth = 1.75 }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
 /**
  * InstagramFeed Section
  * Curated editorial social proof.
@@ -111,39 +125,51 @@ export const InstagramFeed: React.FC = () => {
           <span className="text-soft-white/40 text-[11px] md:text-xs italic tracking-wider font-light -mt-6 max-w-md text-center">
             Explore the rhythm of couture, hair, and editorial presence.
           </span>
-          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
+          <div className="flex flex-row flex-wrap items-center justify-center gap-8 md:gap-16">
             <a 
               href="https://www.instagram.com/darkeasterner_styles" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-2"
+              className="group flex flex-col items-center gap-3"
+              aria-label="Visit Dark Easterner Styles Instagram"
             >
-              <span className="text-soft-white/40 group-hover:text-soft-white text-lg md:text-xl font-heading tracking-[0.2em] transition-all duration-700 italic">
-                @darkeasterner_styles
-              </span>
-              <div className="w-8 h-[1px] bg-luxury-gold/20 group-hover:w-16 group-hover:bg-luxury-gold/50 transition-all duration-700" />
+              <div className="flex items-center gap-3 text-soft-white/40 group-hover:text-luxury-gold transition-colors duration-500">
+                <InstagramIcon className="w-6.5 h-6.5" strokeWidth={1.75} />
+                <span className="text-sm md:text-base font-heading tracking-[0.2em] transition-all duration-500 italic">
+                  Styles
+                </span>
+              </div>
+              <div className="w-6 h-[1px] bg-luxury-gold/20 group-hover:w-12 group-hover:bg-luxury-gold/50 transition-all duration-700" />
             </a>
             <a 
               href="https://www.instagram.com/darkeasterner_hairs" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-2"
+              className="group flex flex-col items-center gap-3"
+              aria-label="Visit Dark Easterner Hairs Instagram"
             >
-              <span className="text-soft-white/40 group-hover:text-soft-white text-lg md:text-xl font-heading tracking-[0.2em] transition-all duration-700 italic">
-                @darkeasterner_hairs
-              </span>
-              <div className="w-8 h-[1px] bg-luxury-gold/20 group-hover:w-16 group-hover:bg-luxury-gold/50 transition-all duration-700" />
+              <div className="flex items-center gap-3 text-soft-white/40 group-hover:text-luxury-gold transition-colors duration-500">
+                <InstagramIcon className="w-6.5 h-6.5" strokeWidth={1.75} />
+                <span className="text-sm md:text-base font-heading tracking-[0.2em] transition-all duration-500 italic">
+                  Hairs
+                </span>
+              </div>
+              <div className="w-6 h-[1px] bg-luxury-gold/20 group-hover:w-12 group-hover:bg-luxury-gold/50 transition-all duration-700" />
             </a>
             <a 
               href="https://vm.tiktok.com/ZS9YfsAJ7Xxdj-QBIL5/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-2"
+              className="group flex flex-col items-center gap-3"
+              aria-label="Visit Dark Easterner TikTok"
             >
-              <span className="text-soft-white/40 group-hover:text-soft-white text-lg md:text-xl font-heading tracking-[0.2em] transition-all duration-700 italic">
-                TikTok
-              </span>
-              <div className="w-8 h-[1px] bg-luxury-gold/20 group-hover:w-16 group-hover:bg-luxury-gold/50 transition-all duration-700" />
+              <div className="flex items-center gap-3 text-soft-white/40 group-hover:text-luxury-gold transition-colors duration-500">
+                <TikTokIcon className="w-6.5 h-6.5" strokeWidth={1.75} />
+                <span className="text-sm md:text-base font-heading tracking-[0.2em] transition-all duration-500 italic">
+                  TikTok
+                </span>
+              </div>
+              <div className="w-6 h-[1px] bg-luxury-gold/20 group-hover:w-12 group-hover:bg-luxury-gold/50 transition-all duration-700" />
             </a>
           </div>
         </motion.div>
