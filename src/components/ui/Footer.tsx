@@ -24,6 +24,16 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="bg-deep-black border-t border-soft-white/5 pt-12 md:pt-24 pb-12">
+      {/* Shared SVG Gradients for social icons on mobile */}
+      <svg width="0" height="0" className="absolute pointer-events-none" aria-hidden="true">
+        <defs>
+          <linearGradient id="insta-grad-strip" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#C13584" stopOpacity={0.55} />
+            <stop offset="100%" stopColor="#833AB4" stopOpacity={0.55} />
+          </linearGradient>
+        </defs>
+      </svg>
+      
       <div className="container px-6 md:px-10 lg:px-14 xl:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-y-12 md:gap-x-8 lg:gap-x-10 xl:gap-x-24">
           
@@ -78,7 +88,7 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer" 
                   className="flex items-center gap-2 text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors group"
                 >
-                  <InstagramIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500" />
+                  <InstagramIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500 social-icon-insta" />
                   <span>Instagram (Styles)</span>
                 </a>
               </li>
@@ -89,7 +99,7 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer" 
                   className="flex items-center gap-2 text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors group"
                 >
-                  <InstagramIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500" />
+                  <InstagramIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500 social-icon-insta" />
                   <span>Instagram (Hairs)</span>
                 </a>
               </li>
@@ -100,7 +110,7 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer" 
                   className="flex items-center gap-2 text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors group"
                 >
-                  <TikTokIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500" />
+                  <TikTokIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500 social-icon-tiktok" />
                   <span>TikTok</span>
                 </a>
               </li>
@@ -124,7 +134,7 @@ export const Footer: React.FC = () => {
               aria-label="Visit Dark Easterner Styles Instagram"
               title="Styles"
             >
-              <InstagramIcon className="w-4.5 h-4.5" />
+              <InstagramIcon className="w-4.5 h-4.5 social-icon-insta" />
             </a>
             <a 
               href="https://www.instagram.com/darkeasterner_hairs" 
@@ -134,7 +144,7 @@ export const Footer: React.FC = () => {
               aria-label="Visit Dark Easterner Hairs Instagram"
               title="Hairs"
             >
-              <InstagramIcon className="w-4.5 h-4.5" />
+              <InstagramIcon className="w-4.5 h-4.5 social-icon-insta" />
             </a>
             <a 
               href="https://vm.tiktok.com/ZS9YfsAJ7Xxdj-QBIL5/" 
@@ -144,7 +154,7 @@ export const Footer: React.FC = () => {
               aria-label="Visit Dark Easterner TikTok"
               title="TikTok"
             >
-              <TikTokIcon className="w-4.5 h-4.5" />
+              <TikTokIcon className="w-4.5 h-4.5 social-icon-tiktok" />
             </a>
           </div>
 
