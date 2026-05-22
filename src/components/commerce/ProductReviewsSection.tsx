@@ -311,204 +311,200 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
       {/* Subtle decorative gold blur */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-luxury-gold/5 rounded-full filter blur-[120px] pointer-events-none opacity-20" />
       
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-          
-          {/* Left Column: Editorial Title */}
-          <div className="lg:col-span-4 flex flex-col justify-start lg:sticky lg:top-24 h-fit">
-            <span className="text-luxury-gold text-xs uppercase tracking-[0.25em] mb-4 font-medium block">
-              Reflections
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-white leading-[1.2]">
-              {title}
-            </h2>
-            <div className="h-[1px] w-12 bg-luxury-gold/30 my-6" />
-            <p className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-[0.18em] leading-relaxed font-light">
-              {subcopy}
-            </p>
-          </div>
-          
-          {/* Right Column: Reviews list & Leave a Review Form */}
-          <div className="lg:col-span-8 space-y-16">
-            
-            {/* Reviews List */}
-            <div className="space-y-12 md:space-y-16">
-              {visibleReviews.map((review, idx) => {
-                const isExpanded = expandedReviews[review.id];
-                const shouldTruncate = review.review.length > 250;
-                const displayedText = shouldTruncate && !isExpanded
-                  ? `${review.review.slice(0, 250)}...`
-                  : review.review;
+      <div className="max-w-[1500px] mx-auto px-6 md:px-12 xl:px-20 relative z-10 space-y-16 md:space-y-24">
+        
+        {/* Row 1: Full width intro */}
+        <div className="max-w-3xl">
+          <span className="text-luxury-gold text-xs uppercase tracking-[0.25em] mb-4 font-medium block">
+            Reflections
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-white leading-[1.2] mb-6">
+            {title}
+          </h2>
+          <div className="h-[1px] w-12 bg-luxury-gold/30 mb-6" />
+          <p className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-[0.18em] leading-relaxed font-light">
+            {subcopy}
+          </p>
+        </div>
+        
+        {/* Row 2: Reviews grid */}
+        <div className="space-y-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+            {visibleReviews.map((review, idx) => {
+              const isExpanded = expandedReviews[review.id];
+              const shouldTruncate = review.review.length > 250;
+              const displayedText = shouldTruncate && !isExpanded
+                ? `${review.review.slice(0, 250)}...`
+                : review.review;
 
-                return (
-                  <div 
-                    key={review.id} 
-                    className={`group border-b border-zinc-900/40 pb-12 last:border-0 last:pb-0 ${
-                      !showAll && idx === 2 ? 'md:block hidden' : ''
-                    }`}
-                  >
-                    <div className="relative">
-                      {/* Elegant quotes graphic */}
-                      <span className="absolute -top-6 -left-4 text-6xl font-serif text-luxury-gold/10 pointer-events-none select-none">
-                        &ldquo;
-                      </span>
-                      <div className="relative z-10 pl-4 space-y-3">
-                        {review.rating && (
-                          <div className="flex items-center gap-1">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                              <StarIcon key={star} filled={star <= review.rating!} />
-                            ))}
-                          </div>
+              return (
+                <div 
+                  key={review.id} 
+                  className={`group border-b border-zinc-900/40 pb-12 last:border-0 last:pb-0 lg:border-b-0 lg:pb-0 ${
+                    !showAll && idx === 2 ? 'lg:block hidden' : ''
+                  }`}
+                >
+                  <div className="relative">
+                    {/* Elegant quotes graphic */}
+                    <span className="absolute -top-6 -left-4 text-6xl font-serif text-luxury-gold/10 pointer-events-none select-none">
+                      &ldquo;
+                    </span>
+                    <div className="relative z-10 pl-4 space-y-3">
+                      {review.rating && (
+                        <div className="flex items-center gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <StarIcon key={star} filled={star <= review.rating!} />
+                          ))}
+                        </div>
+                      )}
+                      <blockquote className="text-zinc-300 text-lg md:text-xl font-light italic leading-relaxed font-serif">
+                        {displayedText}
+                        {shouldTruncate && (
+                          <button
+                            type="button"
+                            onClick={() => toggleExpand(review.id)}
+                            className="text-luxury-gold hover:text-white text-[10px] uppercase tracking-[0.15em] font-medium transition-colors ml-2 focus:outline-none inline-block border-b border-luxury-gold/20 hover:border-white/30"
+                          >
+                            {isExpanded ? "Read Less" : "Read More"}
+                          </button>
                         )}
-                        <blockquote className="text-zinc-300 text-lg md:text-xl font-light italic leading-relaxed font-serif">
-                          {displayedText}
-                          {shouldTruncate && (
-                            <button
-                              type="button"
-                              onClick={() => toggleExpand(review.id)}
-                              className="text-luxury-gold hover:text-white text-[10px] uppercase tracking-[0.15em] font-medium transition-colors ml-2 focus:outline-none inline-block border-b border-luxury-gold/20 hover:border-white/30"
-                            >
-                              {isExpanded ? "Read Less" : "Read More"}
-                            </button>
-                          )}
-                        </blockquote>
-                      </div>
+                      </blockquote>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 pl-4">
+                    <div className="flex items-center gap-3">
+                      <span className="w-4 h-[1px] bg-luxury-gold/30" />
+                      <span className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-[0.2em] font-light">
+                        {review.customerName}{review.city ? ` · ${review.city}` : ''}
+                      </span>
                     </div>
                     
-                    <div className="mt-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 pl-4">
-                      <div className="flex items-center gap-3">
-                        <span className="w-4 h-[1px] bg-luxury-gold/30" />
-                        <span className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-[0.2em] font-light">
-                          {review.customerName}{review.city ? ` · ${review.city}` : ''}
-                        </span>
-                      </div>
-                      
-                      {review.pending ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 border border-zinc-800 bg-zinc-900/40 text-zinc-500 text-[8px] md:text-[9px] uppercase tracking-[0.18em] font-light select-none">
-                          <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 animate-pulse" />
-                          Pending Verification
-                        </span>
-                      ) : review.verified ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 border border-luxury-gold/15 bg-luxury-gold/5 text-luxury-gold text-[8px] md:text-[9px] uppercase tracking-[0.18em] font-light select-none">
-                          <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
-                          Verified Client
-                        </span>
-                      ) : null}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* View More Reflections Action */}
-            {!showAll && reviews.length > (reviews.length > 2 ? 3 : 2) && (
-              <div className="pt-2">
-                <button
-                  type="button"
-                  onClick={() => setShowAll(true)}
-                  className="text-luxury-gold hover:text-white uppercase tracking-[0.2em] text-[10px] font-medium transition-colors duration-500 pb-1 border-b border-luxury-gold/20 hover:border-white/30 inline-block"
-                >
-                  View More Reflections ({reviews.length - (reviews.length > 2 ? 3 : 2)} additional)
-                </button>
-              </div>
-            )}
-
-            {/* Client Reflection Form */}
-            <div className="mt-16 pt-16 border-t border-zinc-900/60 max-w-xl">
-              <h3 className="text-xl font-serif italic text-white mb-6">Client Reflection</h3>
-              
-              {showSuccess && (
-                <div className="p-6 border border-luxury-gold/15 bg-luxury-gold/5 text-luxury-gold text-xs uppercase tracking-wider leading-relaxed font-light mb-6 animate-fade-in">
-                  <div className="flex items-center gap-2 mb-2 font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
-                    Submission Recorded
-                  </div>
-                  Your reflection has been submitted to the House curators for verification.
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="client-name" className="block text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-light">
-                      Name / Client Identification *
-                    </label>
-                    <input
-                      id="client-name"
-                      type="text"
-                      required
-                      value={formName}
-                      onChange={(e) => setFormName(e.target.value)}
-                      className="w-full bg-zinc-950/80 border border-zinc-900 hover:border-zinc-800 focus:border-luxury-gold/40 focus:ring-1 focus:ring-luxury-gold/5 text-zinc-100 text-xs px-4 py-3 outline-none transition-all duration-300 font-light"
-                      placeholder="e.g. Amina K."
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="client-city" className="block text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-light">
-                      City / Location (Optional)
-                    </label>
-                    <input
-                      id="client-city"
-                      type="text"
-                      value={formCity}
-                      onChange={(e) => setFormCity(e.target.value)}
-                      className="w-full bg-zinc-950/80 border border-zinc-900 hover:border-zinc-800 focus:border-luxury-gold/40 focus:ring-1 focus:ring-luxury-gold/5 text-zinc-100 text-xs px-4 py-3 outline-none transition-all duration-300 font-light"
-                      placeholder="e.g. Lagos"
-                    />
+                    {review.pending ? (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 border border-zinc-800 bg-zinc-900/40 text-zinc-500 text-[8px] md:text-[9px] uppercase tracking-[0.18em] font-light select-none">
+                        <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 animate-pulse" />
+                        Pending Verification
+                      </span>
+                    ) : review.verified ? (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 border border-luxury-gold/15 bg-luxury-gold/5 text-luxury-gold text-[8px] md:text-[9px] uppercase tracking-[0.18em] font-light select-none">
+                        <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
+                        Verified Client
+                      </span>
+                    ) : null}
                   </div>
                 </div>
-
-                <div className="space-y-2">
-                  <span className="block text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-light">
-                    Rating (Optional)
-                  </span>
-                  <div className="flex items-center gap-2">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <StarIcon 
-                        key={star} 
-                        filled={star <= formRating} 
-                        onClick={() => setFormRating(star)} 
-                        className="w-4.5 h-4.5"
-                      />
-                    ))}
-                    {formRating > 0 && (
-                      <button 
-                        type="button" 
-                        onClick={() => setFormRating(0)}
-                        className="text-[9px] uppercase tracking-[0.15em] text-zinc-600 hover:text-zinc-400 ml-2 transition-colors"
-                      >
-                        Clear
-                      </button>
-                    )}
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="client-review" className="block text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-light">
-                    Reflection / Notes *
-                  </label>
-                  <textarea
-                    id="client-review"
-                    required
-                    rows={4}
-                    value={formReview}
-                    onChange={(e) => setFormReview(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-zinc-900 hover:border-zinc-800 focus:border-luxury-gold/40 focus:ring-1 focus:ring-luxury-gold/5 text-zinc-100 text-xs px-4 py-3 outline-none transition-all duration-300 font-light resize-none leading-relaxed"
-                    placeholder={`Describe your experience with the ${productTitle}...`}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold hover:text-black font-medium text-[10px] uppercase tracking-[0.25em] px-8 py-3.5 transition-all duration-500 select-none block w-full md:w-auto"
-                >
-                  Submit Reflection
-                </button>
-              </form>
-            </div>
-            
+              );
+            })}
           </div>
+
+          {/* View More Reflections Action */}
+          {!showAll && reviews.length > (reviews.length > 2 ? 3 : 2) && (
+            <div className="pt-6">
+              <button
+                type="button"
+                onClick={() => setShowAll(true)}
+                className="text-luxury-gold hover:text-white uppercase tracking-[0.2em] text-[10px] font-medium transition-colors duration-500 pb-1 border-b border-luxury-gold/20 hover:border-white/30 inline-block"
+              >
+                View More Reflections ({reviews.length - (reviews.length > 2 ? 3 : 2)} additional)
+              </button>
+            </div>
+          )}
         </div>
+
+        {/* Row 3: Client Reflection Form */}
+        <div className="pt-16 border-t border-zinc-900/60 max-w-6xl mx-auto w-full">
+          <h3 className="text-xl font-serif italic text-white mb-6">Client Reflection</h3>
+          
+          {showSuccess && (
+            <div className="p-6 border border-luxury-gold/15 bg-luxury-gold/5 text-luxury-gold text-xs uppercase tracking-wider leading-relaxed font-light mb-6 animate-fade-in">
+              <div className="flex items-center gap-2 mb-2 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
+                Submission Recorded
+              </div>
+              Your reflection has been submitted to the House curators for verification.
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-2">
+              <label htmlFor="client-name" className="block text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-light">
+                Name / Client Identification *
+              </label>
+              <input
+                id="client-name"
+                type="text"
+                required
+                value={formName}
+                onChange={(e) => setFormName(e.target.value)}
+                className="w-full bg-zinc-950/80 border border-zinc-900 hover:border-zinc-800 focus:border-luxury-gold/40 focus:ring-1 focus:ring-luxury-gold/5 text-zinc-100 text-xs px-4 py-3 outline-none transition-all duration-300 font-light"
+                placeholder="e.g. Amina K."
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="client-city" className="block text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-light">
+                City / Location (Optional)
+              </label>
+              <input
+                id="client-city"
+                type="text"
+                value={formCity}
+                onChange={(e) => setFormCity(e.target.value)}
+                className="w-full bg-zinc-950/80 border border-zinc-900 hover:border-zinc-800 focus:border-luxury-gold/40 focus:ring-1 focus:ring-luxury-gold/5 text-zinc-100 text-xs px-4 py-3 outline-none transition-all duration-300 font-light"
+                placeholder="e.g. Lagos"
+              />
+            </div>
+
+            <div className="space-y-2 md:col-span-2">
+              <span className="block text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-light">
+                Rating (Optional)
+              </span>
+              <div className="flex items-center gap-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <StarIcon 
+                    key={star} 
+                    filled={star <= formRating} 
+                    onClick={() => setFormRating(star)} 
+                    className="w-4.5 h-4.5"
+                  />
+                ))}
+                {formRating > 0 && (
+                  <button 
+                    type="button" 
+                    onClick={() => setFormRating(0)}
+                    className="text-[9px] uppercase tracking-[0.15em] text-zinc-600 hover:text-zinc-400 ml-2 transition-colors"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+            </div>
+
+            <div className="space-y-2 md:col-span-2">
+              <label htmlFor="client-review" className="block text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-light">
+                Reflection / Notes *
+              </label>
+              <textarea
+                id="client-review"
+                required
+                rows={4}
+                value={formReview}
+                onChange={(e) => setFormReview(e.target.value)}
+                className="w-full bg-zinc-950/80 border border-zinc-900 hover:border-zinc-800 focus:border-luxury-gold/40 focus:ring-1 focus:ring-luxury-gold/5 text-zinc-100 text-xs px-4 py-3 outline-none transition-all duration-300 font-light resize-none leading-relaxed"
+                placeholder={`Describe your experience with the ${productTitle}...`}
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <button
+                type="submit"
+                className="border border-luxury-gold/30 text-luxury-gold hover:bg-luxury-gold hover:text-black font-medium text-[10px] uppercase tracking-[0.25em] px-8 py-3.5 transition-all duration-500 select-none block w-full md:w-auto"
+              >
+                Submit Reflection
+              </button>
+            </div>
+          </form>
+        </div>
+
       </div>
     </section>
   );
