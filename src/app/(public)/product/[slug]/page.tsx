@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { AddToInquiryButton } from '@/components/commerce/AddToInquiryButton'
 import { ProductHeroImage } from '@/components/commerce/ProductHeroImage'
+import { ProductReviewsSection } from '@/components/commerce/ProductReviewsSection'
 
 export const dynamic = 'force-dynamic'
 
@@ -179,6 +180,14 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           </div>
         </div>
       </section>
+
+      {/* House Reviews / Testimonials Section */}
+      <ProductReviewsSection 
+        productId={product.id} 
+        productSlug={product.slug} 
+        productCategory={product.category} 
+        productTitle={product.title} 
+      />
     </div>
   )
 }

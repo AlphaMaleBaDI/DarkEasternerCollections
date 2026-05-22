@@ -5,6 +5,20 @@ import Link from 'next/link';
 import { BrandCrest } from './BrandCrest';
 import { createWhatsAppInquiry } from '@/lib/whatsapp';
 
+const InstagramIcon: React.FC<{ className?: string }> = ({ className = "w-3.5 h-3.5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
+const TikTokIcon: React.FC<{ className?: string }> = ({ className = "w-3.5 h-3.5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
@@ -57,9 +71,39 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-6">
             <h4 className="text-luxury-gold uppercase tracking-[0.3em] text-[10px] font-medium">Presence</h4>
             <ul className="space-y-4">
-              <li><a href="https://www.instagram.com/darkeasterner_styles" target="_blank" rel="noopener noreferrer" className="text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors">Instagram (Styles)</a></li>
-              <li><a href="https://www.instagram.com/darkeasterner_hairs" target="_blank" rel="noopener noreferrer" className="text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors">Instagram (Hairs)</a></li>
-              <li><a href="https://vm.tiktok.com/ZS9YfsAJ7Xxdj-QBIL5/" target="_blank" rel="noopener noreferrer" className="text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors">TikTok</a></li>
+              <li>
+                <a 
+                  href="https://www.instagram.com/darkeasterner_styles" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors group"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500" />
+                  <span>Instagram (Styles)</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://www.instagram.com/darkeasterner_hairs" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors group"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500" />
+                  <span>Instagram (Hairs)</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://vm.tiktok.com/ZS9YfsAJ7Xxdj-QBIL5/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors group"
+                >
+                  <TikTokIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500" />
+                  <span>TikTok</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -70,6 +114,28 @@ export const Footer: React.FC = () => {
             © {currentYear} Dark Easterner Collections. All Rights Reserved.
           </p>
           
+          {/* Standalone Social Icons */}
+          <div className="flex items-center gap-6">
+            <a 
+              href="https://www.instagram.com/darkeasterner_styles" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-soft-white/30 hover:text-luxury-gold transition-colors duration-500"
+              aria-label="Instagram (Styles)"
+            >
+              <InstagramIcon className="w-4.5 h-4.5" />
+            </a>
+            <a 
+              href="https://vm.tiktok.com/ZS9YfsAJ7Xxdj-QBIL5/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-soft-white/30 hover:text-luxury-gold transition-colors duration-500"
+              aria-label="TikTok"
+            >
+              <TikTokIcon className="w-4.5 h-4.5" />
+            </a>
+          </div>
+
           <div className="flex items-center gap-8">
             <Link href="/admin" className="text-soft-white/20 hover:text-luxury-gold text-[10px] uppercase tracking-[0.2em] font-light transition-colors">Curator Access</Link>
             <Link href="/" className="text-soft-white/20 hover:text-luxury-gold text-[10px] uppercase tracking-[0.2em] font-light transition-colors">Privacy Policy</Link>
