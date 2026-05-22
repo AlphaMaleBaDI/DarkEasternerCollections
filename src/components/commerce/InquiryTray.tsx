@@ -29,6 +29,38 @@ export function InquiryTray() {
   const [phoneError, setPhoneError] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
+  // Validate availability of items in inquiry tray when it is opened
+  React.useEffect(() => {
+    if (isOpen && inquiryItems.length > 0) {
+      const checkStaleItems = async () => {
+        try {
+          const ids = inquiryItems.map(item => item.id)
+          const { data, error } = await supabase
+            .from('products')
+            .select('id, inventory_status')
+            .in('id', ids)
+
+          if (!error && data) {
+            const staleIds: string[] = []
+            data.forEach(prod => {
+              if (prod.inventory_status === 'coming_soon' || prod.inventory_status === 'out_of_stock') {
+                staleIds.push(prod.id)
+              }
+            })
+            if (staleIds.length > 0) {
+              staleIds.forEach(id => {
+                removeFromInquiry(id)
+              })
+              console.warn('Some items in your tray are no longer available and were removed.')
+            }
+          }
+        } catch (err) {
+          console.error('Failed to validate cart items availability:', err)
+        }
+      }
+      checkStaleItems()
+    }
+  }, [isOpen, inquiryItems, removeFromInquiry])
 
   const handleNoteChange = (id: string, text: string) => {
     updateItemNote(id, text)
@@ -90,6 +122,29 @@ export function InquiryTray() {
 
     // 1. Log the inquiry in Supabase database
     try {
+      // Re-verify availability of all items before submitting to prevent stale item inquiries
+      const ids = inquiryItems.map(item => item.id)
+      const { data: latestProducts, error: checkError } = await supabase
+        .from('products')
+        .select('id, title, inventory_status')
+        .in('id', ids)
+
+      if (checkError) throw checkError
+
+      const unavailableItems = latestProducts?.filter(
+        p => p.inventory_status === 'coming_soon' || p.inventory_status === 'out_of_stock'
+      ) || []
+
+      if (unavailableItems.length > 0) {
+        // Remove unavailable items and block submission
+        unavailableItems.forEach(item => {
+          removeFromInquiry(item.id)
+        })
+        alert(`Some items in your inquiry (e.g. ${unavailableItems.map(i => i.title).join(', ')}) are no longer available and have been removed from your curated list.`)
+        setIsSubmitting(false)
+        return
+      }
+
       const { error } = await supabase
         .from('inquiries')
         .insert({
@@ -120,13 +175,13 @@ export function InquiryTray() {
     const hasCouture = inquiryItems.some(item => item.category !== 'hair')
     const whatsappNumber = hasCouture ? '2347083794965' : '2349151024440'
 
-    // Determine if any item has a price that Cynthia has explicitly enabled for display
+    // Determine if any item has a price that the Admin has explicitly enabled for display
     const hasVisiblePrice = inquiryItems.some(
       item => item.show_price === true && typeof item.price === 'number' && item.price > 0
     )
 
     // Formulate luxury copy message
-    let msg = `Hello ${hasCouture ? "Cynthia's House" : "The Atelier"},\n\n`
+    let msg = `Hello ${hasCouture ? "Dark Easterner" : "The Atelier"},\n\n`
     if (!isAnonymous) {
       msg += `My name is ${customerName}.\n`
     }
@@ -142,7 +197,7 @@ export function InquiryTray() {
       if (item.sku) {
         msg += ` (SKU: ${item.sku})`
       }
-      // Only append price if Cynthia has explicitly enabled Show Pricing for this product
+      // Only append price if the Admin has explicitly enabled Show Pricing for this product
       if (item.show_price === true && typeof item.price === 'number' && item.price > 0) {
         msg += ` – ₦${item.price.toLocaleString('en-US')}`
       }

@@ -19,6 +19,13 @@ const TikTokIcon: React.FC<{ className?: string }> = ({ className = "w-3.5 h-3.5
   </svg>
 );
 
+const YouTubeIcon: React.FC<{ className?: string }> = ({ className = "w-3.5 h-3.5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+  </svg>
+);
+
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
@@ -89,7 +96,7 @@ export const Footer: React.FC = () => {
                   className="flex items-center gap-2 text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors group"
                 >
                   <InstagramIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500 social-icon-insta" />
-                  <span>Instagram (Styles)</span>
+                  <span>Styles</span>
                 </a>
               </li>
               <li>
@@ -100,7 +107,18 @@ export const Footer: React.FC = () => {
                   className="flex items-center gap-2 text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors group"
                 >
                   <InstagramIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500 social-icon-insta" />
-                  <span>Instagram (Hairs)</span>
+                  <span>Hair Atelier</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://www.instagram.com/easterner_scents" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors group"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500 social-icon-insta" />
+                  <span>Scents</span>
                 </a>
               </li>
               <li>
@@ -112,6 +130,17 @@ export const Footer: React.FC = () => {
                 >
                   <TikTokIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500 social-icon-tiktok" />
                   <span>TikTok</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://www.youtube.com/@darkeasterner" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 text-soft-white/60 hover:text-soft-white text-xs tracking-wide transition-colors group"
+                >
+                  <YouTubeIcon className="w-3.5 h-3.5 text-soft-white/30 group-hover:text-luxury-gold transition-colors duration-500 social-icon-youtube" />
+                  <span>YouTube</span>
                 </a>
               </li>
             </ul>
@@ -142,7 +171,17 @@ export const Footer: React.FC = () => {
               rel="noopener noreferrer" 
               className="text-soft-white/30 hover:text-luxury-gold transition-colors duration-500"
               aria-label="Visit Dark Easterner Hairs Instagram"
-              title="Hairs"
+              title="Hair Atelier"
+            >
+              <InstagramIcon className="w-4.5 h-4.5 social-icon-insta" />
+            </a>
+            <a 
+              href="https://www.instagram.com/easterner_scents" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-soft-white/30 hover:text-luxury-gold transition-colors duration-500"
+              aria-label="Visit Dark Easterner Scents Instagram"
+              title="Scents"
             >
               <InstagramIcon className="w-4.5 h-4.5 social-icon-insta" />
             </a>
@@ -155,6 +194,16 @@ export const Footer: React.FC = () => {
               title="TikTok"
             >
               <TikTokIcon className="w-4.5 h-4.5 social-icon-tiktok" />
+            </a>
+            <a 
+              href="https://www.youtube.com/@darkeasterner" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-soft-white/30 hover:text-luxury-gold transition-colors duration-500"
+              aria-label="Visit Dark Easterner YouTube"
+              title="YouTube"
+            >
+              <YouTubeIcon className="w-4.5 h-4.5 social-icon-youtube" />
             </a>
           </div>
 

@@ -120,7 +120,7 @@ export default function AdminProductsList() {
       <header className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <h1 className="text-3xl font-serif text-white italic">House Archives</h1>
-          <p className="text-zinc-500 text-sm mt-2">Manage couture inventory and editorial statuses.</p>
+          <p className="text-zinc-500 text-sm mt-2">Manage couture availability and editorial statuses.</p>
         </div>
         <Link 
           href="/admin/upload" 
@@ -269,9 +269,23 @@ export default function AdminProductsList() {
                 <div className="flex flex-wrap items-center justify-between md:justify-end gap-4 md:gap-8 border-t border-zinc-900/60 pt-4 md:border-0 md:pt-0 w-full md:w-auto">
                   {/* Stock count */}
                   <div className="text-left md:text-right">
-                    <div className="text-xs text-zinc-500 uppercase tracking-widest">Stock Level</div>
-                    <div className={`text-sm mt-0.5 ${product.stock_quantity === 0 ? 'text-red-500' : 'text-zinc-300'}`}>
-                      {product.stock_quantity === 0 ? 'Out of Stock' : `${product.stock_quantity} units`}
+                    <div className="text-xs text-zinc-500 uppercase tracking-widest">Availability Status</div>
+                    <div className={`text-sm mt-0.5 ${
+                      product.inventory_status === 'out_of_stock' 
+                        ? 'text-red-500' 
+                        : product.inventory_status === 'coming_soon'
+                        ? 'text-blue-400 font-medium'
+                        : product.stock_quantity === 0 
+                        ? 'text-red-500' 
+                        : 'text-zinc-300'
+                    }`}>
+                      {product.inventory_status === 'out_of_stock' 
+                        ? 'Out of Stock' 
+                        : product.inventory_status === 'coming_soon'
+                        ? 'Coming Soon'
+                        : product.stock_quantity === 0 
+                        ? 'Out of Stock' 
+                        : `${product.stock_quantity} units`}
                     </div>
                   </div>
 

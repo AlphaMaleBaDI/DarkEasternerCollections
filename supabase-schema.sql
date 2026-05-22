@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS products (
   show_price BOOLEAN DEFAULT false,
   stock_quantity INTEGER DEFAULT 0,
   in_stock BOOLEAN DEFAULT false,
+  inventory_status TEXT NOT NULL DEFAULT 'available' CHECK (inventory_status IN ('available', 'coming_soon', 'out_of_stock')),
   featured BOOLEAN DEFAULT false,
   status TEXT DEFAULT 'draft',
   main_image_url TEXT,

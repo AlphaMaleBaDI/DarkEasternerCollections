@@ -11,6 +11,7 @@ export interface InquiryItem {
   price?: number | null
   show_price?: boolean | null
   main_image_url?: string | null
+  inventory_status?: string | null
   quantity: number
   notes?: string
   size?: string
@@ -63,6 +64,10 @@ export function InquiryProvider({ children }: { children: React.ReactNode }) {
   }, [inquiryItems, isInitialized])
 
   const addToInquiry = (newItem: Omit<InquiryItem, 'quantity'>, openDrawer: boolean = true) => {
+    if (newItem.inventory_status === 'coming_soon' || newItem.inventory_status === 'out_of_stock') {
+      console.warn('Cannot add unavailable item to inquiry:', newItem.title)
+      return
+    }
     setInquiryItems((prev) => {
       const existing = prev.find((item) => item.id === newItem.id)
       if (existing) {

@@ -5,7 +5,7 @@
  */
 
 const NUMBERS = {
-  PRIMARY_CONCIERGE: '2347083794965', // Cynthia's direct concierge line
+  PRIMARY_CONCIERGE: '2347083794965', // Dark Easterner direct concierge line
   HAIR_SPECIALIST: '2349151024440',
 };
 
@@ -34,7 +34,7 @@ export const createWhatsAppInquiry = ({
     : NUMBERS.PRIMARY_CONCIERGE;
   
   // Base Greeting: Personal and Composed
-  let message = 'Hello Cynthia, ';
+  let message = 'Hello Dark Easterner, ';
 
   if (customMessage) {
     message += customMessage;

@@ -115,12 +115,23 @@ export default function ProductUpload() {
             <input type="checkbox" name="showPrice" className="accent-gold-500" />
             <span className="text-zinc-400 text-sm">Show Pricing</span>
           </label>
-          <div className="flex items-center gap-3 ml-auto">
-            <select name="status" className="bg-zinc-900 border border-zinc-800 p-2 text-zinc-400 text-xs uppercase tracking-widest outline-none">
-              <option value="published">Published</option>
-              <option value="draft">Draft</option>
-              <option value="archived">Archived</option>
-            </select>
+          <div className="flex items-center gap-6 ml-auto">
+            <div className="flex items-center gap-2">
+              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">Availability Status</span>
+              <select name="inventoryStatus" defaultValue="available" className="bg-zinc-900 border border-zinc-800 p-2 text-zinc-400 text-xs uppercase tracking-widest outline-none">
+                <option value="available">Available</option>
+                <option value="coming_soon">Coming Soon</option>
+                <option value="out_of_stock">Out of Stock</option>
+              </select>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">Status</span>
+              <select name="status" defaultValue="draft" className="bg-zinc-900 border border-zinc-800 p-2 text-zinc-400 text-xs uppercase tracking-widest outline-none">
+                <option value="published">Published</option>
+                <option value="draft">Draft</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
           </div>
         </div>
 
@@ -146,7 +157,7 @@ export default function ProductUpload() {
                 href="/admin/products" 
                 className="mt-1 text-xs uppercase tracking-widest text-white border-b border-white hover:text-gold-500 hover:border-gold-500 transition-colors pb-0.5"
               >
-                View House Inventory
+                View House Availability
               </Link>
             )}
           </motion.div>

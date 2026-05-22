@@ -78,6 +78,17 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
             {/* House Status Indicators */}
             <div className="flex flex-wrap gap-2.5 mb-4 md:mb-8">
+              {product.inventory_status === 'coming_soon' ? (
+                <span className="text-[9px] uppercase tracking-[0.15em] text-blue-400 font-semibold border border-blue-900/30 px-2.5 py-1 bg-blue-950/15 rounded-full flex items-center gap-1.5 shadow-lg select-none">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                  Coming Soon
+                </span>
+              ) : product.inventory_status === 'out_of_stock' ? (
+                <span className="text-[9px] uppercase tracking-[0.15em] text-red-400 font-semibold border border-red-900/30 px-2.5 py-1 bg-red-950/15 rounded-full flex items-center gap-1.5 shadow-lg select-none">
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                  Out of Stock
+                </span>
+              ) : null}
               <span className="text-[9px] uppercase tracking-[0.15em] text-luxury-gold/60 font-light border border-luxury-gold/10 px-2.5 py-1 bg-zinc-950/40">
                 Curated on Request
               </span>
@@ -121,6 +132,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                   price: product.price,
                   show_price: product.show_price,
                   main_image_url: product.main_image_url,
+                  inventory_status: product.inventory_status,
                 }}
               />
               <p className="text-center text-zinc-500 text-[9px] uppercase tracking-[0.15em] mt-3">

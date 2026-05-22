@@ -148,12 +148,20 @@ h1, h2, h3, h4, h5, h6 {
   transition: stroke 0.5s var(--ease-luxury);
 }
 
+.social-icon-youtube {
+  stroke: currentColor;
+  transition: stroke 0.5s var(--ease-luxury);
+}
+
 @media (hover: none) {
   .social-icon-insta {
     stroke: url(#insta-grad-strip) !important;
   }
   .social-icon-tiktok {
     stroke: rgba(37, 244, 238, 0.55) !important;
+  }
+  .social-icon-youtube {
+    stroke: rgba(229, 57, 53, 0.55) !important;
   }
 }
 

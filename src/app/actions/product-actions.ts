@@ -35,6 +35,7 @@ export async function uploadProduct(formData: FormData) {
     const stock = formData.get('stock') ? Number(formData.get('stock')) : 0;
     const featured = formData.get('featured') != null;
     const status = formData.get('status') || 'draft';
+    const inventoryStatus = formData.get('inventoryStatus') as string || 'available';
 
     const rawSku = formData.get('sku') as string | null;
     const sku = rawSku?.trim().toUpperCase() || null;
@@ -81,6 +82,7 @@ export async function uploadProduct(formData: FormData) {
         show_price: showPrice,
         stock_quantity: stock,
         in_stock: stock > 0,
+        inventory_status: inventoryStatus,
         featured,
         status,
         main_image_url: imagePath,
@@ -220,6 +222,7 @@ export async function updateProduct(id: string, formData: FormData) {
     const stock = formData.get('stock') ? Number(formData.get('stock')) : 0;
     const featured = formData.get('featured') != null;
     const status = formData.get('status') || 'draft';
+    const inventoryStatus = formData.get('inventoryStatus') as string || 'available';
 
     const rawSku = formData.get('sku') as string | null;
     const sku = rawSku?.trim().toUpperCase() || null;
@@ -280,6 +283,7 @@ export async function updateProduct(id: string, formData: FormData) {
         show_price: showPrice,
         stock_quantity: stock,
         in_stock: stock > 0,
+        inventory_status: inventoryStatus,
         featured,
         status,
         main_image_url: imagePath,

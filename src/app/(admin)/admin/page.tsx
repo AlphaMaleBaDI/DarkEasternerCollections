@@ -84,7 +84,7 @@ export default function AdminDashboard() {
   return (
     <div className="max-w-6xl mx-auto pb-12">
       <header className="mb-10">
-        <h1 className="text-3xl font-serif text-white italic">Welcome, Cynthia&apos;s House</h1>
+        <h1 className="text-3xl font-serif text-white italic">Welcome, Dark Easterner</h1>
         <p className="text-zinc-500 text-sm mt-2">Manage the House&apos;s digital showroom and private inquiries.</p>
       </header>
       

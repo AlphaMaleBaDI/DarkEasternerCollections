@@ -12,6 +12,7 @@ export interface Product {
   show_price: boolean;
   stock_quantity: number;
   in_stock: boolean;
+  inventory_status: 'available' | 'coming_soon' | 'out_of_stock';
   featured: boolean;
   status: ProductStatus;
   main_image_url: string;
