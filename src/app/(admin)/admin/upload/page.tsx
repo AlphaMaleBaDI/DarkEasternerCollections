@@ -106,27 +106,32 @@ export default function ProductUpload() {
           </div>
         </div>
 
-        <div className="flex items-center gap-6 pt-4">
-          <label className="flex items-center gap-3 cursor-pointer">
-            <input type="checkbox" name="featured" className="accent-gold-500" />
-            <span className="text-zinc-400 text-sm">Feature on Home</span>
-          </label>
-          <label className="flex items-center gap-3 cursor-pointer">
-            <input type="checkbox" name="showPrice" className="accent-gold-500" />
-            <span className="text-zinc-400 text-sm">Show Pricing</span>
-          </label>
-          <div className="flex items-center gap-6 ml-auto">
-            <div className="flex items-center gap-2">
+        <div className="flex flex-col gap-6 md:grid md:grid-cols-2 pt-6 border-t border-zinc-900">
+          {/* Checkboxes */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
+            <label className="flex items-center gap-3 cursor-pointer select-none">
+              <input type="checkbox" name="featured" className="accent-gold-500 w-4 h-4" />
+              <span className="text-zinc-400 text-sm">Feature on Home</span>
+            </label>
+            <label className="flex items-center gap-3 cursor-pointer select-none">
+              <input type="checkbox" name="showPrice" className="accent-gold-500 w-4 h-4" />
+              <span className="text-zinc-400 text-sm">Show Pricing</span>
+            </label>
+          </div>
+
+          {/* Status Dropdowns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="flex flex-col gap-1.5">
               <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">Availability Status</span>
-              <select name="inventoryStatus" defaultValue="available" className="bg-zinc-900 border border-zinc-800 p-2 text-zinc-400 text-xs uppercase tracking-widest outline-none">
+              <select name="inventoryStatus" defaultValue="available" className="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-zinc-400 text-xs uppercase tracking-widest outline-none focus:border-gold-500">
                 <option value="available">Available</option>
                 <option value="coming_soon">Coming Soon</option>
                 <option value="out_of_stock">Out of Stock</option>
               </select>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">Status</span>
-              <select name="status" defaultValue="draft" className="bg-zinc-900 border border-zinc-800 p-2 text-zinc-400 text-xs uppercase tracking-widest outline-none">
+            <div className="flex flex-col gap-1.5">
+              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">Publication Status</span>
+              <select name="status" defaultValue="draft" className="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-zinc-400 text-xs uppercase tracking-widest outline-none focus:border-gold-500">
                 <option value="published">Published</option>
                 <option value="draft">Draft</option>
                 <option value="archived">Archived</option>
