@@ -161,44 +161,51 @@ export default function EditProductForm({ product }: EditProductFormProps) {
           </div>
         )}
 
-        <div className="flex items-center gap-6 pt-4">
-          <label className="flex items-center gap-3 cursor-pointer">
-            <input 
-              type="checkbox" 
-              name="featured" 
-              defaultChecked={product.featured}
-              className="accent-gold-500" 
-            />
-            <span className="text-zinc-400 text-sm">Feature on Home</span>
-          </label>
-          <label className="flex items-center gap-3 cursor-pointer">
-            <input 
-              type="checkbox" 
-              name="showPrice" 
-              defaultChecked={product.show_price}
-              className="accent-gold-500" 
-            />
-            <span className="text-zinc-400 text-sm">Show Pricing</span>
-          </label>
-          <div className="flex items-center gap-6 ml-auto">
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">Availability Status</span>
+
+
+        <div className="flex flex-col gap-6 pt-6 border-t border-zinc-900">
+          {/* Checkboxes Group */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
+            <label className="flex items-center gap-3 cursor-pointer select-none">
+              <input 
+                type="checkbox" 
+                name="featured" 
+                defaultChecked={product.featured}
+                className="accent-gold-500 w-4 h-4" 
+              />
+              <span className="text-zinc-400 text-sm">Feature on Home</span>
+            </label>
+            <label className="flex items-center gap-3 cursor-pointer select-none">
+              <input 
+                type="checkbox" 
+                name="showPrice" 
+                defaultChecked={product.show_price}
+                className="accent-gold-500 w-4 h-4" 
+              />
+              <span className="text-zinc-400 text-sm">Show Pricing</span>
+            </label>
+          </div>
+
+          {/* Status Dropdowns Group */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col gap-2">
+              <span className="text-zinc-400 text-xs uppercase tracking-widest font-mono">Availability Status</span>
               <select 
                 name="inventoryStatus" 
                 defaultValue={product.inventory_status || 'available'}
-                className="bg-zinc-900 border border-zinc-800 p-2 text-zinc-400 text-xs uppercase tracking-widest outline-none"
+                className="w-full bg-zinc-900 border border-zinc-800 p-3 text-white text-sm outline-none focus:border-gold-500 transition-colors"
               >
                 <option value="available">Available</option>
                 <option value="coming_soon">Coming Soon</option>
                 <option value="out_of_stock">Out of Stock</option>
               </select>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">Status</span>
+            <div className="flex flex-col gap-2">
+              <span className="text-zinc-400 text-xs uppercase tracking-widest font-mono">Publication Status</span>
               <select 
                 name="status" 
                 defaultValue={product.status}
-                className="bg-zinc-900 border border-zinc-800 p-2 text-zinc-400 text-xs uppercase tracking-widest outline-none"
+                className="w-full bg-zinc-900 border border-zinc-800 p-3 text-white text-sm outline-none focus:border-gold-500 transition-colors"
               >
                 <option value="published">Published</option>
                 <option value="draft">Draft</option>
