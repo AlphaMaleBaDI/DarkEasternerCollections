@@ -8,10 +8,10 @@ import { Product, ProductCategory, ProductStatus } from '@/types/database'
 import { toggleProductArchive, deleteProduct } from '@/app/actions/product-actions'
 
 const CATEGORY_MAP: Record<ProductCategory, string> = {
-  men: 'Sovereign Tailoring',
-  women: 'Editorial Grace',
-  hair: 'The Atelier',
-  perfumes: 'Invisible Presence'
+  men: 'Men of Class',
+  women: 'The Elegant Woman',
+  hair: 'Her Crown Collection',
+  perfumes: 'Signature Fragrances'
 }
 
 export default function AdminProductsList() {
