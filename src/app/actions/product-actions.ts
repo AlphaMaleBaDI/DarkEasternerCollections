@@ -5,10 +5,18 @@ import { ProductCategory } from '@/types/database'
 import { revalidatePath } from 'next/cache'
 
 export async function uploadProduct(formData: FormData) {
+  const isDev = process.env.NODE_ENV === 'development';
+  const log = (stage: string, data?: Record<string, unknown>) => {
+    if (isDev) console.log(`[UPLOAD] ${stage}`, data ? JSON.stringify(data) : '');
+  };
+
+  log('START');
+
   try {
     const title = formData.get('title') as string;
     const baseSlug = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-    
+    log('TITLE', { title, baseSlug });
+
     // Ensure slug uniqueness
     let slug = baseSlug;
     let counter = 1;
@@ -27,6 +35,7 @@ export async function uploadProduct(formData: FormData) {
         slug = `${baseSlug}-${counter++}`;
       }
     }
+    log('SLUG', { slug });
 
     const description = formData.get('description') as string;
     const category = formData.get('category') as ProductCategory;
@@ -40,36 +49,83 @@ export async function uploadProduct(formData: FormData) {
     const rawSku = formData.get('sku') as string | null;
     const sku = rawSku?.trim().toUpperCase() || null;
 
+    log('FIELDS', { category, price, stock, featured, status });
+
     // 1. Handle Image Upload
     const imageFile = formData.get('image') as File;
     let imagePath = '';
 
     if (imageFile && imageFile.size > 0) {
+      // Extract image dimensions from file header without processing the whole image
+      let dimensions: { w?: number; h?: number } = {};
+      try {
+        const buffer = await imageFile.arrayBuffer();
+        const view = new DataView(buffer);
+        if (imageFile.type === 'image/png') {
+          dimensions.w = view.getUint32(16);
+          dimensions.h = view.getUint32(20);
+        } else if (imageFile.type === 'image/jpeg') {
+          let offset = 2;
+          while (offset < view.byteLength) {
+            if (view.getUint8(offset) === 0xFF && view.getUint8(offset + 1) === 0xC0) {
+              dimensions.h = view.getUint16(offset + 5);
+              dimensions.w = view.getUint16(offset + 7);
+              break;
+            }
+            offset++;
+          }
+        }
+      } catch {
+        // dimension extraction is non-critical logging
+      }
+
+      log('IMAGE_FILE', {
+        name: imageFile.name,
+        size: imageFile.size,
+        type: imageFile.type,
+        width: dimensions.w,
+        height: dimensions.h,
+        lastModified: imageFile.lastModified,
+      });
+
       // Validation
       const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
       if (!allowedTypes.includes(imageFile.type)) {
         throw new Error('Unsupported image format. Please use JPG, PNG or WebP.');
       }
 
-      if (imageFile.size > 10 * 1024 * 1024) { // 10MB Limit
+      if (imageFile.size > 10 * 1024 * 1024) {
         throw new Error('Image size exceeds the 10MB luxury limit.');
       }
 
+      log('VALIDATION_PASSED');
+
       const fileName = `${Date.now()}-${imageFile.name}`;
-      const { error: uploadError } = await supabaseAdmin.storage
+      log('STORAGE_UPLOAD_START', { fileName });
+
+      const { error: uploadError, data: uploadData } = await supabaseAdmin.storage
         .from('product-images')
         .upload(fileName, imageFile);
 
-      if (uploadError) throw uploadError;
-      
+      if (uploadError) {
+        log('STORAGE_UPLOAD_ERROR', { code: uploadError.name, message: uploadError.message });
+        throw uploadError;
+      }
+
+      log('STORAGE_UPLOAD_DONE', { uploadData });
+
       const { data: publicUrlData } = supabaseAdmin.storage
         .from('product-images')
         .getPublicUrl(fileName);
       
       imagePath = publicUrlData.publicUrl;
+      log('PUBLIC_URL', { imagePath });
+    } else {
+      log('NO_IMAGE_FILE');
     }
 
     // 2. Insert Product
+    log('DB_INSERT_START');
     const { error: insertError } = await supabaseAdmin
       .from('products')
       .insert({
@@ -89,15 +145,20 @@ export async function uploadProduct(formData: FormData) {
       });
 
     if (insertError) {
+      log('DB_INSERT_ERROR', { code: insertError.code, message: insertError.message });
       if (insertError.code === '23505' || (insertError.message && insertError.message.includes('sku'))) {
         throw new Error('This SKU is already registered in the House archives. Please use a unique SKU.');
       }
       throw insertError;
     }
 
+    log('DB_INSERT_DONE');
+    log('SUCCESS');
     return { success: true, message: 'Product added to the House archives.' };
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'An unexpected error occurred during upload.';
+    const stack = error instanceof Error ? error.stack : '';
+    log('CATCH', { message, stack: stack?.split('\n').slice(0, 3).join(' | ') });
     console.error('Upload error:', message);
     return { success: false, message };
   }

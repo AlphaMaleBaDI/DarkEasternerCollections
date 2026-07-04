@@ -25,18 +25,26 @@ export default function ProductUpload() {
     setIsLoading(true)
     setStatusMsg(null)
 
-    const formData = new FormData(e.currentTarget)
-    const result: UploadResult = await uploadProduct(formData)
+    try {
+      const formData = new FormData(e.currentTarget)
+      const result: UploadResult = await uploadProduct(formData)
 
-    if (result.success) {
-      setStatusMsg({ type: 'success', text: result.message })
-      ;(e.target as HTMLFormElement).reset()
-      setSelectedFileName(null)
-      setPublicationStatus('draft')
-    } else {
-      setStatusMsg({ type: 'error', text: result.message })
+      if (result.success) {
+        setStatusMsg({ type: 'success', text: result.message })
+        ;(e.target as HTMLFormElement).reset()
+        setSelectedFileName(null)
+        setPublicationStatus('draft')
+      } else {
+        setStatusMsg({ type: 'error', text: result.message })
+      }
+    } catch (err) {
+      setStatusMsg({
+        type: 'error',
+        text: err instanceof Error ? err.message : 'Upload failed. The request may have timed out for large images.',
+      })
+    } finally {
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }
 
   return (
