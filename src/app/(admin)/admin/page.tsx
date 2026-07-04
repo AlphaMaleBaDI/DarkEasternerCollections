@@ -139,15 +139,18 @@ export default function AdminDashboard() {
             <h2 className="text-xl font-serif text-white italic mb-6">Curation Distribution</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="p-5 border border-zinc-900 bg-zinc-950/40">
-                <span className="text-zinc-500 text-xs uppercase tracking-widest block font-mono">Sovereign Tailoring (Men)</span>
+                <span className="text-zinc-500 text-xs uppercase tracking-widest block font-mono">Men of Class</span>
+                <span className="text-zinc-700 text-[9px] tracking-widest block font-mono mt-0.5">Sovereign Tailoring</span>
                 <span className="text-2xl font-light text-white block mt-2">{stats.menCount} pieces</span>
               </div>
               <div className="p-5 border border-zinc-900 bg-zinc-950/40">
-                <span className="text-zinc-500 text-xs uppercase tracking-widest block font-mono">Editorial Grace (Women)</span>
+                <span className="text-zinc-500 text-xs uppercase tracking-widest block font-mono">The Elegant Woman</span>
+                <span className="text-zinc-700 text-[9px] tracking-widest block font-mono mt-0.5">Editorial Grace</span>
                 <span className="text-2xl font-light text-white block mt-2">{stats.womenCount} pieces</span>
               </div>
               <div className="p-5 border border-zinc-900 bg-zinc-950/40">
-                <span className="text-zinc-500 text-xs uppercase tracking-widest block font-mono">The Atelier (Hair)</span>
+                <span className="text-zinc-500 text-xs uppercase tracking-widest block font-mono">Her Crown Collection</span>
+                <span className="text-zinc-700 text-[9px] tracking-widest block font-mono mt-0.5">The Atelier</span>
                 <span className="text-2xl font-light text-white block mt-2">{stats.hairCount} products</span>
               </div>
             </div>

@@ -79,10 +79,10 @@ export default function EditProductForm({ product }: EditProductFormProps) {
               defaultValue={product.category}
               className="bg-zinc-900 border border-zinc-800 p-3 text-white focus:border-gold-500 outline-none transition-colors"
             >
-              <option value="men">Sovereign Tailoring</option>
-              <option value="women">Editorial Grace</option>
-              <option value="hair">The Atelier</option>
-              <option value="perfumes">Invisible Presence</option>
+              <option value="men">Men of Class</option>
+              <option value="women">The Elegant Woman</option>
+              <option value="hair">Her Crown Collection</option>
+              <option value="perfumes">Signature Fragrances</option>
             </select>
           </div>
         </div>
