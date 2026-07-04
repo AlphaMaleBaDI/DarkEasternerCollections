@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { EditorialFrame } from './EditorialFrame';
+
 import { theme } from '@/styles/theme';
 
 /**
@@ -33,21 +33,22 @@ export const ShowroomTressesGallery: React.FC = () => {
             }}
             className={`${asset.span} relative z-10`}
           >
-            <div className="group">
-              <EditorialFrame
-                src={asset.src}
-                alt={asset.alt}
-                aspectRatio={asset.ratio}
-                vignette
-                grayscaleHover
-              />
+            <div className={`relative w-full ${asset.ratio === 'landscape' ? 'aspect-[4/3]' : 'aspect-[3/4]'} border border-luxury-gold/10 bg-black/40 flex flex-col items-center justify-center text-center p-6 group overflow-hidden`}>
+              {/* Subtle gold design details in corners */}
+              <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-luxury-gold/30" />
+              <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-luxury-gold/30" />
+              <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-luxury-gold/30" />
+              <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-luxury-gold/30" />
               
-              {/* Subtle Editorial Label */}
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <p className="text-[8px] text-luxury-gold/40 uppercase tracking-[0.4em] font-medium">
-                  {asset.alt}
-                </p>
-              </div>
+              <p className="text-luxury-gold uppercase tracking-[0.4em] text-[9px] font-medium mb-2">
+                {asset.alt}
+              </p>
+              <h5 className="text-soft-white/60 font-heading text-lg italic mb-2">
+                Coming Soon
+              </h5>
+              <p className="text-soft-white/20 text-[10px] font-light max-w-[200px] leading-relaxed">
+                Premium crown selections are currently in preparation.
+              </p>
             </div>
           </motion.div>
         ))}

@@ -92,11 +92,10 @@ h1, h2, h3, h4, h5, h6 {
   iOS Safari fallback: reverts to scroll (doesn't support fixed inside overflow).
 */
 .fragrance-bg {
-  background-image: url('/assets/images/atmosphere/perfume-silhouette.png');
+  background: radial-gradient(circle at center, #120e06 0%, #000000 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 /* iOS Safari fallback — graceful scroll instead of broken rendering */

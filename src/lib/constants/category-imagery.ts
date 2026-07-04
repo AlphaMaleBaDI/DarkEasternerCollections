@@ -1,8 +1,8 @@
 import { ProductCategory } from '@/lib/constants/categories'
 
 export const CATEGORY_IMAGES: Record<ProductCategory, string> = {
-  men: '/assets/images/male-fashion/gentlemen.png',
-  women: '/assets/images/female-fashion/luxury-couture-blue.jpg',
-  hair: '/assets/images/editorial/wig-dominant.png',
-  perfumes: '/assets/images/atmosphere/perfume-silhouette.png',
+  men: '/assets/images/male-fashion/men-of-class.jpg',
+  women: '/assets/images/female-fashion/the-elegant-woman.jpg',
+  hair: '/assets/images/wigs/her-crown-collection.jpg',
+  perfumes: '/assets/images/atmosphere/signature-fragrances.jpg',
 }

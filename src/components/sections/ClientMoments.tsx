@@ -37,48 +37,68 @@ export const ClientMoments: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Staggered Visual Strip - Flexible Grid */}
-        <div className="flex flex-wrap -mx-4 lg:-mx-8">
-          {clientMoments.map((moment, index) => {
-            // Stagger offsets: neutralized on tablet landscape for visual balance
-            const isFirstRow = index < 3;
-            const widthClass = isFirstRow ? 'w-full md:w-1/3 xl:w-1/3' : 'w-full md:w-1/2 lg:w-1/2 max-w-2xl mx-auto';
-            const offsetClass = '';
-            
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  duration: theme.motion.duration.slow, 
-                  delay: (index % 3) * theme.motion.stagger.luxury,
-                  ease: theme.motion.ease.cinematic
-                }}
-                className={`px-4 lg:px-8 mb-16 md:mb-24 last:mb-0 ${widthClass} group`}
-              >
-                <div className={offsetClass}>
-                  <EditorialFrame
-                    src={moment.image}
-                    alt={moment.title}
-                    aspectRatio="portrait"
-                    vignette
-                    grayscaleHover
-                  />
-                  <div className="mt-8 flex flex-col space-y-2">
-                    <p className="text-luxury-gold uppercase tracking-[0.3em] text-[10px] font-medium">
-                      {moment.context}
-                    </p>
-                    <h4 className="text-soft-white text-2xl font-heading group-hover:text-luxury-gold transition-colors duration-500">
-                      {moment.title}
-                    </h4>
+        {clientMoments.length > 0 ? (
+          <div className="flex flex-wrap -mx-4 lg:-mx-8">
+            {clientMoments.map((moment, index) => {
+              // Stagger offsets: neutralized on tablet landscape for visual balance
+              const isFirstRow = index < 3;
+              const widthClass = isFirstRow ? 'w-full md:w-1/3 xl:w-1/3' : 'w-full md:w-1/2 lg:w-1/2 max-w-2xl mx-auto';
+              const offsetClass = '';
+              
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: theme.motion.duration.slow, 
+                    delay: (index % 3) * theme.motion.stagger.luxury,
+                    ease: theme.motion.ease.cinematic
+                  }}
+                  className={`px-4 lg:px-8 mb-16 md:mb-24 last:mb-0 ${widthClass} group`}
+                >
+                  <div className={offsetClass}>
+                    <EditorialFrame
+                      src={moment.image}
+                      alt={moment.title}
+                      aspectRatio="portrait"
+                      vignette
+                      grayscaleHover
+                    />
+                    <div className="mt-8 flex flex-col space-y-2">
+                      <p className="text-luxury-gold uppercase tracking-[0.3em] text-[10px] font-medium">
+                        {moment.context}
+                      </p>
+                      <h4 className="text-soft-white text-2xl font-heading group-hover:text-luxury-gold transition-colors duration-500">
+                        {moment.title}
+                      </h4>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="border border-luxury-gold/10 bg-black/40 py-16 px-6 text-center max-w-xl mx-auto relative overflow-hidden">
+            {/* Subtle gold design details in corners */}
+            <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-luxury-gold/30" />
+            <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-luxury-gold/30" />
+            <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-luxury-gold/30" />
+            <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-luxury-gold/30" />
+            
+            <p className="text-luxury-gold uppercase tracking-[0.4em] text-[10px] font-medium mb-3">
+              Atelier Archive
+            </p>
+            <h4 className="text-soft-white/80 font-heading text-xl italic mb-3">
+              Memories In Formulation
+            </h4>
+            <p className="text-soft-white/30 text-xs font-light max-w-sm mx-auto leading-relaxed">
+              Authentic client moments and fitting diaries are currently being curated for the collective.
+            </p>
+          </div>
+        )}
+
 
       </div>
     </section>

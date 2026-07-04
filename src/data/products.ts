@@ -51,17 +51,9 @@ export const products: Product[] = [
     images: ['/assets/images/female-fashion/pink-tiered-dress.jpg'],
     featured: true,
   },
-  {
-    id: '4',
-    slug: 'luxury-hair-collection-01',
-    title: 'Signature Luxury Tresses',
-    description: 'Premium quality meets effortless glamour. Curated for those who understand that confidence begins with detail.',
-    category: 'wigs',
-    images: ['/assets/images/editorial/wig-dominant.png'],
-    featured: true,
-  },
 ];
 
 export const getFeaturedProducts = () => products.filter(p => p.featured);
 export const getProductsByCategory = (category: Category) => products.filter(p => p.category === category);
 export const getProductBySlug = (slug: string) => products.find(p => p.slug === slug);
+

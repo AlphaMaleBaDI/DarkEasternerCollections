@@ -13,7 +13,7 @@ export const CATEGORY_CONFIGS: Record<ProductCategory, CategoryConfig> = {
   men: {
     label: 'The Gentlemen',
     slug: 'men',
-    heroCopy: 'Sovereign Tailoring',
+    heroCopy: 'Men of Class',
     editorialStatement: 'A study in power, precision, and masculine restraint. The house of Dark Easterner defines the modern patriarch through sharp silhouettes and uncompromising quality.',
     mood: 'strong',
     accentColor: 'text-zinc-100',
@@ -21,7 +21,7 @@ export const CATEGORY_CONFIGS: Record<ProductCategory, CategoryConfig> = {
   women: {
     label: 'The Matriarchs',
     slug: 'women',
-    heroCopy: 'Celestial Couture',
+    heroCopy: 'The Elegant Woman',
     editorialStatement: 'Fluidity meets authority. Our feminine collections explore the intersection of ethereal elegance and structural power, crafted for the woman who commands every room.',
     mood: 'elegant',
     accentColor: 'text-luxury-gold',
@@ -29,7 +29,7 @@ export const CATEGORY_CONFIGS: Record<ProductCategory, CategoryConfig> = {
   hair: {
     label: 'The Crown',
     slug: 'hair',
-    heroCopy: 'Raw Artistry',
+    heroCopy: 'Her Crown Collection',
     editorialStatement: 'The ultimate expression of identity. Sourced from the finest origins, our raw hair collections are curated for those who view their crown as an extension of their soul.',
     mood: 'intimate',
     accentColor: 'text-zinc-300',
@@ -37,7 +37,7 @@ export const CATEGORY_CONFIGS: Record<ProductCategory, CategoryConfig> = {
   perfumes: {
     label: 'The Aura',
     slug: 'perfumes',
-    heroCopy: 'Invisible Presence',
+    heroCopy: 'Signature Fragrances',
     editorialStatement: 'Scent is the most intimate form of memory. Our fragrances are atmospheric compositions designed to linger long after the presence has left the room.',
     mood: 'mysterious',
     accentColor: 'text-luxury-gold',

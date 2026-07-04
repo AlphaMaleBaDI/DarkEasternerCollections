@@ -40,33 +40,8 @@ export const conciergeFaqs = [
   },
 ];
 
-export const clientMoments = [
-  {
-    title: "Bridal Elegance",
-    context: "Lagos, Nigeria",
-    image: "/assets/images/editorial/moment-1.jpg",
-  },
-  {
-    title: "Couture Gala",
-    context: "Private Event",
-    image: "/assets/images/editorial/moment-2.jpg",
-  },
-  {
-    title: "Atelier Fitting",
-    context: "Custom Selection",
-    image: "/assets/images/editorial/moment-3.jpg",
-  },
-  {
-    title: "Traditional Mastery",
-    context: "Embroidery Detail",
-    image: "/assets/images/editorial/past-work-1.jpg",
-  },
-  {
-    title: "Modern Heritage",
-    context: "Male Couture",
-    image: "/assets/images/editorial/past-work-2.jpg",
-  },
-];
+export const clientMoments: { title: string; context: string; image: string }[] = [];
+
 
 export const editorialNotes = [
   { label: 'Craftsmanship', content: 'Designed for unforgettable entrances.' },

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+
 import { motion } from 'framer-motion';
 import { philosophy } from '@/data/editorial';
 import { theme } from '@/styles/theme';
@@ -65,7 +65,7 @@ export const Philosophy: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Editorial Gallery Column — Desktop Only */}
+          {/* Editorial Gallery Column ï¿½ Desktop Only */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -73,22 +73,26 @@ export const Philosophy: React.FC = () => {
             transition={{ duration: theme.motion.duration.slow, ease: theme.motion.ease.cinematic, delay: 0.2 }}
             className="hidden xl:block xl:col-span-7"
           >
-            <motion.div
-              className="relative xl:max-w-[520px] 2xl:max-w-[600px] ml-auto overflow-hidden"
+            <div
+              className="relative xl:max-w-[520px] 2xl:max-w-[600px] w-full ml-auto overflow-hidden border border-luxury-gold/15 flex flex-col items-center justify-center bg-black/40 text-center px-8"
               style={{ aspectRatio: '3/4' }}
-              whileHover={{ scale: 0.98 }}
-              transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <Image
-                src="/assets/images/editorial/wig-straight.png"
-                alt="Signature Luxury Tresses — Straight Edition"
-                fill
-                className="object-cover opacity-[0.92]"
-                priority
-              />
-              {/* Subtle cinematic gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
-            </motion.div>
+              {/* Subtle gold design details in corners */}
+              <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-luxury-gold/40" />
+              <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-luxury-gold/40" />
+              <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-luxury-gold/40" />
+              <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-luxury-gold/40" />
+              
+              <p className="text-luxury-gold uppercase tracking-[0.4em] text-[10px] font-medium mb-3">
+                Atelier Vision
+              </p>
+              <h4 className="text-soft-white/80 font-heading text-2xl mb-4 italic">
+                Coming Soon
+              </h4>
+              <p className="text-soft-white/30 text-xs font-light max-w-[280px] leading-relaxed">
+                Our premium visual lookbook and signature collections are preparing for private unveiling.
+              </p>
+            </div>
           </motion.div>
 
         </div>
