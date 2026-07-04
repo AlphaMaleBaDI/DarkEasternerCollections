@@ -7,10 +7,13 @@ import { uploadProduct } from '@/app/actions/product-actions'
 
 type UploadResult = { success: boolean; message: string }
 
+
+
 export default function ProductUpload() {
   const [isLoading, setIsLoading] = useState(false)
   const [statusMsg, setStatusMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null)
+  const [publicationStatus, setPublicationStatus] = useState<'published' | 'draft' | 'archived'>('draft')
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
@@ -29,6 +32,7 @@ export default function ProductUpload() {
       setStatusMsg({ type: 'success', text: result.message })
       ;(e.target as HTMLFormElement).reset()
       setSelectedFileName(null)
+      setPublicationStatus('draft')
     } else {
       setStatusMsg({ type: 'error', text: result.message })
     }
@@ -108,9 +112,10 @@ export default function ProductUpload() {
 
 
 
-        <div className="flex flex-col gap-6 pt-6 border-t border-zinc-900">
-          {/* Checkboxes Group */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
+
+
+        <div className="flex flex-col md:flex-row md:items-center gap-6 pt-4 border-t border-zinc-900">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
             <label className="flex items-center gap-3 cursor-pointer select-none">
               <input type="checkbox" name="featured" className="accent-gold-500 w-4 h-4" />
               <span className="text-zinc-400 text-sm">Feature on Home</span>
@@ -120,20 +125,25 @@ export default function ProductUpload() {
               <span className="text-zinc-400 text-sm">Show Pricing</span>
             </label>
           </div>
-
-          {/* Status Dropdowns Group */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex flex-col gap-2">
-              <span className="text-zinc-400 text-xs uppercase tracking-widest font-mono">Availability Status</span>
-              <select name="inventoryStatus" defaultValue="available" className="w-full bg-zinc-900 border border-zinc-800 p-3 text-white text-sm outline-none focus:border-gold-500 transition-colors">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 md:gap-6 md:ml-auto">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono whitespace-nowrap">Availability Status</span>
+              <select name="inventoryStatus" defaultValue="available" className="bg-zinc-900 border border-zinc-800 p-2.5 text-zinc-400 text-xs uppercase tracking-widest outline-none focus:border-gold-500 transition-colors">
                 <option value="available">Available</option>
                 <option value="coming_soon">Coming Soon</option>
                 <option value="out_of_stock">Out of Stock</option>
               </select>
             </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-zinc-400 text-xs uppercase tracking-widest font-mono">Publication Status</span>
-              <select name="status" defaultValue="draft" className="w-full bg-zinc-900 border border-zinc-800 p-3 text-white text-sm outline-none focus:border-gold-500 transition-colors">
+
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono whitespace-nowrap">Publication Status</span>
+              <select 
+                name="status" 
+                value={publicationStatus} 
+                onChange={(e) => setPublicationStatus(e.target.value as 'published' | 'draft' | 'archived')}
+                className="bg-zinc-900 border border-zinc-800 p-2.5 text-zinc-400 text-xs uppercase tracking-widest outline-none focus:border-gold-500 transition-colors"
+              >
                 <option value="published">Published</option>
                 <option value="draft">Draft</option>
                 <option value="archived">Archived</option>
@@ -148,8 +158,9 @@ export default function ProductUpload() {
             type="submit"
             className="w-full py-4 bg-white text-black uppercase tracking-widest text-sm font-medium hover:bg-gold-500 transition-all duration-500 disabled:opacity-50"
           >
-            {isLoading ? 'Recording Asset...' : 'Add to Archive'}
+            {isLoading ? 'Recording Asset...' : (publicationStatus === 'published' ? 'Publish Product' : 'Add to Archive')}
           </button>
+
         </div>
 
         {statusMsg && (
