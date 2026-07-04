@@ -10,11 +10,14 @@ type EditProductFormProps = {
   product: Product
 }
 
+
+
 export default function EditProductForm({ product }: EditProductFormProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [statusMsg, setStatusMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [imagePreview, setImagePreview] = useState<string | null>(product.main_image_url)
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null)
+  const [publicationStatus, setPublicationStatus] = useState<'published' | 'draft' | 'archived'>(product.status)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -161,11 +164,8 @@ export default function EditProductForm({ product }: EditProductFormProps) {
           </div>
         )}
 
-
-
-        <div className="flex flex-col gap-6 pt-6 border-t border-zinc-900">
-          {/* Checkboxes Group */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
+        <div className="flex flex-col md:flex-row md:items-center gap-6 pt-4 border-t border-zinc-900">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
             <label className="flex items-center gap-3 cursor-pointer select-none">
               <input 
                 type="checkbox" 
@@ -185,27 +185,28 @@ export default function EditProductForm({ product }: EditProductFormProps) {
               <span className="text-zinc-400 text-sm">Show Pricing</span>
             </label>
           </div>
-
-          {/* Status Dropdowns Group */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex flex-col gap-2">
-              <span className="text-zinc-400 text-xs uppercase tracking-widest font-mono">Availability Status</span>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 md:gap-6 md:ml-auto">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono whitespace-nowrap">Availability Status</span>
               <select 
                 name="inventoryStatus" 
                 defaultValue={product.inventory_status || 'available'}
-                className="w-full bg-zinc-900 border border-zinc-800 p-3 text-white text-sm outline-none focus:border-gold-500 transition-colors"
+                className="bg-zinc-900 border border-zinc-800 p-2.5 text-zinc-400 text-xs uppercase tracking-widest outline-none focus:border-gold-500 transition-colors"
               >
                 <option value="available">Available</option>
                 <option value="coming_soon">Coming Soon</option>
                 <option value="out_of_stock">Out of Stock</option>
               </select>
             </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-zinc-400 text-xs uppercase tracking-widest font-mono">Publication Status</span>
+
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono whitespace-nowrap">Publication Status</span>
               <select 
                 name="status" 
-                defaultValue={product.status}
-                className="w-full bg-zinc-900 border border-zinc-800 p-3 text-white text-sm outline-none focus:border-gold-500 transition-colors"
+                value={publicationStatus}
+                onChange={(e) => setPublicationStatus(e.target.value as 'published' | 'draft' | 'archived')}
+                className="bg-zinc-900 border border-zinc-800 p-2.5 text-zinc-400 text-xs uppercase tracking-widest outline-none focus:border-gold-500 transition-colors"
               >
                 <option value="published">Published</option>
                 <option value="draft">Draft</option>
@@ -221,7 +222,7 @@ export default function EditProductForm({ product }: EditProductFormProps) {
             type="submit"
             className="w-full py-4 bg-white text-black uppercase tracking-widest text-sm font-medium hover:bg-gold-500 transition-all duration-500 disabled:opacity-50"
           >
-            {isLoading ? 'Updating Asset...' : 'Save Modifications'}
+            {isLoading ? 'Updating Asset...' : (publicationStatus === 'published' ? 'Publish Changes' : (publicationStatus === 'archived' ? 'Archive Piece' : 'Save as Draft'))}
           </button>
         </div>
 
