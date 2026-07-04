@@ -161,8 +161,10 @@ export default function EditProductForm({ product }: EditProductFormProps) {
           </div>
         )}
 
-        <div className="flex flex-col gap-6 md:grid md:grid-cols-2 pt-6 border-t border-zinc-900">
-          {/* Checkboxes */}
+
+
+        <div className="flex flex-col gap-6 pt-6 border-t border-zinc-900">
+          {/* Checkboxes Group */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
             <label className="flex items-center gap-3 cursor-pointer select-none">
               <input 
@@ -184,26 +186,26 @@ export default function EditProductForm({ product }: EditProductFormProps) {
             </label>
           </div>
 
-          {/* Status Dropdowns */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="flex flex-col gap-1.5">
-              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">Availability Status</span>
+          {/* Status Dropdowns Group */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col gap-2">
+              <span className="text-zinc-400 text-xs uppercase tracking-widest font-mono">Availability Status</span>
               <select 
                 name="inventoryStatus" 
                 defaultValue={product.inventory_status || 'available'}
-                className="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-zinc-400 text-xs uppercase tracking-widest outline-none focus:border-gold-500"
+                className="w-full bg-zinc-900 border border-zinc-800 p-3 text-white text-sm outline-none focus:border-gold-500 transition-colors"
               >
                 <option value="available">Available</option>
                 <option value="coming_soon">Coming Soon</option>
                 <option value="out_of_stock">Out of Stock</option>
               </select>
             </div>
-            <div className="flex flex-col gap-1.5">
-              <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">Publication Status</span>
+            <div className="flex flex-col gap-2">
+              <span className="text-zinc-400 text-xs uppercase tracking-widest font-mono">Publication Status</span>
               <select 
                 name="status" 
                 defaultValue={product.status}
-                className="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-zinc-400 text-xs uppercase tracking-widest outline-none focus:border-gold-500"
+                className="w-full bg-zinc-900 border border-zinc-800 p-3 text-white text-sm outline-none focus:border-gold-500 transition-colors"
               >
                 <option value="published">Published</option>
                 <option value="draft">Draft</option>
