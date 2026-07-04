@@ -65,14 +65,25 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       <Link href={`/product/${product.slug}`}>
         <div className="relative aspect-[3/4] overflow-hidden">
-          <Image 
-            src={product.main_image_url || '/assets/placeholder-product.jpg'} 
-            alt={product.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover transition-transform duration-1000 ease-luxury scale-100 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-700 ease-luxury" />
+          {product.main_image_url ? (
+            <>
+              <Image 
+                src={product.main_image_url} 
+                alt={product.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-1000 ease-luxury scale-100 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-700 ease-luxury" />
+            </>
+          ) : (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-950 border border-zinc-900/40">
+              <div className="w-8 h-px bg-luxury-gold/30 mb-4" />
+              <p className="text-zinc-600 text-[9px] uppercase tracking-[0.3em]">Photography</p>
+              <p className="text-zinc-700 text-[9px] uppercase tracking-[0.3em] mt-1">Coming Soon</p>
+              <div className="w-8 h-px bg-luxury-gold/30 mt-4" />
+            </div>
+          )}
         </div>
         
         <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 translate-y-0 md:translate-y-8 group-hover:translate-y-0 opacity-95 group-hover:opacity-100 transition-all duration-700 ease-luxury z-10">
